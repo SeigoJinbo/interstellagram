@@ -13,4 +13,6 @@ class User < ApplicationRecord
 
   has_many :given_follows, foreign_key: :follower_id, class_name: 'Connection'
   has_many :followings, through: :given_follows, source: :following
+
+  has_many :posts, dependent: :destroy
 end
