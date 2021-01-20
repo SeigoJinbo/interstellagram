@@ -5,8 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Message.destroy_all
-Connection.destroy_all
+# Response.destroy_all
+# Comment.destroy_all
+# Message.destroy_all
+# Connection.destroy_all
 User.destroy_all
 
 user1 = User.create(email: 'user1@gmail.com', password: '123456')
@@ -25,6 +27,12 @@ message2 = Message.create!(recipient: user2, sender: user1, content: 'u suck')
 comment1 =
   Comment.create(user: user1, content: 'i am awesome', likes: 10, post: post1)
 comment2 = Comment.create(user: user1, reaction: 1, message: message1)
+
+comment3 = Comment.create(user: user2, reaction: 2)
+response1 = Response.create(original: comment2, reply: comment3)
+comment4 = Comment.create(user: user2, content: 'ur reaction: 1 sux')
+response2 = Response.create(original: comment2, reply: comment4)
+
 # user.followers           => []
 # user.following           => []
 # user.posts               => []
@@ -34,3 +42,6 @@ comment2 = Comment.create(user: user1, reaction: 1, message: message1)
 #message.sender            => user
 #message.recipient         => user
 #message.post              => post #optional
+
+#comment.user              => user #commenter
+#user.comments             => [] user's comments&reactions to posts&messages
