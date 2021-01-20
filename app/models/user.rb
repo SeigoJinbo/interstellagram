@@ -21,4 +21,5 @@ class User < ApplicationRecord
            class_name: 'Message',
            foreign_key: 'recipient_id',
            dependent: :destroy
+  has_many :comments
 end

@@ -22,6 +22,9 @@ message1 =
   Message.create(recipient: user1, sender: user2, content: 'hi', post: post1)
 message2 = Message.create!(recipient: user2, sender: user1, content: 'u suck')
 
+comment1 =
+  Comment.create(user: user1, content: 'i am awesome', likes: 10, post: post1)
+comment2 = Comment.create(user: user1, reaction: 1, message: message1)
 # user.followers           => []
 # user.following           => []
 # user.posts               => []
