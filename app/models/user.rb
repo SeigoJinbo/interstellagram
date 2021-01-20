@@ -15,7 +15,10 @@ class User < ApplicationRecord
   has_many :followings, through: :given_follows, source: :following
 
   has_many :posts, dependent: :destroy
-  has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
+  has_many :sent_messages,
+           class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy
   has_many :received_messages,
-           class_name: 'Message', foreign_key: 'recipient_id'
+           class_name: 'Message',
+           foreign_key: 'recipient_id',
+           dependent: :destroy
 end

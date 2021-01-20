@@ -30,3 +30,4 @@ message2 = Message.create!(recipient: user2, sender: user1, content: 'u suck')
 
 #message.sender            => user
 #message.recipient         => user
+#message.post              => post #optional
