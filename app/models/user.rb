@@ -29,4 +29,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :user_tags, dependent: :destroy
   has_many :tagged_posts, through: :user_tags, source: :post
+  has_many :bookmarks, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 end
