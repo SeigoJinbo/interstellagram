@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Message.destroy_all
 Connection.destroy_all
 User.destroy_all
 
@@ -15,9 +16,17 @@ Connection.create(following: user1, follower: user2)
 Connection.create(following: user1, follower: user3)
 Connection.create(following: user2, follower: user3)
 
-Post.create(user: user1, description: 'my first post', likes: 5)
-Post.create(user: user1, description: 'my next post', likes: 6)
+post1 = Post.create(user: user1, description: 'my first post', likes: 5)
+post2 = Post.create(user: user1, description: 'my next post', likes: 6)
+message1 =
+  Message.create(recipient: user1, sender: user2, content: 'hi', post: post1)
+message2 = Message.create!(recipient: user2, sender: user1, content: 'u suck')
 
-# user.followers
-# user.following
-# user.posts
+# user.followers           => []
+# user.following           => []
+# user.posts               => []
+# user.sent_messages       => []
+# user.received_messages   => []
+
+#message.sender            => user
+#message.recipient         => user
