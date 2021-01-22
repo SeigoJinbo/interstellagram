@@ -37,8 +37,8 @@ Connection.create(following: user1, follower: user2)
 Connection.create(following: user1, follower: user3)
 Connection.create(following: user2, follower: user3)
 
-post1 = Post.create(user: user1, description: 'my first post', likes: 5)
-post2 = Post.create(user: user1, description: 'my next post', likes: 6)
+post1 = Post.create(user: user1, description: 'my first post')
+post2 = Post.create(user: user1, description: 'my next post')
 message1 =
   Message.create(recipient: user1, sender: user2, content: 'hi', post: post1)
 message2 = Message.create!(recipient: user2, sender: user1, content: 'u suck')
@@ -48,9 +48,8 @@ comment1 =
 comment2 = Comment.create(user: user1, reaction: 1, message: message1)
 
 comment3 = Comment.create(user: user2, reaction: 2)
-response1 = Response.create(original: comment2, reply: comment3)
+
 comment4 = Comment.create(user: user2, content: 'ur reaction: 1 sux')
-response2 = Response.create(original: comment2, reply: comment4)
 
 user_tag1 = UserTag.create(user: user3, post: post1)
 user_tag2 = UserTag.create(user: user1, post: post2)
@@ -58,7 +57,6 @@ bookmark1 = Bookmark.create(user: user3, post: post2)
 
 notification1 = Notification.create!(user: user1, comment: comment4)
 notification2 = Notification.create!(user: user1, user_tag: user_tag2)
-notification3 = Notification.create!(user: user1, response: response2)
 
 # user.followers           => []
 # user.followings          => []
