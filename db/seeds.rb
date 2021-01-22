@@ -1,8 +1,38 @@
 User.destroy_all
 
-user1 = User.create(email: 'user1@gmail.com', password: '123456')
-user2 = User.create(email: 'user2@gmail.com', password: '123456')
-user3 = User.create(email: 'user3@gmail.com', password: '123456')
+user1 =
+  User.create(
+    email: 'user1@gmail.com',
+    password: '123456',
+    name: 'John Smith',
+    user_name: 'AwesomeGuy69',
+    birthday: Date.today,
+    gender: 'male',
+    bio: "i'm da best",
+    color: 'blue'
+  )
+user2 =
+  User.create(
+    email: 'user2@gmail.com',
+    password: '123456',
+    name: 'Karen',
+    user_name: 'Karen',
+    birthday: Date.today,
+    gender: 'female',
+    bio: 'let me speak to your manager!',
+    color: 'blue'
+  )
+user3 =
+  User.create(
+    email: 'user3@gmail.com',
+    password: '123456',
+    name: 'Tom',
+    user_name: 'Tom from myspace',
+    birthday: Date.today,
+    gender: 'male',
+    bio: '...',
+    color: 'blue'
+  )
 Connection.create(following: user1, follower: user2)
 Connection.create(following: user1, follower: user3)
 Connection.create(following: user2, follower: user3)
@@ -31,7 +61,7 @@ notification2 = Notification.create!(user: user1, user_tag: user_tag2)
 notification3 = Notification.create!(user: user1, response: response2)
 
 # user.followers           => []
-# user.following           => []
+# user.followings          => []
 # user.posts               => []
 # user.sent_messages       => []
 # user.received_messages   => []
@@ -40,17 +70,20 @@ notification3 = Notification.create!(user: user1, response: response2)
 
 # post.tagged_users        => [] users tagged in the post
 
-#message.sender            => user
-#message.recipient         => user
-#message.post              => post #optional
+# message.sender           => user
+# message.recipient        => user
+# message.post             => post #optional
 
-#comment.user              => user #commenter
-#comment.replys            => [] #replies + reactions
-#comment.original          => comment
-#user.comments             => [] user's comments&reactions to posts&messages
+# comment.user              => user #commenter
+# comment.replys            => [] #replies + reactions
+# comment.original          => comment
+# user.comments             => [] user's comments&reactions to posts&messages
 
-#user.notifications        => []
-#notification.comment
-#notification.post
-#notification.response
-#notification.user_tag
+# user.notifications        => []
+# notification.comment
+# notification.post
+# notification.response
+# notification.user_tag
+
+# new post /
+# message index

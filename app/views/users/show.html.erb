@@ -1,0 +1,4 @@
+<%= @user.name %>
+<% @user.posts.each do |post| %>
+  <p><%= link_to post.description, post_path(post) %></p>
+<% end %>

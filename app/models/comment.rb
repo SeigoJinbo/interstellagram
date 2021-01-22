@@ -3,6 +3,10 @@ class Comment < ApplicationRecord
   belongs_to :post, optional: true
   belongs_to :message, optional: true
 
+  belongs_to :parent, class_name: 'Comment', optional: true
+  has_many :replies,
+           class_name: 'Comment', foreign_key: :parent_id, dependent: :destroy
+
   has_many :received_originals,
            foreign_key: :original_id,
            class_name: 'Response',
@@ -13,4 +17,7 @@ class Comment < ApplicationRecord
   has_one :given_reply, foreign_key: :reply_id, class_name: 'Response'
   has_one :original, through: :given_reply, source: :original
   has_one :notification, dependent: :destroy
+
+  validates :content, presence: true
+  # validates :user, presence: true
 end
