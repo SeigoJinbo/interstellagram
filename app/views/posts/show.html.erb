@@ -2,9 +2,16 @@
   <div class="card-body">
     <p id="notice"><%= notice %></p>
     <h1 class="text-center"><%= @post.description %></h1>
+    <% @post.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, width: 100%>
+    <% end %>
     <hr >
     <div class="my-4">
       <%= simple_format(@post.description) %>
+      <%= link_to @post.user.user_name, user_path(@post.user.user_name) %>
+      <%= link_to user_path(@post.user.user_name) do %>
+        <%= cl_image_tag @post.user.photo.key, width: 70 %>
+      <% end %>
     </div>
     <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
     <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
@@ -29,3 +36,4 @@
   </div>
 </div>
 <%= render @post.comments %>
+<%= render 'posts/more' ,posts: @post.user.posts %>

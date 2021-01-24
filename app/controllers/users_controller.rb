@@ -4,6 +4,9 @@ class UsersController < ApplicationController
     @comment = @post.comments.new(parent_id: params[:parent_id])
   end
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by('LOWER(user_name)= ?', params[:user_name].downcase)
+  end
+  def to_param
+    user_name
   end
 end

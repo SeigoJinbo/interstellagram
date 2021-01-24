@@ -1,0 +1,8 @@
+<% if current_user.received_messages.any? %>
+  <% current_user.received_messages.each do |message| %>
+    <%= message.sender.user_name %>
+    <%= message.content %>
+  <% end %>
+<% else %>
+  <p>no messages </p>
+<% end %>
