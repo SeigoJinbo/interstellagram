@@ -13,7 +13,7 @@ user1 =
   )
 user_avatar =
   URI.open('https://ca.slack-edge.com/T02NE0241-U4APKLFLM-da0b004a3774-512')
-user1.photo.attach(
+user1.image.attach(
   io: user_avatar, filename: 'user_avatar.png', content_type: 'image/png'
 )
 user2 =
@@ -43,34 +43,34 @@ Connection.create(following: user1, follower: user3)
 Connection.create(following: user2, follower: user3)
 
 post1 = Post.create(user: user1, description: 'my first post')
-photo1 =
+image1 =
   URI.open(
     'https://images.pexels.com/photos/9198/nature-sky-twilight-grass-9198.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
   )
-photo2 =
+image2 =
   URI.open(
     'https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
   )
-post1.photos.attach(
-  io: photo1, filename: 'post1photo1', content_type: 'image/png'
+post1.images.attach(
+  io: image1, filename: 'post1image1', content_type: 'image/png'
 )
-post1.photos.attach(
-  io: photo2, filename: 'post1photo2', content_type: 'image/jpg'
+post1.images.attach(
+  io: image2, filename: 'post1image2', content_type: 'image/jpg'
 )
 post2 = Post.create(user: user1, description: 'my next post')
-photo1 =
+image1 =
   URI.open(
     'https://images.pexels.com/photos/1295138/pexels-photo-1295138.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'
   )
-photo2 =
+image2 =
   URI.open(
     'https://images.pexels.com/photos/753619/pexels-photo-753619.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'
   )
-post2.photos.attach(
-  io: photo1, filename: 'post2photo1', content_type: 'image/png'
+post2.images.attach(
+  io: image1, filename: 'post2image1', content_type: 'image/png'
 )
-post2.photos.attach(
-  io: photo2, filename: 'post2photo2', content_type: 'image/jpg'
+post2.images.attach(
+  io: image2, filename: 'post2image2', content_type: 'image/jpg'
 )
 message1 =
   Message.create(recipient: user1, sender: user2, content: 'hi', post: post1)

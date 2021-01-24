@@ -33,5 +33,5 @@ class User < ApplicationRecord
   has_many :tagged_posts, through: :user_tags, source: :post
   has_many :bookmarks, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  has_one_attached :photo
+  has_one_attached :image
 end
