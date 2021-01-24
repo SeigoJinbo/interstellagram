@@ -1,15 +1,19 @@
 <h1><%= @user.user_name %></h1>
+<% if @user.photo.attached? %>
+  <%= cl_image_tag @user.photo.key, width: 70%>
+<% end %>
 <h2><%= @user.name %></h1>
 <p id="notice"><%= notice %></p>
+<p>Posts: <%= @user.posts.count %></p>
+<p>Followers: <%= @user.followers.count %></p>
+<p>Following: <%= @user.followings.count %></p>
+<% pre_follow = @user.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
+<% if pre_follow %>
+  <%= button_to 'Unfollow', user_connection_path(@user, pre_follow), method: :delete %>
+<% else %>
+  <%= button_to 'Follow', user_connections_path(@user), method: :post %>
+<% end %>
 <h1>Posts</h1>
 <%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>
 <hr>
-<% @user.posts.each do |post| %>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title"><%= link_to post.description, post_path(post) %></h5>
-      <p class="card-text"><%= truncate(post.description, length: 60) %></p>
-      <%= link_to 'Edit', edit_post_path(post), class: 'card-link' %>
-    </div>
-  </div>
-<% end %>
+<%= render @user.posts %>

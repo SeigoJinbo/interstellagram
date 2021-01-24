@@ -1,5 +1,5 @@
 <h1>Explore</h1>
 <% @users = User.all %>
 <% @users.each do |user| %>
-  <p><%= link_to user.name, user_path(user) %></p>
+  <p><%= link_to user.name, user_path(user.user_name) %></p>
 <% end %>

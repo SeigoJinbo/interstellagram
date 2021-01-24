@@ -6,6 +6,8 @@ class User < ApplicationRecord
          :recoverable,
          :rememberable,
          :validatable
+  has_many :connections_as_following,
+           class_name: 'Connection', foreign_key: :following_id
 
   has_many :received_follows,
            foreign_key: :following_id,
@@ -31,4 +33,5 @@ class User < ApplicationRecord
   has_many :tagged_posts, through: :user_tags, source: :post
   has_many :bookmarks, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_one_attached :photo
 end
