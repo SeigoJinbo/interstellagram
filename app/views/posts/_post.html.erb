@@ -1,6 +1,9 @@
 <div class="card">
   <div class="card-body">
     <h5 class="card-title"><%= link_to post.description, post_path(post) %></h5>
+    <% post.images.each do |image| %>
+      <%= cl_image_tag image.key, width: 100%>
+    <% end %>
     <p class="card-text"><%= truncate(post.description, length: 60) %></p>
     <div class="my-4">
       <%= link_to post.user.user_name, user_path(post.user.user_name) %>

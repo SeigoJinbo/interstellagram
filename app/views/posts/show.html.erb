@@ -2,8 +2,8 @@
   <div class="card-body">
     <p id="notice"><%= notice %></p>
     <h1 class="text-center"><%= @post.description %></h1>
-    <% @post.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, width: 100%>
+    <% @post.images.each do |image| %>
+      <%= cl_image_tag image.key, width: 100%>
     <% end %>
     <hr >
     <div class="my-4">
