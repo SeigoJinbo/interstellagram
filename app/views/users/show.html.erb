@@ -9,11 +9,11 @@
 <p>Following: <%= @user.followings.count %></p>
 <% pre_follow = @user.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
 <% if pre_follow %>
-  <%= button_to 'Unfollow', user_connection_path(@user, pre_follow), method: :delete %>
+  <%= button_to 'Unfollow', user_connection_path(@user.id, pre_follow), method: :delete %>
 <% else %>
-  <%= button_to 'Follow', user_connections_path(@user), method: :post %>
+  <%= button_to 'Follow', user_connections_path(@user.id), method: :post %>
 <% end %>
 <h1>Posts</h1>
 <%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>
 <hr>
-<%= render @user.posts %>
+<%= render @user_posts %>

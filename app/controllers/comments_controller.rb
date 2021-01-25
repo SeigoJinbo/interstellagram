@@ -14,7 +14,8 @@ class CommentsController < ApplicationController
         content: params[:comment][:content]
       )
     if @comment.save
-      redirect_to @post, notice: 'Comment was successfully created.'
+      redirect_to user_path(@post.user.user_name),
+                  notice: 'Comment was successfully created.'
       if @comment.parent_id
         Notification.create(
           comment: @comment, user: Comment.find(Comment.last.parent_id).user
@@ -23,6 +24,13 @@ class CommentsController < ApplicationController
         Notification.create(comment: @comment, user: @post.user)
       end
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+
+    redirect_to user_path(current_user.user_name)
   end
 
   private
