@@ -7,7 +7,7 @@ class ConnectionsController < ApplicationController
     else
       Connection.create(following: @user, follower: current_user)
     end
-    redirect_to user_path(@user)
+    redirect_to user_path(@user.user_name)
   end
 
   def destroy
@@ -16,13 +16,13 @@ class ConnectionsController < ApplicationController
     else
       @connection.destroy
     end
-    redirect_to user_path(@user)
+    redirect_to user_path(@user.user_name)
   end
 
   private
 
   def find_user
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:user_user_name])
   end
 
   def already_following?

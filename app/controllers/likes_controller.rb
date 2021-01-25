@@ -1,13 +1,13 @@
 class LikesController < ApplicationController
-  before_action :find_post
+  before_action :find_target
   before_action :find_like, only: %i[destroy]
   def create
     if already_liked?
       flash[:notice] = "You can't like more than once"
     else
-      @post.likes.create(user_id: current_user.id)
+      @target.likes.create(user_id: current_user.id)
     end
-    redirect_to post_path(@post)
+    redirect_to request.referrer
   end
 
   def destroy
@@ -16,18 +16,27 @@ class LikesController < ApplicationController
     else
       @like.destroy
     end
-    redirect_to post_path(@post)
+    redirect_to request.referrer
   end
 
   private
 
-  def find_post
-    @post = Post.find(params[:post_id])
+  def find_target
+    if params[:post_id]
+      @target = Post.find(params[:post_id])
+    else
+      @target = Comment.find(params[:comment_id])
+    end
   end
   def already_liked?
-    Like.where(user_id: current_user.id, post_id: params[:post_id]).exists?
+    if params[:post_id]
+      Like.where(user_id: current_user.id, post_id: params[:post_id]).exists?
+    else
+      Like.where(user_id: current_user.id, comment_id: params[:comment_id])
+        .exists?
+    end
   end
   def find_like
-    @like = @post.likes.find(params[:id])
+    @like = @target.likes.find(params[:id])
   end
 end

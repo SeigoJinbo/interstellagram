@@ -16,5 +16,19 @@
       <%= button_to 'Like', post_likes_path(post), method: :post %>
     <% end %>
     <%= link_to 'Edit', edit_post_path(post), class: 'card-link' %>
+    <%= link_to 'Remove', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <div class="card my-1"> # place this card blow the post body.
+      <div class="card-body">
+        <p class="font-weight-bold">Comments</p>
+        <%= simple_form_for( [post, post.comments.build]) do |f| %>
+          <div class="form-group">
+            <%= f.label 'New comment' %>
+            <%= f.text_area :content, class: 'form-control' %>
+          </div>
+          <%= f.submit 'Submit', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+    <%= render post.comments %>
   </div>
 </div>

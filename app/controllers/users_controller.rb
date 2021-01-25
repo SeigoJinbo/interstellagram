@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
   def show
     @user = User.find_by('LOWER(user_name)= ?', params[:user_name].downcase)
+    @user_posts = @user.posts.sort_by { |created_at| created_at }.reverse
   end
   def to_param
     user_name
