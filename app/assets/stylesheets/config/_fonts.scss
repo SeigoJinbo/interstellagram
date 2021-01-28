@@ -1,9 +1,14 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Exo:wght@700&family=Revalia&family=Roboto&display=swap");
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$body-font: "Roboto", "Helvetica", "sans-serif";
+$headers-font: "Exo", "Helvetica", "sans-serif";
+$title-font: "Revalia", "cursive";
+
+// font-family: 'Exo', sans-serif;
+// font-family: 'Revalia', cursive;
+// font-family: 'Roboto', sans-serif;
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
