@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   resources :users, path: '/', param: :user_name, only: %i[show] do
     resources :connections
+    resources :conversations, only: %i[create]
   end
 
   resources :posts, path: '/p/' do
