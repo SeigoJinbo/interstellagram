@@ -1,0 +1,3 @@
+<% @conversations.each do |conversation| %>
+  <%= conversation.users.find { |user| user != current_user}.user_name %>
+<% end %>
