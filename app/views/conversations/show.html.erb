@@ -1,4 +1,11 @@
 <% @conversation.messages.each do |message| %>
-  <%= message.user.user_name %>
-  <%= message.content %>
+  <p><%= message.user.user_name %></p>
+  <p><%= message.content %></p>
+<% end %>
+<%= simple_form_for( [@conversation, @conversation.messages.build]) do |f| %>
+  <div class="form-group">
+    <%= f.label 'Message' %>
+    <%= f.text_area :content, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>
