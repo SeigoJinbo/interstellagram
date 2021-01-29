@@ -34,4 +34,11 @@ class User < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_one_attached :image
+
+  has_many :user_conversations, dependent: :destroy
+  has_many :conversations, through: :user_conversations, dependent: :destroy
+
+  def has_joined?(conversation)
+    conversations.where(id: conversation).exist?
+  end
 end
