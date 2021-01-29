@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_24_051852) do
+ActiveRecord::Schema.define(version: 2021_01_29_014921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,12 +49,12 @@ ActiveRecord::Schema.define(version: 2021_01_24_051852) do
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "post_id"
-    t.bigint "message_id"
     t.text "content"
     t.integer "reaction"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "parent_id"
+    t.bigint "message_id"
     t.index ["message_id"], name: "index_comments_on_message_id"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
@@ -69,6 +69,11 @@ ActiveRecord::Schema.define(version: 2021_01_24_051852) do
     t.index ["following_id"], name: "index_connections_on_following_id"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "post_id"
     t.bigint "user_id", null: false
@@ -81,15 +86,13 @@ ActiveRecord::Schema.define(version: 2021_01_24_051852) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.bigint "recipient_id", null: false
-    t.bigint "sender_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "conversation_id", null: false
     t.text "content"
-    t.bigint "post_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_messages_on_post_id"
-    t.index ["recipient_id"], name: "index_messages_on_recipient_id"
-    t.index ["sender_id"], name: "index_messages_on_sender_id"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -122,6 +125,16 @@ ActiveRecord::Schema.define(version: 2021_01_24_051852) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["original_id"], name: "index_responses_on_original_id"
     t.index ["reply_id"], name: "index_responses_on_reply_id"
+  end
+
+  create_table "user_conversations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "conversation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["conversation_id"], name: "index_user_conversations_on_conversation_id"
+    t.index ["user_id", "conversation_id"], name: "index_user_conversations_on_user_id_and_conversation_id", unique: true
+    t.index ["user_id"], name: "index_user_conversations_on_user_id"
   end
 
   create_table "user_tags", force: :cascade do |t|
@@ -163,9 +176,8 @@ ActiveRecord::Schema.define(version: 2021_01_24_051852) do
   add_foreign_key "likes", "comments"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
-  add_foreign_key "messages", "posts"
-  add_foreign_key "messages", "users", column: "recipient_id"
-  add_foreign_key "messages", "users", column: "sender_id"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "notifications", "comments"
   add_foreign_key "notifications", "posts"
   add_foreign_key "notifications", "responses"
@@ -174,6 +186,8 @@ ActiveRecord::Schema.define(version: 2021_01_24_051852) do
   add_foreign_key "posts", "users"
   add_foreign_key "responses", "comments", column: "original_id"
   add_foreign_key "responses", "comments", column: "reply_id"
+  add_foreign_key "user_conversations", "conversations"
+  add_foreign_key "user_conversations", "users"
   add_foreign_key "user_tags", "posts"
   add_foreign_key "user_tags", "users"
 end

@@ -2,9 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get '/explore', to: 'pages#explore', as: :explore
-  get '/inbox', to: 'pages#inbox', as: :inbox
+  get '/direct/inbox/', to: 'conversations#index', as: :inbox
+  get '/direct/:id', to: 'conversations#show', as: :conversation
+  resources :conversations do
+    resources :messages
+  end
   resources :users, path: '/', param: :user_name, only: %i[show] do
     resources :connections
+    resources :conversations, only: %i[create]
   end
 
   resources :posts, path: '/p/' do
@@ -15,8 +20,6 @@ Rails.application.routes.draw do
   resources :comments, only: %i[show] do
     resources :likes
   end
-
-  resources :messages
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,5 +1,7 @@
+puts 'Destroying all users...'
 User.destroy_all
 
+puts 'Creating new users...'
 user1 =
   User.create(
     email: 'user1@gmail.com',
@@ -38,10 +40,12 @@ user3 =
     bio: '...',
     color: 'blue'
   )
+puts 'Connecting followers...'
 Connection.create(following: user1, follower: user2)
 Connection.create(following: user1, follower: user3)
 Connection.create(following: user2, follower: user3)
 
+puts 'Creating new posts...'
 post1 = Post.create(user: user1, description: 'my first post')
 image1 =
   URI.open(
@@ -72,23 +76,30 @@ post2.images.attach(
 post2.images.attach(
   io: image2, filename: 'post2image2', content_type: 'image/jpg'
 )
-message1 =
-  Message.create(recipient: user1, sender: user2, content: 'hi', post: post1)
-message2 = Message.create!(recipient: user2, sender: user1, content: 'u suck')
-
+puts 'Creating comments...'
 comment1 = Comment.create(user: user1, content: 'i am awesome', post: post1)
-comment2 = Comment.create(user: user1, reaction: 1, message: message1)
-
 comment3 = Comment.create(user: user2, reaction: 2)
-
 comment4 = Comment.create(user: user2, content: 'ur reaction: 1 sux')
 
+puts 'Creating tags/bookmars...'
 user_tag1 = UserTag.create(user: user3, post: post1)
 user_tag2 = UserTag.create(user: user1, post: post2)
 bookmark1 = Bookmark.create(user: user3, post: post2)
 
+puts 'Creating notifications...'
 notification1 = Notification.create!(user: user1, comment: comment4)
 notification2 = Notification.create!(user: user1, user_tag: user_tag2)
+
+puts 'Creating conversations...'
+conversation1 = Conversation.new
+conversation1.users << User.first
+conversation1.users << User.second
+conversation1.save
+
+message1 =
+  Message.create!(
+    user: User.first, conversation: Conversation.first, content: 'hello'
+  )
 
 # user.followers           => []
 # user.followings          => []
@@ -97,6 +108,9 @@ notification2 = Notification.create!(user: user1, user_tag: user_tag2)
 # user.received_messages   => []
 # user.tagged_posts        => [] posts that the user is tagged in
 # user.bookmarks           => []
+# user.conversations       => []
+
+# conversation.users       => []
 
 # post.tagged_users        => [] users tagged in the post
 
