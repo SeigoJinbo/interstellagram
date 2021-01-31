@@ -3,3 +3,12 @@
 	width: 34px;
 	height: 34px;
 }
+
+.white-circle {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #ffffff;
+	box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+	position: relative;
+}
