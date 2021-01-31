@@ -1,34 +1,142 @@
-<div class="card">
-  <div class="card-body">
-    <h5 class="card-title"><%= link_to post.description, post_path(post) %></h5>
-    <% post.images.each do |image| %>
-      <%= cl_image_tag image.key, width: 100%>
-    <% end %>
-    <p class="card-text"><%= truncate(post.description, length: 60) %></p>
-    <div class="my-4">
-      <%= link_to post.user.user_name, user_path(post.user.user_name) %>
-    </div>
-    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-    <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-    <% if pre_like %>
-      <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
-    <% else %>
-      <%= button_to 'Like', post_likes_path(post), method: :post %>
-    <% end %>
-    <%= link_to 'Edit', edit_post_path(post), class: 'card-link' %>
-    <%= link_to 'Remove', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
-    <div class="card my-1"> # place this card blow the post body.
-      <div class="card-body">
-        <p class="font-weight-bold">Comments</p>
-        <%= simple_form_for( [post, post.comments.build]) do |f| %>
-          <div class="form-group">
-            <%= f.label 'New comment' %>
-            <%= f.text_area :content, class: 'form-control' %>
-          </div>
-          <%= f.submit 'Submit', class: 'btn btn-primary' %>
-        <% end %>
-      </div>
-    </div>
-    <%= render post.comments %>
-  </div>
+<%# ------------------------------REFERENCE------------------------------ %>
+<% if false %>
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title"><%= link_to post.description, post_path(post) %></h5>
+			<% post.images.each do |image| %>
+				<%= cl_image_tag image.key, width: 100%>
+			<% end %>
+			<p class="card-text"><%= truncate(post.description, length: 60) %></p>
+			<div class="my-4">
+				<%= link_to post.user.user_name, user_path(post.user.user_name) %>
+			</div>
+			<p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+			<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+			<% if pre_like %>
+				<%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
+			<% else %>
+				<%= button_to 'Like', post_likes_path(post), method: :post %>
+			<% end %>
+			<%= link_to 'Edit', edit_post_path(post), class: 'card-link' %>
+			<%= link_to 'Remove', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
+
+			<div class="card my-1"> # place this card blow the post body.
+				<div class="card-body">
+					<p class="font-weight-bold">Comments</p>
+					<%= simple_form_for( [post, post.comments.build]) do |f| %>
+						<div class="form-group">
+							<%= f.label 'New comment' %>
+							<%= f.text_area :content, class: 'form-control' %>
+						</div>
+						<%= f.submit 'Submit', class: 'btn btn-primary' %>
+					<% end %>
+				</div>
+			</div>
+			<%= render post.comments %>
+		</div>
+
+	</div>
+
+<% end %>
+
+<%# ------------------------------REAL CARD STARTS HERE------------------------------ %>
+
+<div class="post-card-container">
+	<div class="post-card">
+		<div style="position: relative; width: 40px; top: -15px; right: -94px;">
+			<%= render 'svgs/accents/post_accent_t' %>
+		</div>
+		<div style="position:absolute; z-index: -1;">
+			<%= render 'svgs/frames/post_corner_t' %>
+		</div>
+
+		<div class="post-user-info">
+			<%= cl_image_tag post.user.image.key, width: 40, style: "border:1px #00FEFC solid;border-radius:50%;" %>
+			<div class="post-username-container">
+				<h6><%= link_to post.user.name, post_path(post) %></h6>
+				<div class="small-meter">
+					<span style="width:<%= rand(10..90) %>%;"><span class="hp-progress"></span></span>
+				</div>
+				<div class="small-meter">
+					<span style="width:<%= rand(10..90) %>%;"><span class="mp-progress"></span></span>
+				</div>
+			</div>
+			<div class="post-user-stats-box">
+				<div class="post-user-stats-numbers">
+					<div>
+						<p><%= rand(10..90) %></p>
+					</div>
+					<div>
+						<p><%= rand(10..90) %></p>
+					</div>
+					<div>
+						<p><%= rand(10..90) %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<% post.images.each do |image| %>
+			<%= cl_image_tag image.key, width: 312, height: 312, :crop=>"fill" %>
+		<% end %>
+
+		<div class="post-actions">
+			<div class="post-energycell">
+				<%= render 'svgs/frames/energycell' %>
+			</div>
+			<div class="likes-counter-container">
+				<div class="likes-counter">
+					<p><%= post.likes.count %></p>
+				</div>
+				<div>
+					<p style="position:relative; top: -17px; left: -68px; font-size: 8px; text-align: center"><%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+				</div>
+			</div>
+
+			<div class="post-buttons">
+				<div class="action-button">
+					<div class="bookmark-icon"></div>
+				</div>
+				<div class="action-button"></div>
+				<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+				<% if pre_like %>
+					<%= link_to post_like_path(post, pre_like), method: :delete do %>
+						<div class="action-button"></div>
+					<% end %>
+				<% else %>
+					<%= link_to post_likes_path(post), method: :post do %>
+						<div>
+							<%= render 'svgs/buttons/like' %>
+						</div>
+					<% end %>
+				<% end %>
+				<div class="action-button"></div>
+			</div>
+		</div>
+
+		<div class="post-middle">
+			<div class="post-middle-counter">
+				<div class="post-comment-counter">
+					<h6 style="position: relative; top: 18px; right: -20px;"><%= post.comments.count %></h6>
+					<h6 style="font-size: 8px; position: relative; top: 8px; right: -19px;"><%= (post.comments.count) == 1 ? 'comment' : 'comments'%></h6>
+				</div>
+				<div style="position: absolute; z-index: -1; top: 454px; right: 253px;">
+					<%= render 'svgs/circles/purple_yellow_circle' %>
+				</div>
+				<div class="post-comment-line" style="position: absolute; top: 528px; right: 289px;"></div>
+			</div>
+			<div class="post-description">
+				<p><%= truncate(post.description, length: 150) %></p>
+			</div>
+		</div>
+
+		<div style="position:relative; z-index: -1; top: 14px; right: -240px; width: 72px;">
+			<%= render 'svgs/frames/post_corner_b' %>
+		</div>
+
+		<div style="position: relative; top: 20px;">
+			<%= render 'svgs/accents/post_accent_b' %>
+		</div>
+
+	</div>
 </div>
