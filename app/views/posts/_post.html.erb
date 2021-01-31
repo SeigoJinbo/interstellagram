@@ -32,7 +32,8 @@
 					<% end %>
 				</div>
 			</div>
-			<%= render post.comments %>
+			<%= render post.comments[0..1] %>
+      <%= link_to "view all #{post.comments.count} comments", post_comments_path(post) %>
 		</div>
 
 	</div>
