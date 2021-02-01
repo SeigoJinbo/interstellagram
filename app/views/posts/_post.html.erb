@@ -53,6 +53,9 @@
 
 		<%# ------------------------------USER DETAILS PART------------------------------ %>
 
+		<div style="position: absolute; top: 25px; right: 88px;">
+			<%= render 'svgs/frames/post_stats_line' %>
+		</div>
 		<div class="post-user-info">
 			<%= cl_image_tag post.user.image.key, width: 40, style: "border:1px #00FEFC solid;border-radius:50%;" %>
 			<div class="post-username-container">
@@ -67,13 +70,13 @@
 			<div class="post-user-stats-box">
 				<div class="post-user-stats-numbers">
 					<div>
-						<p><%= rand(10..90) %></p>
+						<p style="margin-bottom: 0;"><%= rand(10..90) %></p>
 					</div>
 					<div>
-						<p><%= rand(10..90) %></p>
+						<p style="margin-bottom: 0; border-left: 1px solid #3cc7cc; border-right: 1px solid #3cc7cc; padding-left: 2px; padding-right: 2px;"><%= rand(10..90) %></p>
 					</div>
 					<div>
-						<p><%= rand(10..90) %></p>
+						<p style="margin-bottom: 0;"><%= rand(10..90) %></p>
 					</div>
 				</div>
 			</div>
@@ -127,29 +130,29 @@
 				</div>
 			</div>
 			<%# ------------------------------ACTION BUTTONS------------------------------ %>
-			<div class="post-buttons">
-				<div>
+			<div class="post-buttons" style="position: relative; right: 22px;">
+				<div style="margin: 0 2px 0 2px;">
 					<%= render 'svgs/buttons/bookmark' %>
 				</div>
-				<div>
+				<div style="margin: 0 2px 0 2px;">
 					<%= render 'svgs/buttons/share' %>
 				</div>
 				<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
 				<% if pre_like %>
 					<%= link_to post_like_path(post, pre_like), method: :delete do %>
-						<div>
+						<div style="margin: 0 2px 0 2px;">
 							<%= render 'svgs/buttons/unlike' %>
 						</div>
 					<% end %>
 				<% else %>
 					<%= link_to post_likes_path(post), method: :post do %>
-						<div>
+						<div style="margin: 0 2px 0 2px;">
 							<%= render 'svgs/buttons/like' %>
 						</div>
 					<% end %>
 				<% end %>
 				<%= link_to post_comments_path(post) do %>
-					<div>
+					<div style="margin: 0 2px 0 2px;">
 						<%= render 'svgs/buttons/comment' %>
 					</div>
 				<% end %>
