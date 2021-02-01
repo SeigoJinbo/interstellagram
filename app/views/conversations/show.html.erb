@@ -1,6 +1,17 @@
 <% @conversation.messages.each do |message| %>
-  <p><%= message.user.user_name %></p>
-  <p><%= message.content %></p>
+  <% if message.user.user_name == current_user.user_name %>
+    <div class="me">
+      <p>me</p>
+      <p><%= message.content %></p>
+      <p><%= message.created_at.to_time.strftime('%a %b %e %Y, %k:%M') %></p>
+    </div>
+  <% else %>
+    <div class="you">
+      <p><%= message.user.user_name %></p>
+      <p><%= message.content %></p>
+      <p><%= message.created_at.to_time.strftime('%a %b %e %Y, %k:%M') %></p>
+    </div>
+  <% end %>
 <% end %>
 <%= simple_form_for( [@conversation, @conversation.messages.build]) do |f| %>
   <div class="form-group">
