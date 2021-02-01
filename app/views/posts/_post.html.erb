@@ -53,6 +53,9 @@
 
 		<%# ------------------------------USER DETAILS PART------------------------------ %>
 
+		<div style="position: absolute; top: 25px; right: 88px;">
+			<%= render 'svgs/frames/post_stats_line' %>
+		</div>
 		<div class="post-user-info">
 			<%= cl_image_tag post.user.image.key, width: 40, style: "border:1px #00FEFC solid;border-radius:50%;" %>
 			<div class="post-username-container">
@@ -67,13 +70,13 @@
 			<div class="post-user-stats-box">
 				<div class="post-user-stats-numbers">
 					<div>
-						<p><%= rand(10..90) %></p>
+						<p style="margin-bottom: 0;"><%= rand(10..90) %></p>
 					</div>
 					<div>
-						<p><%= rand(10..90) %></p>
+						<p style="margin-bottom: 0; border-left: 1px solid #3cc7cc; border-right: 1px solid #3cc7cc; padding-left: 2px; padding-right: 2px;"><%= rand(10..90) %></p>
 					</div>
 					<div>
-						<p><%= rand(10..90) %></p>
+						<p style="margin-bottom: 0;"><%= rand(10..90) %></p>
 					</div>
 				</div>
 			</div>
@@ -127,29 +130,29 @@
 				</div>
 			</div>
 			<%# ------------------------------ACTION BUTTONS------------------------------ %>
-			<div class="post-buttons">
-				<div>
+			<div class="post-buttons" style="position: relative; right: 22px;">
+				<div style="margin: 0 2px 0 2px;">
 					<%= render 'svgs/buttons/bookmark' %>
 				</div>
-				<div>
+				<div style="margin: 0 2px 0 2px;">
 					<%= render 'svgs/buttons/share' %>
 				</div>
 				<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
 				<% if pre_like %>
 					<%= link_to post_like_path(post, pre_like), method: :delete do %>
-						<div>
+						<div style="margin: 0 2px 0 2px;">
 							<%= render 'svgs/buttons/unlike' %>
 						</div>
 					<% end %>
 				<% else %>
 					<%= link_to post_likes_path(post), method: :post do %>
-						<div>
+						<div style="margin: 0 2px 0 2px;">
 							<%= render 'svgs/buttons/like' %>
 						</div>
 					<% end %>
 				<% end %>
 				<%= link_to post_comments_path(post) do %>
-					<div>
+					<div style="margin: 0 2px 0 2px;">
 						<%= render 'svgs/buttons/comment' %>
 					</div>
 				<% end %>
@@ -175,31 +178,36 @@
 			</div>
 		</div>
 
-		<%# ------------------------COMMENTS------------------------ %>
+		<%# ------------------------COMMENTS & INPUT------------------------ %>
 		<div>
-			<% post.comments[0..1].each do |comment|%>
+			<% if post.comments.any? %>
 				<div class="post-comment-card" style="position: relative; top: 6px; right: -40px;">
 					<div class="white-circle" style="right: 5px; top: -4px;"></div>
 					<div style="margin-left: 8px;">
-						<p><%= link_to comment.user.user_name, user_path(comment.user.user_name) %></p>
+						<p><%= link_to post.comments[0].user.user_name, user_path(post.comments[0].user.user_name) %></p>
 					</div>
 					<div style="margin-left: 4px;">
-						<p><%= comment.content %></p>
+						<p><%= post.comments[0].content %></p>
 					</div>
 				</div>
-			<% end %>
-			<% if post.comments.any? %>
-				<p style="position:relative; font-size: 12px;"><%= link_to "View all comments", post_comments_path(post) %></p>
+				<p style="font-size: 12px; position: absolute; top: 588px; right: 188px;"><%= link_to "View all comments", post_comments_path(post) %></p>
 			<% end %>
 		</div>
+
+		<%= simple_form_for( [post, post.comments.build]) do |f| %>
+			<div>
+				<%= f.text_area :content, placeholder: 'Comment...' %>
+			</div>
+			<%= f.submit value: "", class: 'post-input-btn' %>
+		<% end %>
 
 		<%# ------------------------BOTTOM ACCENTS------------------------ %>
 
-		<div style="position:relative; z-index: -1; top: -41px; right: -240px; width: 72px;">
+		<div style="position:absolute; z-index: -1; top: 574px; right: 16px; width: 72px;">
 			<%= render 'svgs/frames/post_corner_b' %>
 		</div>
 
-		<div style="position: relative; top: -31px;">
+		<div style="position: absolute; top: 657px;">
 			<%= render 'svgs/accents/post_accent_b' %>
 		</div>
 
