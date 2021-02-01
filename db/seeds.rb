@@ -29,6 +29,13 @@ user2 =
     bio: 'let me speak to your manager!',
     color: 'blue'
   )
+user_avatar =
+  URI.open(
+    'https://res.cloudinary.com/dsshrge9u/image/upload/v1612147515/Default_Avatar_120px_g4wjzk.png'
+  )
+user2.image.attach(
+  io: user_avatar, filename: 'user_avatar.png', content_type: 'image/png'
+)
 user3 =
   User.create(
     email: 'user3@gmail.com',
@@ -40,6 +47,13 @@ user3 =
     bio: '...',
     color: 'blue'
   )
+user_avatar =
+  URI.open(
+    'https://res.cloudinary.com/dsshrge9u/image/upload/v1612147515/Default_Avatar_120px_g4wjzk.png'
+  )
+user3.image.attach(
+  io: user_avatar, filename: 'user_avatar.png', content_type: 'image/png'
+)
 puts 'Connecting followers...'
 Connection.create(following: user1, follower: user2)
 Connection.create(following: user1, follower: user3)

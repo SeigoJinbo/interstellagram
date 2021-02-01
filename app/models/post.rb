@@ -8,4 +8,5 @@ class Post < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_one :notification, dependent: :destroy
   has_many_attached :images
+  validates :images, presence: true
 end

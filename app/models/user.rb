@@ -22,12 +22,12 @@ class User < ApplicationRecord
   has_many :followings, through: :given_follows, source: :following
 
   has_many :posts, dependent: :destroy
-  has_many :sent_messages,
-           class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy
-  has_many :received_messages,
-           class_name: 'Message',
-           foreign_key: 'recipient_id',
-           dependent: :destroy
+  # has_many :sent_messages,
+  #          class_name: 'Message', foreign_key: 'sender_id', dependent: :destroy
+  # has_many :received_messages,
+  #          class_name: 'Message',
+  #          foreign_key: 'recipient_id',
+  #          dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :user_tags, dependent: :destroy
   has_many :tagged_posts, through: :user_tags, source: :post
@@ -37,6 +37,7 @@ class User < ApplicationRecord
 
   has_many :user_conversations, dependent: :destroy
   has_many :conversations, through: :user_conversations, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   def has_joined?(conversation)
     conversations.where(id: conversation).exist?
