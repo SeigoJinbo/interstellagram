@@ -198,7 +198,7 @@
 			<div>
 				<%= f.text_area :content, placeholder: 'Comment...' %>
 			</div>
-			<%= f.submit value: "", class: 'post-input-btn' %>
+			<%= f.submit value: "", class: 'post-input-btn', data: { disable_with: false }  %>
 		<% end %>
 
 		<%# ------------------------BOTTOM ACCENTS------------------------ %>
