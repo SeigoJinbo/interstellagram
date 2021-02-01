@@ -187,7 +187,7 @@
 						<p><%= link_to post.comments[0].user.user_name, user_path(post.comments[0].user.user_name) %></p>
 					</div>
 					<div style="margin-left: 4px;">
-						<p><%= post.comments[0].content %></p>
+						<p><%= truncate(post.comments[0].content, length: 28) %></p>
 					</div>
 				</div>
 				<p style="font-size: 12px; position: absolute; top: 588px; right: 188px;"><%= link_to "View all comments", post_comments_path(post) %></p>
