@@ -1,0 +1,23 @@
+#comment_content {
+	/* message input */
+
+	position: absolute;
+	top: 608px;
+	right: 23px;
+	width: 312px;
+	height: 28px;
+	color: rgb(255, 255, 255);
+	font-size: 12px;
+
+	background: rgba(60, 199, 204, 0.25);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+::placeholder {
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 12px;
+	padding-left: 4px;
+	padding-top: 4px;
+}
