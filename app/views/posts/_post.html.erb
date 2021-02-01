@@ -33,7 +33,7 @@
 				</div>
 			</div>
 			<%= render post.comments[0..1] %>
-      <%= link_to "view all #{post.comments.count} comments", post_comments_path(post) %>
+			<%= link_to "view all #{post.comments.count} comments", post_comments_path(post) %>
 		</div>
 
 	</div>
@@ -41,7 +41,7 @@
 <% end %>
 
 <%# ------------------------------REAL CARD STARTS HERE------------------------------ %>
-
+<%# ------------------------------TOP ACCENTS------------------------------ %>
 <div class="post-card-container">
 	<div class="post-card">
 		<div style="position: relative; width: 40px; top: -15px; right: -94px;">
@@ -56,7 +56,7 @@
 		<div class="post-user-info">
 			<%= cl_image_tag post.user.image.key, width: 40, style: "border:1px #00FEFC solid;border-radius:50%;" %>
 			<div class="post-username-container">
-				<h6><%= link_to post.user.name, post_path(post) %></h6>
+				<h6><%= link_to post.user.user_name, user_path(post.user.user_name) %></h6>
 				<div class="small-meter">
 					<span style="width:<%= rand(10..90) %>%;"><span class="hp-progress"></span></span>
 				</div>
@@ -80,103 +80,128 @@
 		</div>
 
 		<%# ------------------------------IMAGE PART------------------------------ %>
+		<% if post.images.count == 1 %>
+			<%= cl_image_tag post.images.first.key, width: 312, height: 312, :crop=>"fill" %>
 
-		<%# post.images.each do |image| %>
-			<%#= cl_image_tag image.key, width: 312, height: 312, :crop=>"fill" %>
-			<%# end %>
-
-			<% if post.images.count == 1 %>
-				<%= cl_image_tag post.images.first.key, width: 312, height: 312, :crop=>"fill" %>
-			<% else %>
-				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-					<ol class="carousel-indicators">
-						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-						<% post.images[1..-1].each do |image| %>
-							<li data-target="#carouselExampleIndicators" data-slide-to='<% "${post.images.index(image)}" %>'></li>
-						<% end %>
-					</ol>
-					<div class="carousel-inner">
-						<div class="carousel-item active">
-							<%= cl_image_tag post.images.first.key, width: 312, height: 312, :crop=>"fill" %>
-						</div>
-						<% post.images[1..-1].each do |image| %>
-							<div class="carousel-item">
-								<%= cl_image_tag image.key, width: 312, height: 312, :crop=>"fill" %>
-							</div>
-						<% end %>
+		<% else %>
+			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+					<% post.images[1..-1].each do |image| %>
+						<li data-target="#carouselExampleIndicators" data-slide-to='<% "${post.images.index(image)}" %>'></li>
+					<% end %>
+				</ol>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<%= cl_image_tag post.images.first.key, width: 312, height: 312, :crop=>"fill" %>
 					</div>
-					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
+					<% post.images[1..-1].each do |image| %>
+						<div class="carousel-item">
+							<%= cl_image_tag image.key, width: 312, height: 312, :crop=>"fill" %>
+						</div>
+					<% end %>
+				</div>
+				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		<% end %>
+
+		<%# ------------------------------LIKES COUNTER------------------------------ %>
+
+		<div class="post-actions">
+			<div class="post-energycell">
+				<%= render 'svgs/frames/energycell' %>
+			</div>
+			<div class="likes-counter-container">
+				<div class="likes-counter">
+					<p><%= post.likes.count %></p>
+				</div>
+				<div>
+					<p style="position:relative; top: -17px; left: -68px; font-size: 8px; text-align: center"><%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+				</div>
+			</div>
+			<%# ------------------------------ACTION BUTTONS------------------------------ %>
+			<div class="post-buttons">
+				<div>
+					<%= render 'svgs/buttons/bookmark' %>
+				</div>
+				<div>
+					<%= render 'svgs/buttons/share' %>
+				</div>
+				<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+				<% if pre_like %>
+					<%= link_to post_like_path(post, pre_like), method: :delete do %>
+						<div>
+							<%= render 'svgs/buttons/unlike' %>
+						</div>
+					<% end %>
+				<% else %>
+					<%= link_to post_likes_path(post), method: :post do %>
+						<div>
+							<%= render 'svgs/buttons/like' %>
+						</div>
+					<% end %>
+				<% end %>
+				<%= link_to post_comments_path(post) do %>
+					<div>
+						<%= render 'svgs/buttons/comment' %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+
+		<%# ------------------------COMMENTS COUNTER & DESCRIPTION PART------------------------ %>
+
+		<div class="post-middle">
+			<div class="post-middle-counter">
+				<div class="post-comment-counter">
+					<h6 style="position: relative; top: 18px; right: -21px;"><%= post.comments.count %></h6>
+					<h6 style="font-size: 8px; position: relative; top: 8px; right: -21px;"><%= (post.comments.count) == 1 ? 'comment' : 'comments'%></h6>
+				</div>
+				<div style="position: absolute; z-index: -1; top: 454px; right: 253px;">
+					<%= render 'svgs/circles/purple_yellow_circle' %>
+				</div>
+				<div class="post-comment-line" style="position: absolute; top: 528px; right: 289px;"></div>
+				<div class="white-circle" style="top: 66px; right: -36px"></div>
+			</div>
+			<div class="post-description">
+				<p><%= truncate(post.description, length: 150) %></p>
+			</div>
+		</div>
+
+		<%# ------------------------COMMENTS------------------------ %>
+		<div>
+			<% post.comments[0..1].each do |comment|%>
+				<div class="post-comment-card" style="position: relative; top: 6px; right: -40px;">
+					<div class="white-circle" style="right: 5px; top: -4px;"></div>
+					<div style="margin-left: 8px;">
+						<p><%= link_to comment.user.user_name, user_path(comment.user.user_name) %></p>
+					</div>
+					<div style="margin-left: 4px;">
+						<p><%= comment.content %></p>
+					</div>
 				</div>
 			<% end %>
-
-			<%# ------------------------------LIKES COUNTER & BTNS PART------------------------------ %>
-
-			<div class="post-actions">
-				<div class="post-energycell">
-					<%= render 'svgs/frames/energycell' %>
-				</div>
-				<div class="likes-counter-container">
-					<div class="likes-counter">
-						<p><%= post.likes.count %></p>
-					</div>
-					<div>
-						<p style="position:relative; top: -17px; left: -68px; font-size: 8px; text-align: center"><%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-					</div>
-				</div>
-
-				<div class="post-buttons">
-					<div class="action-button">
-						<div class="bookmark-icon"></div>
-					</div>
-					<div class="action-button"></div>
-					<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-					<% if pre_like %>
-						<%= link_to post_like_path(post, pre_like), method: :delete do %>
-							<div class="action-button"></div>
-						<% end %>
-					<% else %>
-						<%= link_to post_likes_path(post), method: :post do %>
-							<div>
-								<%= render 'svgs/buttons/like' %>
-							</div>
-						<% end %>
-					<% end %>
-					<div class="action-button"></div>
-				</div>
-			</div>
-
-			<%# ------------------------COMMENTS COUNTER & DESCRIPTION PART------------------------ %>
-
-			<div class="post-middle">
-				<div class="post-middle-counter">
-					<div class="post-comment-counter">
-						<h6 style="position: relative; top: 18px; right: -20px;"><%= post.comments.count %></h6>
-						<h6 style="font-size: 8px; position: relative; top: 8px; right: -19px;"><%= (post.comments.count) == 1 ? 'comment' : 'comments'%></h6>
-					</div>
-					<div style="position: absolute; z-index: -1; top: 454px; right: 253px;">
-						<%= render 'svgs/circles/purple_yellow_circle' %>
-					</div>
-					<div class="post-comment-line" style="position: absolute; top: 528px; right: 289px;"></div>
-				</div>
-				<div class="post-description">
-					<p><%= truncate(post.description, length: 150) %></p>
-				</div>
-			</div>
-
-			<div style="position:relative; z-index: -1; top: 14px; right: -240px; width: 72px;">
-				<%= render 'svgs/frames/post_corner_b' %>
-			</div>
-
-			<div style="position: relative; top: 20px;">
-				<%= render 'svgs/accents/post_accent_b' %>
-			</div>
-
+			<% if post.comments.any? %>
+				<p style="position:relative; font-size: 12px;"><%= link_to "View all comments", post_comments_path(post) %></p>
+			<% end %>
 		</div>
+
+		<%# ------------------------BOTTOM ACCENTS------------------------ %>
+
+		<div style="position:relative; z-index: -1; top: -41px; right: -240px; width: 72px;">
+			<%= render 'svgs/frames/post_corner_b' %>
+		</div>
+
+		<div style="position: relative; top: -31px;">
+			<%= render 'svgs/accents/post_accent_b' %>
+		</div>
+
 	</div>
+</div>
