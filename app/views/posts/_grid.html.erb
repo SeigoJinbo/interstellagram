@@ -1,0 +1,7 @@
+<div class="grid">
+  <% posts.each do |post| %>
+    <%= link_to post_path(post) do  %>
+      <%= cl_image_tag post.images.first.key %>
+    <% end %>
+  <% end %>
+</div>

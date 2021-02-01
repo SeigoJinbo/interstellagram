@@ -1,0 +1,11 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: black;
+  img {
+    width: 33vw;
+    height: 33vw;
+    object-fit: cover;
+    border: 1px solid $bright-teal;
+  }
+}
