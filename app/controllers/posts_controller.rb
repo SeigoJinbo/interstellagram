@@ -18,6 +18,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post)
     else
+      flash[:notice] = 'you need to upload an image'
       render 'posts/new'
     end
   end
