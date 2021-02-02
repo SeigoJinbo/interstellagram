@@ -48,9 +48,7 @@
 		<div style="position: absolute; top: 121px; right: 253px;">
 			<%= render 'svgs/buttons/angled_btn' %>
 		</div>
-		<div style="position: absolute; top: 121px; right: 16px;">
-			<%= render 'svgs/buttons/angled_btn' %>
-		</div>
+
 		<div style="position: absolute; top: 257px; right: 258px;">
 			<%= render 'svgs/buttons/grid_icon' %>
 		</div>
@@ -67,11 +65,11 @@
 			<% end %>
 		</div>
 		<p class="user-stat-details" style="position: absolute; top: 45px; right: 23px;">FOLLOWING</p>
-		<p class="user-stat-numbers" style="position: absolute; top: 46px; right: 96px;"><%= @user.followings.count %></p>
+		<p class="user-stat-numbers" style="position: absolute; top: 46px; right: 90px;"><%= @user.followings.count %></p>
 		<p class="user-stat-details" style="position: absolute; top: 89px; right: 278px;">POSTS</p>
-		<p class="user-stat-numbers" style="position: absolute; top: 77px; right: 327px;"><%= @user.posts.count %></p>
-		<p class="user-stat-details" style="position: absolute; top: 89px; right: 58px;">FOLLOWERS</p>
-		<p class="user-stat-numbers" style="position: absolute; top: 75px; right: 37px;"><%= @user.followers.count %></p>
+		<p class="user-stat-numbers" style="position: absolute; top: 77px; right: 320px;"><%= @user.posts.count %></p>
+		<p class="user-stat-details" style="position: absolute; top: 89px; right: 59px;">FOLLOWERS</p>
+		<p class="user-stat-numbers" style="position: absolute; top: 75px; right: 30px;"><%= @user.followers.count %></p>
 		<p class="user-stat-details" style="position: absolute; top: 171px; right: 289px;">BIO</p>
 		<p class="user-bio" style="position: absolute; top: 186px; right: 63px;"><%= truncate(@user.bio, length: 165) %></p>
 		<p class="user-stat-details" style="position: absolute; top: 171px; right: 86px;">AGE</p>
@@ -79,10 +77,19 @@
 		<%# ------------------------------BUTTONS------------------------------ %>
 		<% pre_follow = @user.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
 		<% if pre_follow %>
-			<%= button_to 'Unfollow', user_connection_path(@user.id, pre_follow), method: :delete %>
+			<%= button_to user_connection_path(@user.id, pre_follow), method: :delete do %>
+				<div style="position: absolute; top: 121px; right: 16px;">
+					<%= render 'svgs/buttons/angled_btn' %>
+				</div>
+			<% end %>
 		<% else %>
-			<%= button_to 'Follow', user_connections_path(@user.id), method: :post %>
+			<%= button_to user_connections_path(@user.id), method: :post do %>
+				<div style="position: absolute; top: 121px; right: 16px;">
+					<%= render 'svgs/buttons/angled_btn' %>
+				</div>
+			<% end %>
 		<% end %>
+
 		<% pre_conversation = @user.conversations.find { |conversation| conversation.users.include?(current_user)} %>
 		<% unless @user == current_user %>
 			<% if pre_conversation %>
