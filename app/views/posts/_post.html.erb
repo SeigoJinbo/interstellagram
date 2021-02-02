@@ -53,11 +53,13 @@
 
 		<%# ------------------------------USER DETAILS PART------------------------------ %>
 
-		<div style="position: absolute; top: 25px; right: 88px;">
+		<div style="position: absolute; top: 25px; right: 88px; z-index: -1;">
 			<%= render 'svgs/frames/post_stats_line' %>
 		</div>
 		<div class="post-user-info">
-			<%= cl_image_tag post.user.image.key, width: 40, style: "border:1px #00FEFC solid;border-radius:50%;" %>
+			<%= link_to user_path(post.user.user_name) do %>
+				<%= cl_image_tag post.user.image.key, width: 40, style: "border:1px #00FEFC solid;border-radius:50%;" %>
+			<% end %>
 			<div class="post-username-container">
 				<h6><%= link_to post.user.user_name, user_path(post.user.user_name) %></h6>
 				<div class="small-meter">
