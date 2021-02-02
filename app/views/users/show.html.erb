@@ -57,8 +57,10 @@
 		<div style="position: absolute; top: 253px; right: 84px;">
 			<%= render 'svgs/buttons/user_tagged' %>
 		</div>
+		<div class="white-circle" style="position: absolute; top: 39px; right: 349px;"></div>
+		<div class="white-circle" style="position: absolute;"></div>
 		<%# ------------------------------USER STATS & DETAILS------------------------------ %>
-		<%= link_to 'New Post', new_post_path, class: 'btn btn-primary', style: "position: absolute; top: 241px; right: 142px;"%>
+		<%# <%= link_to 'New Post', new_post_path, class: 'btn btn-primary', style: "position: absolute; top: 241px; right: 142px;"%>
 		<h6 style="position: absolute; top: 4px; right: 162px; width: 52px; text-align: center;"><%= rand(1..2000) %></h6>
 		<h6 style="position: absolute; top: 20px; right: 178px; font-size: 8px;">Rank</h6>
 		<div>
@@ -91,6 +93,15 @@
 					<%= render 'svgs/buttons/angled_btn' %>
 					<p style="position: absolute; top: 5px; right: 28px; color: #DBFFFF; font-size: 15px;">Follow</p>
 				</div>
+			<% end %>
+		<% end %>
+
+		<% if @user == current_user %>
+			<%= link_to new_post_path, style: "position: absolute; top: 121px; right: 253px;" do %>
+				<div>
+					<%= render 'svgs/buttons/angled_ye_btn' %>
+				</div>
+				<p style="position: absolute; top: 5px; right: 33px; color: #DBFFFF; font-size: 15px;">+ Post</p>
 			<% end %>
 		<% end %>
 
