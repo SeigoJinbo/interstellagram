@@ -45,9 +45,6 @@
 		<div style="position: absolute; top: -7px; right: 138px;">
 			<%= render 'svgs/frames/rank_frame' %>
 		</div>
-		<div style="position: absolute; top: 121px; right: 253px;">
-			<%= render 'svgs/buttons/angled_btn' %>
-		</div>
 
 		<div style="position: absolute; top: 257px; right: 258px;">
 			<%= render 'svgs/buttons/grid_icon' %>
@@ -95,9 +92,19 @@
 		<% pre_conversation = @user.conversations.find { |conversation| conversation.users.include?(current_user)} %>
 		<% unless @user == current_user %>
 			<% if pre_conversation %>
-				<%= button_to 'Message', conversation_path(pre_conversation), method: :get %>
+				<%= link_to conversation_path(pre_conversation), method: :get do %>
+					<div style="position: absolute; top: 121px; right: 253px;">
+						<%= render 'svgs/buttons/angled_btn' %>
+						<p style="position: absolute; top: 4px; right: 21px; color: #DBFFFF; font-size: 15px;">Message</p>
+					</div>
+				<% end %>
 			<% else %>
-				<%= button_to 'Message', user_conversations_path(@user.id), method: :post %>
+				<%= link_to user_conversations_path(@user.id), method: :post do %>
+					<div style="position: absolute; top: 121px; right: 253px;">
+						<%= render 'svgs/buttons/angled_btn' %>
+						<p style="position: absolute; top: 4px; right: 21px; color: #DBFFFF; font-size: 15px;">Message</p>
+					</div>
+				<% end %>
 			<% end %>
 		<% end %>
 		<hr>
