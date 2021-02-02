@@ -58,6 +58,7 @@
 			<%= render 'svgs/buttons/user_tagged' %>
 		</div>
 		<%# ------------------------------USER STATS & DETAILS------------------------------ %>
+		<%= link_to 'New Post', new_post_path, class: 'btn btn-primary', style: "position: absolute; top: 241px; right: 142px;"%>
 		<h6 style="position: absolute; top: 4px; right: 162px; width: 52px; text-align: center;"><%= rand(1..2000) %></h6>
 		<h6 style="position: absolute; top: 20px; right: 178px; font-size: 8px;">Rank</h6>
 		<div>
@@ -90,10 +91,6 @@
 				<%= button_to 'Message', user_conversations_path(@user.id), method: :post %>
 			<% end %>
 		<% end %>
-
-		<p id="notice"><%= notice %></p>
-
-		<%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>
 		<hr>
 		<%# ------------------------------POSTS------------------------------ %>
 		<%# <%= render @user_posts %>
