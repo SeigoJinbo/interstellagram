@@ -77,14 +77,14 @@
 		<%# ------------------------------BUTTONS------------------------------ %>
 		<% pre_follow = @user.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
 		<% if pre_follow %>
-			<%= button_to user_connection_path(@user.id, pre_follow), method: :delete do %>
+			<%= link_to user_connection_path(@user.id, pre_follow), method: :delete do %>
 				<div style="position: absolute; top: 122px; right: 18px;">
 					<%= render 'svgs/buttons/angled_btn_off' %>
 					<p style="position: absolute; top: 3px; right: 17px; color: #DBFFFF; font-size: 15px;">Following</p>
 				</div>
 			<% end %>
 		<% else %>
-			<%= button_to user_connections_path(@user.id), method: :post do %>
+			<%= link_to user_connections_path(@user.id), method: :post do %>
 				<div style="position: absolute; top: 121px; right: 16px;">
 					<%= render 'svgs/buttons/angled_btn' %>
 					<p style="position: absolute; top: 5px; right: 28px; color: #DBFFFF; font-size: 15px;">Follow</p>
