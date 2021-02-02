@@ -3,10 +3,27 @@
 	width: 375px;
 	margin: 0 auto;
 	position: relative;
+	top: 10px;
 }
 .user-content {
 	display: block;
 	position: absolute;
 	width: 375px;
 	height: 321px;
+}
+.user-stat-details {
+	margin-bottom: 0;
+	font-family: "Revalia";
+	font-size: 8px;
+}
+.user-stat-numbers {
+	margin-bottom: 0;
+	font-family: "Revalia";
+	font-size: 12px;
+	text-align: center;
+}
+.user-bio {
+	width: 247px;
+	height: 33px;
+	font-size: 10px;
 }
