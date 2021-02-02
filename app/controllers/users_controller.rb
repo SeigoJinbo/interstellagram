@@ -7,17 +7,16 @@ class UsersController < ApplicationController
   end
 
   def create
-    raise
-    @user = User.find(params[user_params])
-    default_avatar unless @user.image.has_many_attached
-    @user.save ? user_path(@user) : render new
+    # raise
+    # @user = User.find(params[user_params])
+    # default_avatar unless @user.image.has_many_attached
+    # @user.save ? user_path(@user) : render new
   end
 
   def show
     @user = User.find_by('LOWER(user_name)= ?', params[:user_name].downcase)
     @user_posts = @user.posts.sort_by { |created_at| created_at }.reverse
   end
-
 
   def to_param
     user_name
