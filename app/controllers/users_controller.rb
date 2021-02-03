@@ -1,16 +1,22 @@
 class UsersController < ApplicationController
   def new
-    raise
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(parent_id: params[:parent_id])
-    raise
   end
 
-  def create
-    # raise
-    # @user = User.find(params[user_params])
-    # default_avatar unless @user.image.has_many_attached
-    # @user.save ? user_path(@user) : render new
+  def create; end
+
+  def edit
+    @user = User.find_by('LOWER(user_name)= ?', params[:user_name].downcase)
+  end
+
+  def update
+    @user = User.find(params[:user_name].downcase)
+    if @user.update(user_params)
+      redirect_to user_path(@user.user_name)
+    else
+      render :edit
+    end
   end
 
   def show
@@ -35,6 +41,16 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :images, :user_name)
+    params.require(:user).permit(
+      :email,
+      :password,
+      :image,
+      :user_name,
+      :bio,
+      :birthday,
+      :website,
+      :gender,
+      :name
+    )
   end
 end
