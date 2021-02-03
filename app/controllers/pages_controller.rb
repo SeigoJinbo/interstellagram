@@ -5,6 +5,9 @@ class PagesController < ApplicationController
     @posts = get_feed if current_user
   end
 
+  def explore
+    @posts = get_feed if current_user
+  end
   def inbox
     @user = current_user
   end
