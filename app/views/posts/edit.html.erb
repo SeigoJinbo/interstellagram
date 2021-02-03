@@ -1,11 +1,58 @@
+<%# ------------------------------REFERENCE------------------------------ %>
 <div class="card my-5">
-  <div class="card-body">
-    <h1>Edit Post</h1>
-    <%= render 'form', post: @post %>
-    <div class="mt-2">
-      <%= link_to 'Show', @post, class: 'btn btn-info mr-2' %>
-      <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mr-2' %> # moved the destroy button from index to here (optional)
-      <%= link_to 'Back', posts_path, class: 'btn btn-light' %>
-    </div>
-  </div>
+	<div class="card-body">
+		<h1>Edit Post</h1>
+		<%= render 'form', post: @post %>
+		<div class="mt-2">
+			<%= link_to 'Show', @post, class: 'btn btn-info mr-2' %>
+			<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mr-2' %> # moved the destroy button from index to here (optional)
+			<%= link_to 'Back', posts_path, class: 'btn btn-light' %>
+		</div>
+	</div>
+</div>
+<%# ------------------------------REFERENCE------------------------------ %>
+
+<%# ------------------------------EDIT FORM------------------------------ %>
+<div class="form-container">
+	<div class="form-box"></div>
+	<div>
+		<%= render 'svgs/accents/form_accent_t' %>
+	</div>
+	<div class="form-header-post" style="position: absolute; top: 32px; right: 104px;">
+		<div>
+			<%= render 'svgs/circles/purple_yellow_circle' %>
+		</div>
+		<div class="white-circle"></div>
+		<h6>EDIT POST #<%= @post.id %></h6>
+	</div>
+
+	<div>
+		<%= render 'form', post: @post %>
+		<div>
+			<%= link_to 'Show', @post, class: 'btn btn-info mr-2' %>
+			<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+			<%= link_to 'Back', posts_path, class: 'btn btn-light' %>
+		</div>
+	</div>
+
+	<div>
+		<div>
+			<%= render 'svgs/accents/button_dashed_line' %>
+		</div>
+		<div>
+			<%= render 'svgs/buttons/confirm_btn' %>
+		</div>
+		<div>
+			<%= render 'svgs/buttons/cancel_btn' %>
+		</div>
+	</div>
+
+	<div>
+		<div class="yellow-line"></div>
+		<div>
+			<%= render 'svgs/accents/form_lines_b' %>
+		</div>
+		<div class="white-circle"></div>
+	</div>
+
 </div>
