@@ -4,6 +4,6 @@ class Message < ApplicationRecord
   belongs_to :user
   belongs_to :conversation
 
-  belongs_to :post, optional: true
+  # belongs_to :post, optional: true
   has_many :comments, dependent: :destroy
 end
