@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
-  resources :users, path: '/', param: :user_name, only: %i[show] do
+  resources :users, path: '/', param: :user_name, only: %i[show edit update] do
     resources :connections
     resources :conversations, only: %i[create]
   end
