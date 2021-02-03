@@ -1,21 +1,24 @@
 <%# ------------------------------REFERENCE------------------------------ %>
-<div class="card my-5">
-	<div class="card-body">
-		<h1>Edit Post</h1>
-		<%= render 'form', post: @post %>
-		<div class="mt-2">
-			<%= link_to 'Show', @post, class: 'btn btn-info mr-2' %>
-			<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mr-2' %> # moved the destroy button from index to here (optional)
-			<%= link_to 'Back', posts_path, class: 'btn btn-light' %>
+<% if false %>
+	<div class="card my-5">
+		<div class="card-body">
+			<h1>Edit Post</h1>
+			<%= render 'form', post: @post %>
+			<div class="mt-2">
+				<%= link_to 'Show', @post, class: 'btn btn-info mr-2' %>
+				<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mr-2' %> # moved the destroy button from index to here (optional)
+				<%= link_to 'Back', posts_path, class: 'btn btn-light' %>
+			</div>
 		</div>
 	</div>
-</div>
+<% end %>
+
 <%# ------------------------------REFERENCE------------------------------ %>
 
 <%# ------------------------------EDIT FORM------------------------------ %>
 <div class="form-container">
-	<div class="form-box"></div>
-	<div>
+	<div class="form-box" style="height: 494px;"></div>
+	<div style="position: absolute; top: -16px;">
 		<%= render 'svgs/accents/form_accent_t' %>
 	</div>
 	<div class="form-header-post" style="position: absolute; top: 32px; right: 104px;">
@@ -23,36 +26,43 @@
 			<%= render 'svgs/circles/purple_yellow_circle' %>
 		</div>
 		<div class="white-circle"></div>
-		<h6>EDIT POST #<%= @post.id %></h6>
+		<h6 class="form-label">EDIT POST #<%= @post.id %></h6>
 	</div>
 
 	<div>
-		<%= render 'form', post: @post %>
+		<div style="position: absolute; top: 118px; right: 210px;">
+			<%= render 'form', post: @post %>
+		</div>
 		<div>
 			<%= link_to 'Show', @post, class: 'btn btn-info mr-2' %>
-			<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-			<%= link_to 'Back', posts_path, class: 'btn btn-light' %>
 		</div>
 	</div>
 
 	<div>
-		<div>
+		<div style="position: absolute; top: 411px; right: 74px;">
 			<%= render 'svgs/accents/button_dashed_line' %>
 		</div>
-		<div>
+		<div style="position: absolute; top: 401px; right: 27px; z-index: -1;">
 			<%= render 'svgs/buttons/confirm_btn' %>
 		</div>
 		<div>
-			<%= render 'svgs/buttons/cancel_btn' %>
+			<%= link_to posts_path(@post) do %>
+				<%= render 'svgs/buttons/cancel_btn' %>
+
+			<% end %>
+
 		</div>
 	</div>
 
 	<div>
-		<div class="yellow-line"></div>
-		<div>
+		<div class="yellow-line" style="position: absolute; top: 550px; right: 101px;"></div>
+		<div style="position: absolute; top: 493px; right: 193px;">
 			<%= render 'svgs/accents/form_lines_b' %>
 		</div>
-		<div class="white-circle"></div>
+		<div class="white-circle" style="position: absolute; top: 540px; right: 189px;"></div>
+		<%= link_to @post, method: :delete, data: { confirm: 'Are you sure?' } do %>
+			<h6 class="form-label" style="position: absolute; top: 538px; right: 100px;">DELETE POST</h6>
+		<% end %>
 	</div>
 
 </div>

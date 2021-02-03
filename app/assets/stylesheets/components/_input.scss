@@ -21,3 +21,18 @@
 	padding-left: 4px;
 	padding-top: 4px;
 }
+
+#post_description {
+	position: absolute;
+	width: 270px;
+	height: 127px;
+	color: rgb(255, 255, 255);
+	font-size: 12px;
+	padding: 18px;
+	display: block;
+
+	background: rgba(60, 199, 204, 0.25);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
