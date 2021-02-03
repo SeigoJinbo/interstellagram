@@ -10,16 +10,22 @@
 		</div>
 	<% end %>
 	<div class="form-group">
-		<%= form.label :images %>
+		<h6 class="form-label">IMAGES</h6>
 		<label class="btn btn-primary">
 			<span style="display: none;">
-				<%= form.file_field :images, required: true, multiple: true, name: 'photo' %>
+				<%= form.file_field :images, multiple: true %>
 			</span>
 		</label>
 	</div>
 	<div class="form-group">
-		<%= form.label :description %>
+		<h6 class="form-label">DESCRIPTION</h6>
 		<%= form.text_area :description, class: 'form-control' %>
 	</div>
-	<%= form.submit "Save Post", class: 'btn btn-primary' %>
+	<%# <label class="btn btn-success" style="position: absolute; top: 284px; right: -182px;"> %>
+	<label class="invisible-link" style="position: absolute; top: 284px; right: -182px;">
+		<span style="display: none;">
+			<%= form.submit "Save Post" %>
+		</span>
+	</label>
+
 <% end %>
