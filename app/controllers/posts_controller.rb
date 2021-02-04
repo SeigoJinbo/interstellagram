@@ -52,13 +52,12 @@ class PostsController < ApplicationController
   end
 
   def generate_tags(tagged_users)
+    new_tagged_users = []
     names = tagged_users.to_s.split(', ')
     names.each do |name|
-      if user = User.where('lower(user_name) ILIKE ?', name.downcase).first
-        unless @post.tagged_users.find { |tagged_user| tagged_user == user }
-          UserTag.create(user: user, post: @post)
-        end
-      end
+      new_tagged_users <<
+        User.where('lower(user_name) ILIKE ?', name.downcase).first
     end
+    @post.tagged_users = new_tagged_users
   end
 end
