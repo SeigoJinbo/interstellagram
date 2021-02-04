@@ -1,4 +1,9 @@
 <h1>Explore</h1>
+<div class="m-auto">
+  <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
+    <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2', placeholder: '#search' %>
+  <% end %>
+</div>
 <% @users = User.all %>
 <% @users.each do |user| %>
   <p><%= link_to user.name, user_path(user.user_name) %></p>
