@@ -27,6 +27,16 @@
 	justify-content: space-between;
 }
 
+.login-header {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 42px;
+	right: 230px;
+	width: 72px;
+	justify-content: space-between;
+}
+
 .form-label {
 	font-family: "Revalia";
 	color: $teal;
@@ -42,22 +52,49 @@
 div.form-user div.form-group label {
 	display: none;
 }
+div.form-signup div.form-group label {
+	display: none;
+}
+div.form-login div.form-group label {
+	display: none;
+}
+div.form-login div.form-check label {
+	display: none;
+}
 
-.form-inputs {
+.form-inputs-container {
 	position: absolute;
 	top: 152px;
 	right: 226px;
+}
+
+.form-inputs-signup-container {
+	position: absolute;
+	top: 152px;
+	right: 117px;
+}
+
+.form-inputs-login-container {
+	position: absolute;
+	top: 79px;
+	right: 182px;
 }
 
 .form-user-inputs {
 	height: 48px;
 }
 
+.form-signup-inputs {
+	height: 56px;
+}
+
 #user_email,
 #user_user_name,
 #user_name,
 #user_gender,
-#user_website {
+#user_website,
+#user_password,
+#user_password_confirmation {
 	text-transform: none;
 	font-family: "Roboto";
 	font-size: 12px;
@@ -143,7 +180,7 @@ div.form-user div.form-group label {
 	border-radius: 4px;
 }
 
-#user_user_name {
+div.form-user #user_user_name {
 	text-transform: none;
 	font-family: "Exo";
 	font-size: 12px;
@@ -162,10 +199,29 @@ div.form-user div.form-group label {
 	right: -68px;
 }
 
+div.form-signup #user_user_name {
+	text-transform: none;
+	font-family: "Exo";
+	font-size: 12px;
+	text-align: center;
+
+	width: 138px;
+	height: 28px;
+	color: rgb(255, 255, 255);
+
+	background: none;
+	border: 0;
+	border-radius: 0;
+
+	position: absolute;
+	top: 44px;
+	right: -94px;
+}
+
 .form-control.is-valid {
 	padding-right: 0.75rem;
 }
 
-#form-bio {
-	color: orange;
-}
+// div.form-user-inputs small {
+// 	width: 200px;
+// }

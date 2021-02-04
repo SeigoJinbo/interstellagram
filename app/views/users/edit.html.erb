@@ -9,7 +9,9 @@
 		<div class="form-user-header" style="position: absolute; top: 18px; left: 18px;">
 			<div>
 				<%= render 'svgs/frames/form_avatar_frame' %>
-				<%= cl_image_tag current_user.image.key, width: 71, style: "border-radius:50%; position: absolute; top: 19px; right: 113px;" %>
+				<% if current_user.image.attached? %>
+					<%= cl_image_tag current_user.image.key, width: 71, height: 71, style: "border-radius: 50%; position: absolute; top: 19px; right: 113px;" %>
+				<% end %>
 				<label style="width: 71px; height: 71px; position: absolute; top: 19px; right: 113px;">
 					<span style="display: none;">
 						<%= f.input :image, as: :file%>
@@ -35,10 +37,10 @@
 				<%= f.input :image, as: :file%>
 			</span>
 		</label>
-		<h6 class="form-label" style="position: absolute; top: 126px; right: 124px; font-size: 6px;">UPDATE PHOTO</h6>
+		<h6 class="form-label" style="position: absolute; top: 126px; right: 124px; font-size: 6px; z-index: -1;">UPDATE PHOTO</h6>
 		<%# --------------------------FORM INPUTS-------------------------- %>
 
-		<div class="form-inputs">
+		<div class="form-inputs-container">
 			<div class="form-user-inputs">
 				<h6 class="form-label">NAME</h6>
 				<%= f.input :name,
