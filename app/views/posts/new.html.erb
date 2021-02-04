@@ -1,14 +1,4 @@
-<% if false %>
-	<div class="card my-5">
-		<div class="card-body">
-			<h1>New Post</h1>
-			<%= render 'form', post: Post.new %>
-			<%= link_to 'Back', posts_path, class: 'btn btn-light mt-2' %>
-		</div>
-	</div>
-
-<% end %>
-
+<%# ------------------------------NEW POST FORM------------------------------ %>
 <div class="form-container">
 	<div class="form-box" style="height: 494px;"></div>
 	<div style="position: absolute; top: -16px;">
@@ -27,7 +17,7 @@
 			<%= render 'form', post: @post %>
 		</div>
 	</div>
-
+	<%# ------------------------------BUTTONS------------------------------ %>
 	<div>
 		<div style="position: absolute; top: 130px; right: 210px; z-index: -2;">
 			<%= render 'svgs/buttons/long_btn' %>
@@ -43,7 +33,6 @@
 			<%= link_to user_path(current_user.user_name) do %>
 				<%= render 'svgs/buttons/cancel_btn' %>
 			<% end %>
-
 		</div>
 	</div>
 
