@@ -89,14 +89,50 @@ div.form-user div.form-group label {
 	border-radius: 4px;
 }
 
-#user_birthday_1i,
-#user_birthday_2i,
+#user_birthday_1i {
+	text-transform: none;
+	font-family: "Roboto";
+	font-size: 9px;
+
+	position: absolute;
+	top: 108px;
+	right: -26px;
+	width: 88px;
+	height: 28px;
+	color: rgb(255, 255, 255);
+
+	background: rgba(60, 199, 204, 0.25);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+#user_birthday_2i {
+	text-transform: none;
+	font-family: "Roboto";
+	font-size: 9px;
+
+	position: absolute;
+	top: 108px;
+	right: -117px;
+	width: 88px;
+	height: 28px;
+	color: rgb(255, 255, 255);
+
+	background: rgba(60, 199, 204, 0.25);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
 #user_birthday_3i {
 	text-transform: none;
 	font-family: "Roboto";
 	font-size: 9px;
 
 	position: absolute;
+	top: 108px;
+	right: -208px;
 	width: 88px;
 	height: 28px;
 	color: rgb(255, 255, 255);
