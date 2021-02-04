@@ -34,7 +34,102 @@
 	margin-bottom: 0px;
 }
 
-.invisible-link-44px {
-	width: 44px;
-	height: 44px;
+.form-user-header {
+	display: flex;
+	align-items: center;
+}
+
+div.form-user div.form-group label {
+	display: none;
+}
+
+.form-inputs {
+	position: absolute;
+	top: 152px;
+	right: 226px;
+}
+
+.form-user-inputs {
+	height: 48px;
+}
+
+#user_email,
+#user_user_name,
+#user_name,
+#user_gender,
+#user_website {
+	text-transform: none;
+	font-family: "Roboto";
+	font-size: 12px;
+
+	position: absolute;
+	width: 270px;
+	height: 28px;
+	color: rgb(255, 255, 255);
+
+	background: rgba(60, 199, 204, 0.25);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+#user_bio {
+	text-transform: none;
+	font-family: "Roboto";
+	font-size: 12px;
+
+	position: absolute;
+	width: 270px;
+	height: 72px;
+	color: rgb(255, 255, 255);
+
+	background: rgba(60, 199, 204, 0.25);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+#user_birthday_1i,
+#user_birthday_2i,
+#user_birthday_3i {
+	text-transform: none;
+	font-family: "Roboto";
+	font-size: 9px;
+
+	position: absolute;
+	width: 88px;
+	height: 28px;
+	color: rgb(255, 255, 255);
+
+	background: rgba(60, 199, 204, 0.25);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+#user_user_name {
+	text-transform: none;
+	font-family: "Exo";
+	font-size: 12px;
+	text-align: center;
+
+	width: 138px;
+	height: 28px;
+	color: rgb(255, 255, 255);
+
+	background: none;
+	border: 0;
+	border-radius: 0;
+
+	position: absolute;
+	top: 44px;
+	right: -68px;
+}
+
+.form-control.is-valid {
+	padding-right: 0.75rem;
+}
+
+#form-bio {
+	color: orange;
 }
