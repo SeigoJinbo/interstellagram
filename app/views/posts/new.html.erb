@@ -1,7 +1,50 @@
-<div class="card my-5">
-  <div class="card-body">
-    <h1>New Post</h1>
-    <%= render 'form', post: Post.new %>
-    <%= link_to 'Back', posts_path, class: 'btn btn-light mt-2' %>
-  </div>
+<% if false %>
+	<div class="card my-5">
+		<div class="card-body">
+			<h1>New Post</h1>
+			<%= render 'form', post: Post.new %>
+			<%= link_to 'Back', posts_path, class: 'btn btn-light mt-2' %>
+		</div>
+	</div>
+
+<% end %>
+
+<div class="form-container">
+	<div class="form-box" style="height: 494px;"></div>
+	<div style="position: absolute; top: -16px;">
+		<%= render 'svgs/accents/form_accent_t' %>
+	</div>
+	<div class="form-header-post" style="position: absolute; top: 32px; right: 145px; width: 161px;">
+		<div>
+			<%= render 'svgs/circles/purple_yellow_circle' %>
+		</div>
+		<div class="white-circle"></div>
+		<h6 class="form-label">NEW POST</h6>
+	</div>
+
+	<div>
+		<div style="position: absolute; top: 118px; right: 210px;">
+			<%= render 'form', post: @post %>
+		</div>
+	</div>
+
+	<div>
+		<div style="position: absolute; top: 130px; right: 210px; z-index: -2;">
+			<%= render 'svgs/buttons/long_btn' %>
+		</div>
+		<h6 class="form-label" style="position: absolute; top: 136px; right: 231px; z-index: -1;"> BROWSE</h6>
+		<div style="position: absolute; top: 411px; right: 74px;">
+			<%= render 'svgs/accents/button_dashed_line' %>
+		</div>
+		<div style="position: absolute; top: 401px; right: 27px; z-index: -1;">
+			<%= render 'svgs/buttons/confirm_btn' %>
+		</div>
+		<div style="position: absolute; top: 401px; right: 257px;">
+			<%= link_to user_path(current_user.user_name) do %>
+				<%= render 'svgs/buttons/cancel_btn' %>
+			<% end %>
+
+		</div>
+	</div>
+
 </div>
