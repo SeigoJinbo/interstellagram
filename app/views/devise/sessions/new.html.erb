@@ -1,3 +1,4 @@
+<%# --------------------------REFERENCE-------------------------- %>
 <h2>Log in</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -18,3 +19,11 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+<%# --------------------------REFERENCE-------------------------- %>
+
+<div class="form-container form-user">
+	<div style="position: absolute; top: -16px;">
+		<%= render 'svgs/accents/form_accent_t' %>
+	</div>
+	<div class="form-box" style="height: 268px;"></div>
+</div>

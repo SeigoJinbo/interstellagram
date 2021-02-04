@@ -1,25 +1,134 @@
-<h2>Sign up</h2>
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-  <div class="form-inputs">
-    <%= f.input :user_name,
+<%# --------------------------REFERENCE-------------------------- %>
+<% if false %>
+	<h2>Sign up</h2>
+	<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+		<%= f.error_notification %>
+		<div class="form-inputs">
+			<%= f.input :user_name,
                 required: true,
                 autofocus: true %>
-    <%= f.input :email,
+			<%= f.input :email,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
+			<%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
+			<%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :image, as: :file, label: 'Please upload an project photo' %>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up", class: "btn-dice btn-yellow mb-2" %>
-  </div>
+			<%= f.input :image, as: :file, label: 'Please upload an project photo' %>
+		</div>
+		<div class="form-actions">
+			<%= f.button :submit, "Sign up", class: "btn-dice btn-yellow mb-2" %>
+		</div>
+	<% end %>
+	<%= render "devise/shared/links" %>
 <% end %>
-<%= render "devise/shared/links" %>
+
+<%# --------------------------REFERENCE-------------------------- %>
+
+<%# --------------------------SIGN UP FORM-------------------------- %>
+<div class="form-container form-signup">
+	<div style="position: absolute; top: -16px;">
+		<%= render 'svgs/accents/form_accent_t' %>
+	</div>
+	<div class="form-box" style="height: 575px;"></div>
+	<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+		<%= f.error_notification %>
+		<%# --------------------------UPPER PART: AVATAR AND USERNAME-------------------------- %>
+		<div class="form-user-header" style="position: absolute; top: 18px; left: 18px;">
+			<div>
+				<%= render 'svgs/frames/form_avatar_frame' %>
+				<label style="width: 71px; height: 71px; position: absolute; top: 19px; right: 113px;">
+					<span style="display: none;">
+						<%= f.input :image, as: :file%>
+					</span>
+				</label>
+			</div>
+			<div style="height: 64px; margin-left: 4px;">
+				<h6 class="form-label">REGISTER</h6>
+				<div style="position: absolute; z-index: -1;">
+					<%= render 'svgs/inputs/form_username' %>
+				</div>
+				<%= f.input :user_name,
+                    required: true,
+                    autofocus: true,
+                    placeholder: "Your username" %>
+			</div>
+		</div>
+		<%# --------------------------UPPER PART: UPDATE PHOTO BTN-------------------------- %>
+		<div style="position: absolute; top: 117px; right: 104px; z-index: -1;">
+			<%= render 'svgs/buttons/long_btn' %>
+		</div>
+		<label style="width: 96px; height: 26px; position: absolute; top: 117px; right: 104px;">
+			<span style="display: none;">
+				<%= f.input :image, as: :file, required: true %>
+			</span>
+		</label>
+		<h6 class="form-label" style="position: absolute; top: 126px; right: 124px; font-size: 6px; z-index: -1;">SELECT PHOTO</h6>
+		<%# --------------------------FORM INPUTS-------------------------- %>
+
+		<div class="form-inputs-signup-container">
+			<div class="form-signup-inputs">
+				<h6 class="form-label">NAME</h6>
+				<%= f.input :name,
+                  required: true,
+                  autofocus: true,
+                  placeholder: "Your name" %>
+			</div>
+			<div class="form-signup-inputs">
+				<h6 class="form-label">EMAIL</h6>
+				<%= f.input :email, 
+                  required: true, 
+                  autofocus: true,
+                  input_html: { autocomplete: "email" },
+                  placeholder: "Your email" %>
+			</div>
+			<div class="form-signup-inputs">
+				<h6 class="form-label">PASSWORD</h6>
+				<%= f.input :password,
+                required: true,
+                # hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" },
+                placeholder: "6 characters minimum" %>
+			</div>
+			<div class="form-signup-inputs">
+				<h6 class="form-label">PASSWORD CONFIRMATION</h6>
+				<%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password" },
+                placeholder: "Please re-enter your password" %>
+			</div>
+		</div>
+
+		<%# --------------------------FORM BUTTONS & ACTIONS-------------------------- %>
+		<label style="position: absolute; top: 500px; right: 22px; height: 45px; width: 45px;">
+			<span style="display: none;">
+				<%= f.button :submit, "Update" %>
+			</span>
+		</label>
+		<div style="position: absolute; top: 500px; right: 22px; z-index: -1;">
+			<%= render 'svgs/buttons/confirm_btn' %>
+		</div>
+		<div style="position: absolute; top: 509px; right: 71px;">
+			<%= render 'svgs/accents/button_dashed_line' %>
+		</div>
+	<% end %>
+
+	<div style="position: absolute; top: 500px; right: 247px;">
+		<%# if false %>
+		<%= link_to new_session_path(resource_name) do %>
+			<%= render 'svgs/buttons/cancel_btn' %>
+		<% end %>
+		<%# end %>
+	</div>
+
+	<div style="position: absolute; top: 575px; right: 260px;">
+		<%= render 'svgs/accents/form_lines_b' %>
+	</div>
+	<div class="white-circle" style="position: absolute; top: 624px; right: 254px;"></div>
+	<div class="yellow-line" style="position: absolute; top: 634px; right: 76px; width: 169px;"></div>
+	<h6 class="form-label" style="position: absolute; top: 622px; right: 76px; text-transform: uppercase"><%= render "devise/shared/links" %></h6>
+</div>
