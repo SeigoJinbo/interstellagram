@@ -27,6 +27,16 @@
 	justify-content: space-between;
 }
 
+.login-header {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 42px;
+	right: 230px;
+	width: 72px;
+	justify-content: space-between;
+}
+
 .form-label {
 	font-family: "Revalia";
 	color: $teal;
@@ -45,6 +55,12 @@ div.form-user div.form-group label {
 div.form-signup div.form-group label {
 	display: none;
 }
+div.form-login div.form-group label {
+	display: none;
+}
+div.form-login div.form-check label {
+	display: none;
+}
 
 .form-inputs-container {
 	position: absolute;
@@ -56,6 +72,12 @@ div.form-signup div.form-group label {
 	position: absolute;
 	top: 152px;
 	right: 117px;
+}
+
+.form-inputs-login-container {
+	position: absolute;
+	top: 79px;
+	right: 182px;
 }
 
 .form-user-inputs {
