@@ -88,10 +88,12 @@ ActiveRecord::Schema.define(version: 2021_01_29_014921) do
   create_table "messages", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "conversation_id", null: false
+    t.bigint "post_id"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["post_id"], name: "index_messages_on_post_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -177,6 +179,7 @@ ActiveRecord::Schema.define(version: 2021_01_29_014921) do
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "posts"
   add_foreign_key "messages", "users"
   add_foreign_key "notifications", "comments"
   add_foreign_key "notifications", "posts"
