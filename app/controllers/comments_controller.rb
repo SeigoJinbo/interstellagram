@@ -21,10 +21,18 @@ class CommentsController < ApplicationController
       redirect_to request.referrer, notice: 'Comment was successfully created.'
       if @comment.parent_id
         Notification.create(
-          comment: @comment, user: Comment.find(Comment.last.parent_id).user
+          post: @post,
+          receiver: Comment.find(Comment.last.parent_id).user,
+          sender: current_user,
+          message: 'replied to your comment'
         )
       else
-        Notification.create(comment: @comment, user: @post.user)
+        Notification.create(
+          post: @post,
+          receiver: @post.user,
+          sender: current_user,
+          message: 'commented on your post'
+        )
       end
     end
   end

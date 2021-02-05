@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   has_many :user_tags, dependent: :destroy
   has_many :tagged_users, through: :user_tags, source: :user
   has_many :bookmarks, dependent: :destroy
-  has_one :notification, dependent: :destroy
+  has_many :notification, dependent: :destroy
   has_many_attached :images, dependent: :destroy
   validates :images, presence: true
 end
