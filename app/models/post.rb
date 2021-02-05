@@ -18,6 +18,6 @@ class Post < ApplicationRecord
   end
 
   def extract_name_hash_tags
-    description.to_s.scan(/#\w+/).map { |name| name.gsub('#', '') }
+    description.to_s.scan(/#\w+/).map { |name| name.gsub('#', '').downcase }
   end
 end
