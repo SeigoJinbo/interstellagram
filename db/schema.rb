@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_29_014921) do
+ActiveRecord::Schema.define(version: 2021_02_05_080405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,12 @@ ActiveRecord::Schema.define(version: 2021_01_29_014921) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "hash_tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "post_id"
     t.bigint "user_id", null: false
@@ -98,18 +104,28 @@ ActiveRecord::Schema.define(version: 2021_01_29_014921) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "post_id"
     t.bigint "response_id"
     t.bigint "user_tag_id"
     t.bigint "comment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "message"
+    t.integer "sender_id"
+    t.integer "receiver_id"
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["post_id"], name: "index_notifications_on_post_id"
     t.index ["response_id"], name: "index_notifications_on_response_id"
-    t.index ["user_id"], name: "index_notifications_on_user_id"
     t.index ["user_tag_id"], name: "index_notifications_on_user_tag_id"
+  end
+
+  create_table "post_hash_tags", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "hash_tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hash_tag_id"], name: "index_post_hash_tags_on_hash_tag_id"
+    t.index ["post_id"], name: "index_post_hash_tags_on_post_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -185,7 +201,8 @@ ActiveRecord::Schema.define(version: 2021_01_29_014921) do
   add_foreign_key "notifications", "posts"
   add_foreign_key "notifications", "responses"
   add_foreign_key "notifications", "user_tags"
-  add_foreign_key "notifications", "users"
+  add_foreign_key "post_hash_tags", "hash_tags"
+  add_foreign_key "post_hash_tags", "posts"
   add_foreign_key "posts", "users"
   add_foreign_key "responses", "comments", column: "original_id"
   add_foreign_key "responses", "comments", column: "reply_id"
