@@ -1,34 +1,11 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<p>TEST</p>
-
-<div>
-	<%= render 'svgs/circles/purple_yellow_circle' %>
-</div>
-
-<div>
-	<%= render 'svgs/frames/post_corner_t' %>
-</div>
-
-<div>
-	<%= render 'svgs/frames/post_corner_b' %>
-</div>
-
-<div>
-	<%= render 'svgs/frames/energycell' %>
-</div>
-
-<div>
-	<%= render 'svgs/accents/post_accent_t' %>
-</div>
-
-<div>
-	<%= render 'svgs/accents/purple_bar' %>
-</div>
-
-<div class="white-circle"></div>
-<div class="bookmark-icon"></div>
-
+<%# feed %>
+<% if current_user %>
+  <% if @posts %>
+    <%= render @posts %>
+  <% end %>
+<% else %>
+  Sign in to continue
+<% end %>
 <%# <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%">
 	<defs>
 		<pattern id="pattern" width="61" height="61" viewBox="0 0 40,40" patternUnits="userSpaceOnUse" patternTransform="rotate(0) ">

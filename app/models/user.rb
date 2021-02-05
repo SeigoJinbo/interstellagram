@@ -38,7 +38,8 @@ class User < ApplicationRecord
   has_many :user_conversations, dependent: :destroy
   has_many :conversations, through: :user_conversations, dependent: :destroy
   has_many :messages, dependent: :destroy
-  validates :user_name, presence: :true
+  validates :user_name, presence: :true, uniqueness: :true
+  validates :email, presence: :true, uniqueness: :true
   def has_joined?(conversation)
     conversations.where(id: conversation).exist?
   end

@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   has_one :notification, dependent: :destroy
   has_many :post_hash_tags
   has_many :hash_tags, through: :post_hash_tags
-  has_many_attached :images
+  has_many_attached :images, dependent: :destroy
   validates :images, presence: true
   after_commit :create_hash_tags, on: :create
 

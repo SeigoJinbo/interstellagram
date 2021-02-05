@@ -21,7 +21,7 @@
 	<div style="position: absolute; top: -16px;">
 		<%= render 'svgs/accents/form_accent_t' %>
 	</div>
-	<div class="form-header-post" style="position: absolute; top: 32px; right: 104px;">
+	<div class="form-header-post" style="position: absolute; top: 32px; right: 129px;">
 		<div>
 			<%= render 'svgs/circles/purple_yellow_circle' %>
 		</div>
@@ -33,27 +33,27 @@
 		<div style="position: absolute; top: 118px; right: 210px;">
 			<%= render 'form', post: @post %>
 		</div>
-		<div>
-			<%= link_to 'Show', @post, class: 'btn btn-info mr-2' %>
-		</div>
 	</div>
 
+	<%# ------------------------------BUTTONS------------------------------ %>
 	<div>
+		<div style="position: absolute; top: 130px; right: 210px; z-index: -2;">
+			<%= render 'svgs/buttons/long_btn' %>
+		</div>
+		<h6 class="form-label" style="position: absolute; top: 136px; right: 231px; z-index: -1;"> BROWSE</h6>
 		<div style="position: absolute; top: 411px; right: 74px;">
 			<%= render 'svgs/accents/button_dashed_line' %>
 		</div>
 		<div style="position: absolute; top: 401px; right: 27px; z-index: -1;">
 			<%= render 'svgs/buttons/confirm_btn' %>
 		</div>
-		<div>
+		<div style="position: absolute; top: 401px; right: 257px;">
 			<%= link_to post_path(@post) do %>
 				<%= render 'svgs/buttons/cancel_btn' %>
-
 			<% end %>
-
 		</div>
 	</div>
-
+	<%# ------------------------------THING HANGING DOWN------------------------------ %>
 	<div>
 		<div class="yellow-line" style="position: absolute; top: 550px; right: 101px;"></div>
 		<div style="position: absolute; top: 493px; right: 193px;">

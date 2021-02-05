@@ -2,7 +2,7 @@
 <% if false %>
 	<h1><%= @user.user_name %></h1>
 	<% if @user.image.attached? %>
-		<%= cl_image_tag @user.image.key, width: 70%>
+		<%= cl_image_tag @user.image.key, width: 70 %>
 	<% end %>
 	<h2><%= @user.name %></h1>
 	<p id="notice"><%= notice %></p>
@@ -28,12 +28,9 @@
 	<hr>
 	<%# <%= render @user_posts %>
 	<%= render 'posts/grid', posts: @user.posts %>
-
 <% end %>
 <%# ------------------------------REFERENCE------------------------------ %>
-
 <%# ------------------------------USER SHOW------------------------------ %>
-
 <div class="user-container">
 	<div class="user-content">
 		<div style="position: relative; z-index: -2;">
@@ -70,7 +67,7 @@
 		<h6 style="position: absolute; top: 20px; right: 178px; font-size: 8px;">Rank</h6>
 		<div>
 			<% if @user.image.attached? %>
-				<%= cl_image_tag @user.image.key, width: 80, style: "border-radius:50%; position: absolute; top: 98px; right: 148px;"%>
+				<%= cl_image_tag @user.image.key, width: 80, height: 80, style: "border-radius:50%; position: absolute; top: 98px; right: 148px;"%>
 			<% end %>
 		</div>
 		<p class="user-stat-details" style="position: absolute; top: 45px; right: 23px;">FOLLOWING</p>
@@ -100,7 +97,6 @@
 				</div>
 			<% end %>
 		<% end %>
-
 		<% if @user == current_user %>
 			<%= link_to new_post_path, style: "position: absolute; top: 121px; right: 253px;" do %>
 				<div>
@@ -109,7 +105,6 @@
 				<p style="position: absolute; top: 5px; right: 33px; color: #DBFFFF; font-size: 15px;">+ Post</p>
 			<% end %>
 		<% end %>
-
 		<% pre_conversation = @user.conversations.find { |conversation| conversation.users.include?(current_user)} %>
 		<% unless @user == current_user %>
 			<% if pre_conversation %>
@@ -134,3 +129,4 @@
 		<%= render 'posts/grid', posts: @user.posts %>
 	</div>
 </div>
+<%= link_to 'edit',  edit_user_path(@user.user_name)%>

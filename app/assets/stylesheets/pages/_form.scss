@@ -23,6 +23,18 @@
 .form-header-post {
 	display: flex;
 	align-items: center;
+	width: 186px;
+	justify-content: space-between;
+}
+
+.login-header {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 42px;
+	right: 230px;
+	width: 72px;
+	justify-content: space-between;
 }
 
 .form-label {
@@ -32,7 +44,184 @@
 	margin-bottom: 0px;
 }
 
-.invisible-link {
-	width: 44px;
-	height: 44px;
+.form-user-header {
+	display: flex;
+	align-items: center;
 }
+
+div.form-user div.form-group label {
+	display: none;
+}
+div.form-signup div.form-group label {
+	display: none;
+}
+div.form-login div.form-group label {
+	display: none;
+}
+div.form-login div.form-check label {
+	display: none;
+}
+
+.form-inputs-container {
+	position: absolute;
+	top: 152px;
+	right: 226px;
+}
+
+.form-inputs-signup-container {
+	position: absolute;
+	top: 152px;
+	right: 117px;
+}
+
+.form-inputs-login-container {
+	position: absolute;
+	top: 79px;
+	right: 182px;
+}
+
+.form-user-inputs {
+	height: 48px;
+}
+
+.form-signup-inputs {
+	height: 56px;
+}
+
+#user_email,
+#user_user_name,
+#user_name,
+#user_gender,
+#user_website,
+#user_password,
+#user_password_confirmation {
+	text-transform: none;
+	font-family: "Roboto";
+	font-size: 12px;
+
+	position: absolute;
+	width: 270px;
+	height: 28px;
+	color: rgb(255, 255, 255);
+
+	background: rgba(60, 199, 204, 0.25);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+#user_bio {
+	text-transform: none;
+	font-family: "Roboto";
+	font-size: 12px;
+
+	position: absolute;
+	width: 270px;
+	height: 72px;
+	color: rgb(255, 255, 255);
+
+	background: rgba(60, 199, 204, 0.25);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+#user_birthday_1i {
+	text-transform: none;
+	font-family: "Roboto";
+	font-size: 9px;
+
+	position: absolute;
+	top: 108px;
+	right: -26px;
+	width: 88px;
+	height: 28px;
+	color: rgb(255, 255, 255);
+
+	background: rgba(60, 199, 204, 0.25);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+#user_birthday_2i {
+	text-transform: none;
+	font-family: "Roboto";
+	font-size: 9px;
+
+	position: absolute;
+	top: 108px;
+	right: -117px;
+	width: 88px;
+	height: 28px;
+	color: rgb(255, 255, 255);
+
+	background: rgba(60, 199, 204, 0.25);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+#user_birthday_3i {
+	text-transform: none;
+	font-family: "Roboto";
+	font-size: 9px;
+
+	position: absolute;
+	top: 108px;
+	right: -208px;
+	width: 88px;
+	height: 28px;
+	color: rgb(255, 255, 255);
+
+	background: rgba(60, 199, 204, 0.25);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
+div.form-user #user_user_name {
+	text-transform: none;
+	font-family: "Exo";
+	font-size: 12px;
+	text-align: center;
+
+	width: 138px;
+	height: 28px;
+	color: rgb(255, 255, 255);
+
+	background: none;
+	border: 0;
+	border-radius: 0;
+
+	position: absolute;
+	top: 44px;
+	right: -68px;
+}
+
+div.form-signup #user_user_name {
+	text-transform: none;
+	font-family: "Exo";
+	font-size: 12px;
+	text-align: center;
+
+	width: 138px;
+	height: 28px;
+	color: rgb(255, 255, 255);
+
+	background: none;
+	border: 0;
+	border-radius: 0;
+
+	position: absolute;
+	top: 44px;
+	right: -94px;
+}
+
+.form-control.is-valid {
+	padding-right: 0.75rem;
+}
+
+// div.form-user-inputs small {
+// 	width: 200px;
+// }
