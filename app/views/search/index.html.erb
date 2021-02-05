@@ -1,0 +1,21 @@
+<div class="m-auto">
+  <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
+    <%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2', placeholder: '#search' %>
+  <% end %>
+</div>
+<div class="search-page">
+  <% if @posts.exists? %>
+    <h1>Top Posts</h1>
+    <%= render 'posts/grid', posts: @posts %>
+  <% end %>
+  <% if @users %>
+    <% @users.each do |user| %>
+      <%= user.user_name %>
+    <% end %>
+  <% end %>
+  <% if @tags %>
+    <% @tags.each do |tag| %>
+      <%= tag.name %>
+    <% end %>
+  <% end %>
+</div>

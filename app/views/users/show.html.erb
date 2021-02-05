@@ -1,132 +1,132 @@
 <%# ------------------------------REFERENCE------------------------------ %>
 <% if false %>
-  <h1><%= @user.user_name %></h1>
-  <% if @user.image.attached? %>
-    <%= cl_image_tag @user.image.key, width: 70%>
-  <% end %>
-  <h2><%= @user.name %></h1>
-  <p id="notice"><%= notice %></p>
-  <p>Posts: <%= @user.posts.count %></p>
-  <p>Followers: <%= @user.followers.count %></p>
-  <p>Following: <%= @user.followings.count %></p>
-  <% pre_follow = @user.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
-  <% if pre_follow %>
-    <%= button_to 'Unfollow', user_connection_path(@user.id, pre_follow), method: :delete %>
-  <% else %>
-    <%= button_to 'Follow', user_connections_path(@user.id), method: :post %>
-  <% end %>
-  <% pre_conversation = @user.conversations.find { |conversation| conversation.users.include?(current_user)} %>
-  <% unless @user == current_user %>
-    <% if pre_conversation %>
-      <%= button_to 'Message', conversation_path(pre_conversation), method: :get %>
-    <% else %>
-      <%= button_to 'Message', user_conversations_path(@user.id), method: :post %>
-    <% end %>
-  <% end %>
-  <h1>Posts</h1>
-  <%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>
-  <hr>
-  <%# <%= render @user_posts %>
-  <%= render 'posts/grid', posts: @user.posts %>
+	<h1><%= @user.user_name %></h1>
+	<% if @user.image.attached? %>
+		<%= cl_image_tag @user.image.key, width: 70 %>
+	<% end %>
+	<h2><%= @user.name %></h1>
+	<p id="notice"><%= notice %></p>
+	<p>Posts: <%= @user.posts.count %></p>
+	<p>Followers: <%= @user.followers.count %></p>
+	<p>Following: <%= @user.followings.count %></p>
+	<% pre_follow = @user.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
+	<% if pre_follow %>
+		<%= button_to 'Unfollow', user_connection_path(@user.id, pre_follow), method: :delete %>
+	<% else %>
+		<%= button_to 'Follow', user_connections_path(@user.id), method: :post %>
+	<% end %>
+	<% pre_conversation = @user.conversations.find { |conversation| conversation.users.include?(current_user)} %>
+	<% unless @user == current_user %>
+		<% if pre_conversation %>
+			<%= button_to 'Message', conversation_path(pre_conversation), method: :get %>
+		<% else %>
+			<%= button_to 'Message', user_conversations_path(@user.id), method: :post %>
+		<% end %>
+	<% end %>
+	<h1>Posts</h1>
+	<%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>
+	<hr>
+	<%# <%= render @user_posts %>
+	<%= render 'posts/grid', posts: @user.posts %>
 <% end %>
 <%# ------------------------------REFERENCE------------------------------ %>
 <%# ------------------------------USER SHOW------------------------------ %>
 <div class="user-container">
-  <div class="user-content">
-    <div style="position: relative; z-index: -2;">
-      <%= render 'svgs/accents/user_bg' %>
-    </div>
-    <div style="position: absolute; top: 16px; right: 1px;">
-      <%= render 'svgs/accents/user_lines' %>
-    </div>
-    <div style="position: absolute; top: -7px; right: 138px;">
-      <%= render 'svgs/frames/rank_frame' %>
-    </div>
-    <div style="position: absolute; top: 3px; right: 56px;">
-      <%= render 'svgs/accents/purple_bar' %>
-    </div>
-    <div style="position: absolute; top: 4px; right: 208px;">
-      <%= render 'svgs/accents/yellow_bar' %>
-    </div>
-    <div style="position: absolute; top: 257px; right: 258px;">
-      <%= render 'svgs/buttons/grid_icon' %>
-    </div>
-    <div style="position: absolute; top: 253px; right: 84px;">
-      <%= render 'svgs/buttons/user_tagged' %>
-    </div>
-    <div class="sm-white-circle" style="position: absolute; top: 39px; right: 349px;"></div>
-    <div class="sm-white-circle" style="position: absolute; top: 57px; right: 208px;"></div>
-    <div class="sm-white-circle" style="position: absolute; top: 57px; right: 161px;"></div>
-    <div class="sm-white-circle" style="position: absolute; top: 109px; right: 246px;"></div>
-    <div class="sm-white-circle" style="position: absolute; top: 180px; right: 327px;"></div>
-    <div class="sm-white-circle" style="position: absolute; top: 168px; right: 116px;"></div>
-    <div class="sm-white-circle" style="position: absolute; top: 228px; right: 19px;"></div>
-    <%# ------------------------------USER STATS & DETAILS------------------------------ %>
-    <%# <%= link_to 'New Post', new_post_path, class: 'btn btn-primary', style: "position: absolute; top: 241px; right: 142px;"%>
-    <h6 style="position: absolute; top: 4px; right: 162px; width: 52px; text-align: center;"><%= rand(1..2000) %></h6>
-    <h6 style="position: absolute; top: 20px; right: 178px; font-size: 8px;">Rank</h6>
-    <div>
-      <% if @user.image.attached? %>
-        <%= cl_image_tag @user.image.key, width: 80, style: "border-radius:50%; position: absolute; top: 98px; right: 148px;"%>
-      <% end %>
-    </div>
-    <p class="user-stat-details" style="position: absolute; top: 45px; right: 23px;">FOLLOWING</p>
-    <p class="user-stat-numbers" style="position: absolute; top: 46px; right: 90px;"><%= @user.followings.count %></p>
-    <p class="user-stat-details" style="position: absolute; top: 89px; right: 278px;">POSTS</p>
-    <p class="user-stat-numbers" style="position: absolute; top: 77px; right: 320px;"><%= @user.posts.count %></p>
-    <p class="user-stat-details" style="position: absolute; top: 89px; right: 59px;">FOLLOWERS</p>
-    <p class="user-stat-numbers" style="position: absolute; top: 75px; right: 30px;"><%= @user.followers.count %></p>
-    <p class="user-stat-details" style="position: absolute; top: 171px; right: 289px;">BIO</p>
-    <p class="user-bio" style="position: absolute; top: 186px; right: 63px;"><%= truncate(@user.bio, length: 165) %></p>
-    <p class="user-stat-details" style="position: absolute; top: 171px; right: 86px;">AGE</p>
-    <p class="user-stat-numbers" style="position: absolute; top: 178px; right: 22px; width: 40px;"><%= rand(18..99) %></p>
-    <%# ------------------------------BUTTONS------------------------------ %>
-    <% pre_follow = @user.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
-    <% if pre_follow %>
-      <%= link_to user_connection_path(@user.id, pre_follow), method: :delete do %>
-        <div style="position: absolute; top: 122px; right: 18px;">
-          <%= render 'svgs/buttons/angled_btn_off' %>
-          <p style="position: absolute; top: 3px; right: 17px; color: #DBFFFF; font-size: 15px;">Following</p>
-        </div>
-      <% end %>
-    <% else %>
-      <%= link_to user_connections_path(@user.id), method: :post do %>
-        <div style="position: absolute; top: 121px; right: 16px;">
-          <%= render 'svgs/buttons/angled_btn' %>
-          <p style="position: absolute; top: 5px; right: 28px; color: #DBFFFF; font-size: 15px;">Follow</p>
-        </div>
-      <% end %>
-    <% end %>
-    <% if @user == current_user %>
-      <%= link_to new_post_path, style: "position: absolute; top: 121px; right: 253px;" do %>
-        <div>
-          <%= render 'svgs/buttons/angled_ye_btn' %>
-        </div>
-        <p style="position: absolute; top: 5px; right: 33px; color: #DBFFFF; font-size: 15px;">+ Post</p>
-      <% end %>
-    <% end %>
-    <% pre_conversation = @user.conversations.find { |conversation| conversation.users.include?(current_user)} %>
-    <% unless @user == current_user %>
-      <% if pre_conversation %>
-        <%= link_to conversation_path(pre_conversation), method: :get do %>
-          <div style="position: absolute; top: 121px; right: 253px;">
-            <%= render 'svgs/buttons/angled_btn' %>
-            <p style="position: absolute; top: 4px; right: 21px; color: #DBFFFF; font-size: 15px;">Message</p>
-          </div>
-        <% end %>
-      <% else %>
-        <%= link_to user_conversations_path(@user.id), method: :post do %>
-          <div style="position: absolute; top: 121px; right: 253px;">
-            <%= render 'svgs/buttons/angled_btn' %>
-            <p style="position: absolute; top: 4px; right: 21px; color: #DBFFFF; font-size: 15px;">Message</p>
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
-    <hr>
-    <%# ------------------------------POSTS------------------------------ %>
-    <%# <%= render @user_posts %>
-    <%= render 'posts/grid', posts: @user.posts %>
-  </div>
+	<div class="user-content">
+		<div style="position: relative; z-index: -2;">
+			<%= render 'svgs/accents/user_bg' %>
+		</div>
+		<div style="position: absolute; top: 16px; right: 1px;">
+			<%= render 'svgs/accents/user_lines' %>
+		</div>
+		<div style="position: absolute; top: -7px; right: 138px;">
+			<%= render 'svgs/frames/rank_frame' %>
+		</div>
+		<div style="position: absolute; top: 3px; right: 56px;">
+			<%= render 'svgs/accents/purple_bar' %>
+		</div>
+		<div style="position: absolute; top: 4px; right: 208px;">
+			<%= render 'svgs/accents/yellow_bar' %>
+		</div>
+		<div style="position: absolute; top: 257px; right: 258px;">
+			<%= render 'svgs/buttons/grid_icon' %>
+		</div>
+		<div style="position: absolute; top: 253px; right: 84px;">
+			<%= render 'svgs/buttons/user_tagged' %>
+		</div>
+		<div class="sm-white-circle" style="position: absolute; top: 39px; right: 349px;"></div>
+		<div class="sm-white-circle" style="position: absolute; top: 57px; right: 208px;"></div>
+		<div class="sm-white-circle" style="position: absolute; top: 57px; right: 161px;"></div>
+		<div class="sm-white-circle" style="position: absolute; top: 109px; right: 246px;"></div>
+		<div class="sm-white-circle" style="position: absolute; top: 180px; right: 327px;"></div>
+		<div class="sm-white-circle" style="position: absolute; top: 168px; right: 116px;"></div>
+		<div class="sm-white-circle" style="position: absolute; top: 228px; right: 19px;"></div>
+		<%# ------------------------------USER STATS & DETAILS------------------------------ %>
+		<%# <%= link_to 'New Post', new_post_path, class: 'btn btn-primary', style: "position: absolute; top: 241px; right: 142px;"%>
+		<h6 style="position: absolute; top: 4px; right: 162px; width: 52px; text-align: center;"><%= rand(1..2000) %></h6>
+		<h6 style="position: absolute; top: 20px; right: 178px; font-size: 8px;">Rank</h6>
+		<div>
+			<% if @user.image.attached? %>
+				<%= cl_image_tag @user.image.key, width: 80, height: 80, style: "border-radius:50%; position: absolute; top: 98px; right: 148px;"%>
+			<% end %>
+		</div>
+		<p class="user-stat-details" style="position: absolute; top: 45px; right: 23px;">FOLLOWING</p>
+		<p class="user-stat-numbers" style="position: absolute; top: 46px; right: 90px;"><%= @user.followings.count %></p>
+		<p class="user-stat-details" style="position: absolute; top: 89px; right: 278px;">POSTS</p>
+		<p class="user-stat-numbers" style="position: absolute; top: 77px; right: 320px;"><%= @user.posts.count %></p>
+		<p class="user-stat-details" style="position: absolute; top: 89px; right: 59px;">FOLLOWERS</p>
+		<p class="user-stat-numbers" style="position: absolute; top: 75px; right: 30px;"><%= @user.followers.count %></p>
+		<p class="user-stat-details" style="position: absolute; top: 171px; right: 289px;">BIO</p>
+		<p class="user-bio" style="position: absolute; top: 186px; right: 63px;"><%= truncate(@user.bio, length: 165) %></p>
+		<p class="user-stat-details" style="position: absolute; top: 171px; right: 86px;">AGE</p>
+		<p class="user-stat-numbers" style="position: absolute; top: 178px; right: 22px; width: 40px;"><%= rand(18..99) %></p>
+		<%# ------------------------------BUTTONS------------------------------ %>
+		<% pre_follow = @user.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
+		<% if pre_follow %>
+			<%= link_to user_connection_path(@user.id, pre_follow), method: :delete do %>
+				<div style="position: absolute; top: 122px; right: 18px;">
+					<%= render 'svgs/buttons/angled_btn_off' %>
+					<p style="position: absolute; top: 3px; right: 17px; color: #DBFFFF; font-size: 15px;">Following</p>
+				</div>
+			<% end %>
+		<% else %>
+			<%= link_to user_connections_path(@user.id), method: :post do %>
+				<div style="position: absolute; top: 121px; right: 16px;">
+					<%= render 'svgs/buttons/angled_btn' %>
+					<p style="position: absolute; top: 5px; right: 28px; color: #DBFFFF; font-size: 15px;">Follow</p>
+				</div>
+			<% end %>
+		<% end %>
+		<% if @user == current_user %>
+			<%= link_to new_post_path, style: "position: absolute; top: 121px; right: 253px;" do %>
+				<div>
+					<%= render 'svgs/buttons/angled_ye_btn' %>
+				</div>
+				<p style="position: absolute; top: 5px; right: 33px; color: #DBFFFF; font-size: 15px;">+ Post</p>
+			<% end %>
+		<% end %>
+		<% pre_conversation = @user.conversations.find { |conversation| conversation.users.include?(current_user)} %>
+		<% unless @user == current_user %>
+			<% if pre_conversation %>
+				<%= link_to conversation_path(pre_conversation), method: :get do %>
+					<div style="position: absolute; top: 121px; right: 253px;">
+						<%= render 'svgs/buttons/angled_btn' %>
+						<p style="position: absolute; top: 4px; right: 21px; color: #DBFFFF; font-size: 15px;">Message</p>
+					</div>
+				<% end %>
+			<% else %>
+				<%= link_to user_conversations_path(@user.id), method: :post do %>
+					<div style="position: absolute; top: 121px; right: 253px;">
+						<%= render 'svgs/buttons/angled_btn' %>
+						<p style="position: absolute; top: 4px; right: 21px; color: #DBFFFF; font-size: 15px;">Message</p>
+					</div>
+				<% end %>
+			<% end %>
+		<% end %>
+		<hr>
+		<%# ------------------------------POSTS------------------------------ %>
+		<%# <%= render @user_posts %>
+		<%= render 'posts/grid', posts: @user.posts %>
+	</div>
 </div>
 <%= link_to 'edit',  edit_user_path(@user.user_name)%>
