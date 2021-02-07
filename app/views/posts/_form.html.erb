@@ -1,5 +1,4 @@
 <%= form_with(model: post, local: true) do |form| %>
-	<%= form.text_field :tagged_users, :value => "" %>
 	<% if post.errors.any? %>
 		<div id="error_explanation">
 			<h4 class="text-danger"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h4>
@@ -10,6 +9,7 @@
 			</ul>
 		</div>
 	<% end %>
+
 	<div>
 		<h6 class="form-label">PHOTOS</h6>
 		<label style="width: 96px; height: 26px;">
@@ -18,14 +18,22 @@
 			</span>
 		</label>
 	</div>
-	<div class="form-group">
+
+	<div style="height: 152px;">
 		<h6 class="form-label">DESCRIPTION</h6>
 		<%= form.text_area :description, class: 'form-control' %>
 	</div>
+
+	<div>
+		<h6 class="form-label">USER TAGS</h6>
+		<%= form.text_field :tagged_users, :placeholder => "e.g. Inter, Stella, Gram", :value => "" %>
+	</div>
+
 	<%# <label class="btn btn-success" style="position: absolute; top: 284px; right: -182px;"> %>
-	<label style="position: absolute; top: 284px; right: -182px; width: 44px; height: 44px;">
+	<label style="position: absolute; top: 284px; right: -9px; width: 44px; height: 44px;">
 		<span style="display: none;">
 			<%= form.submit "Save Post" %>
 		</span>
 	</label>
+
 <% end %>
