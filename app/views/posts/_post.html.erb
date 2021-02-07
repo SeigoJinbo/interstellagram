@@ -1,42 +1,3 @@
-<%# ------------------------------REFERENCE------------------------------ %>
-<% if false %>
-	<div class="card">
-		<div class="card-body">
-			<h5 class="card-title"><%= link_to post.description, post_path(post) %></h5>
-			<% post.images.each do |image| %>
-				<%= cl_image_tag image.key, width: 100%>
-			<% end %>
-			<p class="card-text"><%= truncate(post.description, length: 60) %></p>
-			<div class="my-4">
-				<%= link_to post.user.user_name, user_path(post.user.user_name) %>
-			</div>
-			<p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-			<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-			<% if pre_like %>
-				<%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete %>
-			<% else %>
-				<%= button_to 'Like', post_likes_path(post), method: :post %>
-			<% end %>
-			<%= link_to 'Edit', edit_post_path(post), class: 'card-link' %>
-			<%= link_to 'Remove', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %>
-			<div class="card my-1"> # place this card blow the post body.
-				<div class="card-body">
-					<p class="font-weight-bold">Comments</p>
-					<%= simple_form_for( [post, post.comments.build]) do |f| %>
-						<div class="form-group">
-							<%= f.label 'New comment' %>
-							<%= f.text_area :content, class: 'form-control' %>
-						</div>
-						<%= f.submit 'Submit', class: 'btn btn-primary' %>
-					<% end %>
-				</div>
-			</div>
-			<%= render post.comments[0..1] %>
-			<%= link_to "view all #{post.comments.count} comments", post_comments_path(post) %>
-		</div>
-	</div>
-<% end %>
-<%# ------------------------------REAL CARD STARTS HERE------------------------------ %>
 <%# ------------------------------TOP ACCENTS------------------------------ %>
 <div class="post-card-container">
 	<div class="post-card">
@@ -190,7 +151,7 @@
 		</div>
 		<%= simple_form_for( [post, post.comments.build]) do |f| %>
 			<div>
-				<%= f.text_area :content, placeholder: 'Comment...' %>
+				<%= f.text_area :content, placeholder: 'Comment...', style: 'position: absolute; top: 608px; right: 23px;' %>
 			</div>
 			<%= f.submit value: "", class: 'post-input-btn', data: { disable_with: false }  %>
 		<% end %>
