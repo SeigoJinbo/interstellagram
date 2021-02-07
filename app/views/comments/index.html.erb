@@ -1,1 +1,17 @@
-    <%= render @post.comments %>
+<div class="post-card-container">
+	<div class="post-card">
+		<div class="comments-index-container">
+			<%= render @post.comments %>
+		</div>
+		<div class="comments-input-container">
+			<%= simple_form_for( [@post, @post.comments.build]) do |f| %>
+				<div>
+					<%= f.text_area :content, placeholder: 'Comment...' %>
+				</div>
+				<%= f.submit value: "", class: 'post-input-btn', data: { disable_with: false }  %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<%= link_to 'back', post_path(@post) %>
