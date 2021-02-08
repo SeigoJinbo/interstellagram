@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
+  resources :bookmarks
   resources :users, path: '/', param: :user_name, only: %i[show edit update] do
     resources :connections
     resources :conversations, only: %i[create]
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   resources :posts, path: '/p/' do
     resources :comments
     resources :likes
+    resources :bookmarks, only: %i[new create destroy]
   end
 
   resources :comments, only: %i[show] do
