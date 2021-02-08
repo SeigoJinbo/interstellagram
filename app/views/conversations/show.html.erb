@@ -8,14 +8,14 @@
 			<% if message.user.user_name == current_user.user_name %>
 
 				<div class="me">
-					<div style="position: relative; top: -15px; right: -214px;">
+					<div style="position: relative; top: -15px; left: 222px; width: 48px;">
 						<%= render 'svgs/accents/chat_me_t' %>
 					</div>
-					<div class="chatlog-content">
+					<div class="me-chatlog-content">
 						<p><%= message.content %></p>
-						<p><%= message.created_at.to_time.strftime('%a %b %e %Y, %k:%M') %></p>
+						<h6 class="form-label"><%= message.created_at.to_time.strftime('%a %b %e %Y, %k:%M') %></h6>
 					</div>
-					<div style="position: relative; top: 13px; right: -34px;">
+					<div style="position: relative; top: 13px; right: -34px; width: 254px;">
 						<%= render 'svgs/accents/chat_me_b' %>
 					</div>
 				</div>
@@ -26,10 +26,10 @@
 					<div style="position: relative; top: -15px; right: -34px;">
 						<%= render 'svgs/accents/chat_you_t' %>
 					</div>
-					<div class="chatlog-content">
+					<div class="you-chatlog-content">
 						<p><%= message.user.user_name %></p>
 						<p><%= message.content %></p>
-						<p><%= message.created_at.to_time.strftime('%a %b %e %Y, %k:%M') %></p>
+						<h6 class="form-label"><%= message.created_at.to_time.strftime('%a %b %e %Y, %k:%M') %></h6>
 					</div>
 					<div style="position: relative; top: 13px; right: 1px;">
 						<%= render 'svgs/accents/chat_you_b' %>
@@ -43,10 +43,9 @@
 	<div class="chatlog-input-container">
 		<%= simple_form_for( [@conversation, @conversation.messages.build]) do |f| %>
 			<div class="form-group">
-				<%= f.label 'Message' %>
 				<%= f.text_area :content, class: 'form-control' %>
 			</div>
-			<%= f.submit 'Submit', class: 'btn btn-primary' %>
+			<%= f.submit 'Submit', class: 'conversation-btn', value: '', data: { disable_with: false } %>
 		<% end %>
 	</div>
 
