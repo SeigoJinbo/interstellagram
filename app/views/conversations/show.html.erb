@@ -3,10 +3,12 @@
 		<%= render 'svgs/frames/chatlog_t' %>
 	</div>
 
-	<h6 class="form-label" style="position: absolute; top: 81px; left: 120px;">
+	<h6 class="form-label" style="position: relative; top: -38px; left: 31px;">
 		<% @conversation.users.each do |user| %>
 			<% if user.user_name != current_user.user_name %>
-				<span style="color: #00354d;"><%= user.user_name.upcase %></span>
+				<%= link_to user_path(user.user_name) do %>
+					<span style="color: #00354d;"><%= user.user_name.upcase %></span>
+				<% end %>
 			<% end %>
 		<% end %>
 	</h6>
