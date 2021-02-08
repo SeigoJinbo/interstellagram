@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/direct/inbox/', to: 'conversations#index', as: :inbox
   get '/direct/:id', to: 'conversations#show', as: :conversation
   get 'search' => 'search#index'
+  resources :notifications, only: :index
   resources :conversations do
     resources :messages
   end

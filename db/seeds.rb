@@ -101,8 +101,10 @@ user_tag2 = UserTag.create(user: user1, post: post2)
 bookmark1 = Bookmark.create(user: user3, post: post2)
 
 puts 'Creating notifications...'
-notification1 = Notification.create!(user: user1, comment: comment4)
-notification2 = Notification.create!(user: user1, user_tag: user_tag2)
+notification1 =
+  Notification.create!(
+    receiver: user1, sender: user2, message: 'test notification', post: post1
+  )
 
 puts 'Creating conversations...'
 conversation1 = Conversation.new

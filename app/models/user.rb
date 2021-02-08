@@ -32,7 +32,15 @@ class User < ApplicationRecord
   has_many :user_tags, dependent: :destroy
   has_many :tagged_posts, through: :user_tags, source: :post
   has_many :bookmarks, dependent: :destroy
-  has_many :notifications, dependent: :destroy
+  # has_many :notifications, dependent: :destroy
+  has_many :notifications_as_receiver,
+           class_name: 'Notification',
+           foreign_key: :receiver_id,
+           dependent: :destroy
+  has_many :notifications_as_sender,
+           class_name: 'Notification',
+           foreign_key: :sender_id,
+           dependent: :destroy
   has_one_attached :image
 
   has_many :user_conversations, dependent: :destroy

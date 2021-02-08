@@ -6,6 +6,14 @@ class LikesController < ApplicationController
       flash[:notice] = "You can't like more than once"
     else
       @target.likes.create(user_id: current_user.id)
+      if params[:post_id]
+        Notification.create(
+          receiver: @target.user,
+          sender: current_user,
+          post: @target,
+          message: 'liked your post'
+        )
+      end
     end
     redirect_to request.referrer
   end

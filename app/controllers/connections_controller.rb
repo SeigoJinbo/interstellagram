@@ -6,6 +6,11 @@ class ConnectionsController < ApplicationController
       flash[:notice] = "You're already follwing this account"
     else
       Connection.create(following: @user, follower: current_user)
+      Notification.create(
+        receiver: @user,
+        sender: current_user,
+        message: 'has joined your fleet of followers'
+      )
     end
     redirect_to user_path(@user.user_name)
   end

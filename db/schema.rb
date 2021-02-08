@@ -104,17 +104,18 @@ ActiveRecord::Schema.define(version: 2021_02_04_023708) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "post_id"
     t.bigint "response_id"
     t.bigint "user_tag_id"
     t.bigint "comment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "message"
+    t.integer "sender_id"
+    t.integer "receiver_id"
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["post_id"], name: "index_notifications_on_post_id"
     t.index ["response_id"], name: "index_notifications_on_response_id"
-    t.index ["user_id"], name: "index_notifications_on_user_id"
     t.index ["user_tag_id"], name: "index_notifications_on_user_tag_id"
   end
 
@@ -200,7 +201,6 @@ ActiveRecord::Schema.define(version: 2021_02_04_023708) do
   add_foreign_key "notifications", "posts"
   add_foreign_key "notifications", "responses"
   add_foreign_key "notifications", "user_tags"
-  add_foreign_key "notifications", "users"
   add_foreign_key "post_hash_tags", "hash_tags"
   add_foreign_key "post_hash_tags", "posts"
   add_foreign_key "posts", "users"
