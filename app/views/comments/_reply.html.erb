@@ -1,14 +1,43 @@
-<div class="card ml-5">
-  <div class="card-body">
-    <%= reply.user.user_name %>
-    <%= reply.content %>
-    <p><%= reply.likes.count %> <%= (reply.likes.count) == 1 ? 'Like' : 'Likes'%></p>
-    <% pre_like = reply.likes.find { |reply| reply.user_id == current_user.id} %>
-    <% if pre_like %>
-      <%= button_to 'Unlike', comment_like_path(reply, pre_like), method: :delete %>
-    <% else %>
-      <%= button_to 'Like', comment_likes_path(reply), method: :post %>
-    <% end %>
-    <%= link_to 'delete', [reply.post, reply], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger mr-2' %>
-  </div>
+<%# ------------------------REPLY CONTENT & LIKES------------------------ %>
+<div style="margin-left: 16px;">
+	<div class="reply-index-card">
+		<div class="white-circle" style="right: 5px; top: -4px;"></div>
+		<div class="reply-card-content">
+			<span>
+				<%= link_to reply.user.user_name, user_path(reply.user.user_name) %>
+			</span>
+			<span style="margin-left: 4px; color: #d987ba;">
+				<% if reply.likes.count >= 1 %>
+					<%= reply.likes.count %>♥
+				<% end %>
+			</span>
+			<span style="margin-left: 8px;">
+				<%= reply.content %>
+			</span>
+
+			<%# ------------------------REPLY BUTTONS------------------------ %>
+			<div class="reply-buttons">
+				<% pre_like = reply.likes.find { |reply| reply.user_id == current_user.id} %>
+				<% if pre_like %>
+					<%= link_to comment_like_path(reply, pre_like), method: :delete do %>
+						<div>
+							<%= render 'svgs/buttons/unlike' %>
+						</div>
+					<% end %>
+				<% else %>
+					<%= link_to comment_likes_path(reply), method: :post do %>
+						<div>
+							<%= render 'svgs/buttons/like' %>
+						</div>
+					<% end %>
+				<% end %>
+
+				<%= link_to [reply.post, reply], method: :delete, data: { confirm: 'Are you sure?' } do %>
+					<div>
+						<%= render 'svgs/buttons/delete' %>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>

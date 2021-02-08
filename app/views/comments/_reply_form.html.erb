@@ -1,13 +1,35 @@
-<div class="card ml-5">
-  <div class="card-body">
-    <%= simple_form_for( [@post, @comment]) do |f| %>
-      <%= f.hidden_field :parent_id %>
-      <div class="form-group">
-        <%= f.label 'Reply' %>
-        <%= f.text_area :content, class: 'form-control' %>
-      </div>
-      <%= f.submit 'Submit', class: 'btn btn-primary' %>
-      <%= link_to 'Cancel', post_path(@post), class: 'btn btn-secondary' %>
-    <% end %>
-  </div>
+<div style="margin-left: 16px;">
+	<div class="reply-index-card" style="border-left: 1px solid #589ecc; border-bottom: 1px solid #589ecc;">
+		<div class="white-circle" style="right: 5px; top: -4px;"></div>
+		<div style="width: 264px; margin: 8px;">
+			<%= simple_form_for( [@post, @comment]) do |f| %>
+				<%= f.hidden_field :parent_id %>
+				<div class="form-group">
+					<h6 class="form-label" style="margin-bottom: 4px;">REPLY</h6>
+					<%= f.text_area :content, class: 'form-control', id: 'reply-input' %>
+				</div>
+
+				<div style="width: 264px; display: flex; justify-content: space-between;">
+					<div>
+						<%= link_to post_path(@post) do %>
+							<%= render 'svgs/buttons/cancel_btn' %>
+						<% end %>
+					</div>
+
+					<div>
+						<label style="position: relative; top: 0px; right: -109px; height: 45px; width: 45px;">
+							<span style="display: none;">
+								<%= f.submit %>
+							</span>
+						</label>
+					</div>
+					<div>
+						<%= render 'svgs/buttons/confirm_btn' %>
+					</div>
+
+				</div>
+
+			<% end %>
+		</div>
+	</div>
 </div>

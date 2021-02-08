@@ -15,6 +15,18 @@
 	border-radius: 4px;
 }
 
+#reply-input {
+	width: 264px;
+	height: 56px;
+	color: rgb(255, 255, 255);
+	font-size: 12px;
+
+	background: rgba(60, 199, 204, 0.25);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+
 ::placeholder {
 	color: rgba(255, 255, 255, 0.5);
 	font-size: 12px;

@@ -1,0 +1,52 @@
+.comments-index-container {
+	width: 312px;
+	height: 576px;
+	margin-top: 16px;
+	padding-top: 4px;
+	overflow-y: scroll;
+}
+
+.comment-index-card {
+	width: 300px;
+	margin-left: 4px;
+
+	border-left: 1px solid $yellow;
+	border-bottom: 1px solid $yellow;
+	background: rgba(60, 199, 204, 0.15);
+	// border-radius: 0 16px 0 0;
+}
+
+.reply-index-card {
+	width: 284px;
+	margin-left: 4px;
+
+	border-left: 1px solid $purple;
+	border-bottom: 1px solid $purple;
+	background: rgba(60, 199, 204, 0.05);
+}
+
+.comment-card-content {
+	width: 283px;
+	margin-left: 8px;
+	margin-bottom: 8px;
+}
+
+.reply-card-content {
+	width: 266px;
+	margin-left: 8px;
+	margin-bottom: 8px;
+}
+
+.comment-buttons {
+	display: flex;
+	width: 132px;
+	margin-top: 4px;
+	justify-content: space-between;
+}
+
+.reply-buttons {
+	display: flex;
+	width: 86px;
+	margin-top: 4px;
+	justify-content: space-between;
+}
