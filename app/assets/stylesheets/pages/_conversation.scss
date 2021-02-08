@@ -73,7 +73,7 @@
 	height: 82px;
 	position: relative;
 	margin: 12px 0 0 0;
-	left: 82px;
+	left: 132px;
 	right: 0;
 
 	background: linear-gradient(
@@ -88,12 +88,12 @@
 
 .inbox-notifications-container {
 	height: 590px;
-	width: 313px;
+	// width: 313px;
 	margin: 0 auto;
 
-	position: relative;
-	top: -30px;
-	right: 0px;
+	// position: relative;
+	// top: -30px;
+	// right: 0px;
 	overflow-y: scroll;
 }
 
@@ -103,5 +103,5 @@
 	align-items: center;
 	position: relative;
 	top: -65px;
-	right: -60px;
+	right: -110px;
 }
