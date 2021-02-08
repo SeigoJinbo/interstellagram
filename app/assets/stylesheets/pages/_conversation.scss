@@ -8,7 +8,7 @@
 .chatlog-container {
 	position: relative;
 	width: 344px;
-	height: 574px;
+	height: 555px;
 	margin-left: 31px;
 	top: -18px;
 	overflow-y: scroll;
@@ -22,8 +22,8 @@
 
 	background: linear-gradient(
 		180deg,
-		rgba(255, 201, 238, 0.3) 0%,
-		rgba(148, 103, 146, 0.3) 100%
+		rgba(255, 201, 238, 0.2) 0%,
+		rgba(148, 103, 146, 0.2) 100%
 	);
 	border: 1px solid #3cc7cc;
 	box-sizing: border-box;
@@ -37,8 +37,8 @@
 
 	background: linear-gradient(
 		180deg,
-		rgba(60, 199, 204, 0.3) 0%,
-		rgba(180, 150, 152, 0.3) 100%
+		rgba(60, 199, 204, 0.2) 0%,
+		rgba(180, 150, 152, 0.2) 100%
 	);
 	border: 1px solid #3cc7cc;
 	box-sizing: border-box;
@@ -46,18 +46,24 @@
 }
 
 .me-chatlog-content {
-	min-height: 48px;
-	margin: 0 8px 0 35px;
+	min-height: 26px;
+	margin: 0 12px 0 35px;
+	p {
+		font-size: 14px;
+	}
 }
 
 .you-chatlog-content {
-	min-height: 48px;
-	margin: 0 35px 0 8px;
+	min-height: 26px;
+	margin: 0 35px 0 12px;
+	p {
+		font-size: 14px;
+	}
 }
 
 .chatlog-input-container {
 	position: relative;
 	width: 304px;
-	height: 28px;
+	height: 48px;
 	margin: 0 auto;
 }
