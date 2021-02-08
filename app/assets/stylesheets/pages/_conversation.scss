@@ -1,0 +1,50 @@
+.inbox-container {
+	display: block;
+	width: 375px;
+	height: 708px;
+	margin: 0 auto;
+}
+
+.chatlog-container {
+	position: relative;
+	width: 341px;
+	height: 454px;
+	margin-left: 31px;
+	top: -18px;
+	overflow-y: scroll;
+}
+
+.me {
+	position: relative;
+	width: 288px;
+	min-height: 92px;
+	margin: 12px 0 12px 53px;
+
+	background: linear-gradient(
+		180deg,
+		rgba(255, 201, 238, 0.3) 0%,
+		rgba(148, 103, 146, 0.3) 100%
+	);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 25px 0 0 25px;
+}
+
+.you {
+	width: 288px;
+	min-height: 92px;
+	margin: 12px 53px 12px 0;
+
+	background: linear-gradient(
+		180deg,
+		rgba(60, 199, 204, 0.3) 0%,
+		rgba(180, 150, 152, 0.3) 100%
+	);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 0 25px 25px 0;
+}
+
+.chatlog-content {
+	min-height: 48px;
+}
