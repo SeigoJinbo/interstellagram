@@ -1,0 +1,23 @@
+.notifications-container {
+	margin: 0 auto;
+	width: 335px;
+	height: 649px;
+	overflow-y: scroll;
+	position: relative;
+	top: -35px;
+	left: 11px;
+}
+
+.notification {
+	display: flex;
+	align-items: center;
+	margin-top: 18px;
+	width: 292px;
+}
+
+.notification-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 245px;
+}

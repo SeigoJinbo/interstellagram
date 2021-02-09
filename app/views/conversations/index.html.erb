@@ -11,7 +11,7 @@
 			<% unless conversation.messages.last.nil? %>
 				<%# ------------------------NOTIIFICATION SHAPE------------------------ %>
 				<%= link_to conversation_path(conversation) do %>
-					<div class="inbox-notification">
+					<div class="inbox-notification" style="	left: 132px; right: 0;">
 						<div style="position: absolute; top: -15px; right: 110px;">
 							<%= render 'svgs/accents/inbox_t' %>
 						</div>

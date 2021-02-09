@@ -3,31 +3,80 @@
 		<%= render 'svgs/frames/notif_t' %>
 	</div>
 
-	<h6 class="form-label" style="position: relative; top: -38px; left: 31px; color: #00354d; width: 336px;">NOTIFICATIONS</h6>
+	<h6 class="form-label" style="position: relative; top: -41px; left: 31px; color: #00354d; width: 336px;">NOTIFICATIONS</h6>
 
-	<% @notifications.each do |notification| %>
-		<div class="d-flex">
-			<%= link_to user_path(notification.sender.user_name) do %>
-				<%= cl_image_tag notification.sender.image.key, width: 40, style: "border:1px #00FEFC solid;border-radius:50%;" %>
-			<% end %>
-			<p><%= notification.sender.user_name %></p>
-			<p><%= notification.message %></p>
-			<% if notification.post %>
-				<%= link_to post_path(notification.post) do %>
-					<%= cl_image_tag notification.post.images.first.key, width: 40 %>
-				<% end %>
-			<% else %>
-				<% pre_follow = notification.sender.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
-				<% if pre_follow %>
-					<%= button_to 'Unfollow', user_connection_path(notification.sender.id, pre_follow), method: :delete %>
-				<% else %>
-					<%= button_to 'Follow', user_connections_path(notification.sender.id), method: :post %>
-				<% end %>
-			<% end %>
-		</div>
-	<% end %>
+	<%# ------------------------NOTIIFICATION LOG------------------------ %>
+	<div class="notifications-container">
+		<% @notifications.each do |notification| %>
+			<% unless notification.sender.user_name == current_user.user_name %>
+				<%# ------------------------NOTIIFICATION CARD------------------------ %>
+				<div class="inbox-notification" style="position: relative; width: 314px; height: 82px; margin: 16px 0 0 0; z-index: -1;">
+					<div class="notification">
 
-	<div>
+						<%# ------------------------ACCENTS------------------------ %>
+						<div style="position: absolute; top: 69px; left: -1px;">
+							<%= render 'svgs/accents/notif_accent_b' %>
+						</div>
+						<div style="position: absolute; top: -15px; left: 48px;">
+							<%= render 'svgs/accents/chat_you_t' %>
+						</div>
+						<h6 class="form-label" style="position: absolute; top: 71px; right: 125px; font-size: 6px;"><%= notification.created_at.to_time.strftime('%a %b %e %Y, %H:%M').upcase %></h6>
+						<div style="transform: rotate(-90deg);">
+							<div class="small-meter" style="width: 45px; height: 5px;">
+								<span style="width:<%= rand(10..90) %>%;"><span class="hp-progress"></span></span>
+							</div>
+							<div class="small-meter" style="width: 45px; height: 5px;">
+								<span style="width:<%= rand(10..90) %>%;"><span class="mp-progress"></span></span>
+							</div>
+						</div>
+
+						<%# ------------------------USER DETAILS------------------------ %>
+						<div style="margin-left: -8px;">
+							<%= link_to user_path(notification.sender.user_name) do %>
+								<%= cl_image_tag notification.sender.image.key, width: 45, height: 45, style: "border:1px #00FEFC solid;border-radius:50%;" %>
+							<% end %>
+						</div>
+
+						<div class="notification-content">
+							<div style="margin-left: 8px;">
+								<div style="font-family: 'Exo'; font-size: 14px; color: white;"><%= notification.sender.user_name %></div>
+								<div style="font-size: 9px;"><%= notification.message %></div>
+							</div>
+
+							<%# ------------------------MESSAGE DETAILS------------------------ %>
+							<div>
+								<% if notification.post %>
+									<div style="margin-right: 8px;">
+										<%= link_to post_path(notification.post) do %>
+											<%= cl_image_tag notification.post.images.first.key, width: 45, height: 45, :crop=>"fill" %>
+										<% end %>
+									</div>
+								<% else %>
+									<% pre_follow = notification.sender.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
+									<% if pre_follow %>
+										<div style="height: 26px;">
+											<%= render 'svgs/buttons/short_btn_empty' %>
+											<div style="position: relative; top: -18px; right: -9px; font-family: 'Revalia'; font-size: 6px;">FOLLOWING</div>
+										</div>
+									<% else %>
+										<%= link_to user_connections_path(notification.sender.id), method: :post do %>
+											<div style="height: 26px;">
+												<%= render 'svgs/buttons/short_btn' %>
+												<div style="position: relative; top: -18px; right: -9px; font-family: 'Revalia'; font-size: 6px;">FOLLOW</div>
+											</div>
+										<% end %>
+									<% end %>
+								<% end %>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+
+	<div style="position: absolute; top: 721px;">
 		<%= render 'svgs/frames/notif_b' %>
 	</div>
 </div>
