@@ -33,8 +33,14 @@
 
 						<%# ------------------------USER DETAILS------------------------ %>
 						<div style="margin-left: -8px;">
-							<%= link_to user_path(notification.sender.user_name) do %>
-								<%= cl_image_tag notification.sender.image.key, width: 45, height: 45, style: "border:1px #00FEFC solid;border-radius:50%;" %>
+							<% if notification.sender.image.attached? %>
+								<%= link_to user_path(notification.sender.user_name) do %>
+									<%= cl_image_tag notification.sender.image.key, width: 45, height: 45, style: "border:1px #00FEFC solid;border-radius:50%;" %>
+								<% end %>
+							<% else %>
+								<%= link_to user_path(notification.sender.user_name) do %>
+									<div style="width: 45px; height: 45px; border: 1px #00FEFC solid; border-radius: 50%;"%></div>
+								<% end %>
 							<% end %>
 						</div>
 
