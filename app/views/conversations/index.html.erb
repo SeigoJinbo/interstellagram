@@ -10,45 +10,49 @@
 		<% @conversations.each do |conversation| %>
 			<% unless conversation.messages.last.nil? %>
 				<%# ------------------------NOTIIFICATION SHAPE------------------------ %>
-				<div class="inbox-notification">
-					<div style="position: absolute; top: -15px; right: 110px;">
-						<%= render 'svgs/accents/inbox_t' %>
+				<%= link_to conversation_path(conversation) do %>
+					<div class="inbox-notification">
+						<div style="position: absolute; top: -15px; right: 110px;">
+							<%= render 'svgs/accents/inbox_t' %>
+						</div>
+						<h6 class="form-label" style="position: absolute; top: 68px; right: 17px; font-size: 6px;"><%= conversation.messages.last.created_at.to_time.strftime('%a %b %e %Y, %H:%M').upcase %></h6>
+						<div style="position: absolute; top: 71px; right: 17px;">
+							<%= render 'svgs/accents/inbox_b' %>
+						</div>
+						<div class="dotted-line" style="position: absolute; top: 77px; right: 17px;"></div>
+						<div style="position: relative; top: 9px; right: 119px;">
+							<%= render 'svgs/frames/user_t' %>
+						</div>
+						<div style="position: relative; top: 10px; right: 119px;">
+							<%= render 'svgs/frames/user_b' %>
+						</div>
 					</div>
-					<h6 class="form-label" style="position: absolute; top: 68px; right: 17px; font-size: 6px;"><%= conversation.messages.last.created_at.to_time.strftime('%a %b %e %Y, %H:%M').upcase %></h6>
-					<div style="position: absolute; top: 71px; right: 17px;">
-						<%= render 'svgs/accents/inbox_b' %>
-					</div>
-					<div class="dotted-line" style="position: absolute; top: 77px; right: 17px;"></div>
-					<div style="position: relative; top: 9px; right: 119px;">
-						<%= render 'svgs/frames/user_t' %>
-					</div>
-					<div style="position: relative; top: 10px; right: 119px;">
-						<%= render 'svgs/frames/user_b' %>
-					</div>
-				</div>
 
-				<%# ------------------------NOTIFICATION CONTENT------------------------ %>
-				<div class="inbox-content">
-					<div>
-						<% conversation.users.each do |user| %>
-							<% if user.user_name != current_user.user_name && user.image.attached? %>
-								<%= cl_image_tag user.image.key, width: 45, height: 45, style: "border: 1px #00FEFC solid;border-radius: 50%;" %>
-							<% elsif user.image.attached? != true %>
-								<div style="width: 45px; height: 45px; border: 1px #00FEFC solid; border-radius: 50%; background: rgba(0, 254, 252, 0.3);"></div>
+					<%# ------------------------NOTIFICATION CONTENT------------------------ %>
+					<div class="inbox-content">
+						<div>
+							<% conversation.users.each do |user| %>
+								<% if user.user_name != current_user.user_name && user.image.attached? %>
+									<%= cl_image_tag user.image.key, width: 45, height: 45, style: "border: 1px #00FEFC solid;border-radius: 50%;" %>
+								<% elsif user.user_name != current_user.user_name && !user.image.attached? %>
+									<div style="width: 45px; height: 45px; border: 1px #00FEFC solid; border-radius: 50%; background: rgba(0, 254, 252, 0.3);"></div>
+								<% end %>
 							<% end %>
-						<% end %>
+						</div>
+
+						<div style="margin-left: 8px;">
+							<div style="font-family: 'Exo'; font-size: 14px; color: white;"><%= conversation.users.find { |user| user != current_user}.user_name %></div>
+							<% if conversation.messages.last.user.user_name == current_user.user_name %>
+								<div style="font-size: 12px; color: white;">You: <%= truncate(conversation.messages.last.content, length: 28) %></div>
+							<% else %>
+								<div style="font-size: 12px;"><%= truncate(conversation.messages.last.content, length: 28) %></div>
+							<% end %>
+
+						</div>
 					</div>
 
-					<div style="margin-left: 8px;">
-						<div style="font-family: 'Exo'; font-size: 14px;"><%= conversation.users.find { |user| user != current_user}.user_name %></div>
-						<% if conversation.messages.last.user.user_name == current_user.user_name %>
-							<div style="font-size: 12px;">You: <%= truncate(conversation.messages.last.content, length: 28) %></div>
-						<% else %>
-							<div style="font-size: 12px;"><%= truncate(conversation.messages.last.content, length: 28) %></div>
-						<% end %>
+				<% end %>
 
-					</div>
-				</div>
 			<% end %>
 		<% end %>
 	</div>
