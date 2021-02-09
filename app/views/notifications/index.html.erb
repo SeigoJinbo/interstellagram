@@ -20,7 +20,8 @@
 						<div style="position: absolute; top: -15px; left: 48px;">
 							<%= render 'svgs/accents/chat_you_t' %>
 						</div>
-						<h6 class="form-label" style="position: absolute; top: 71px; right: 125px; font-size: 6px;"><%= notification.created_at.to_time.strftime('%a %b %e %Y, %H:%M').upcase %></h6>
+						<h6 class="form-label" style="position: absolute; top: 68px; right: 133px; font-size: 6px;"><%= notification.created_at.to_time.strftime('%a %b %e %Y, %H:%M').upcase %></h6>
+						<div class="dotted-line" style="position: absolute; top: 76px; right: 19px; width: 276px;"></div>
 						<div style="transform: rotate(-90deg);">
 							<div class="small-meter" style="width: 45px; height: 5px;">
 								<span style="width:<%= rand(10..90) %>%;"><span class="hp-progress"></span></span>
