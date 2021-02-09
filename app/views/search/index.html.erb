@@ -1,28 +1,98 @@
 <%# ------------------------------SEARCH----------------------------- %>
+<% if false %>
+	<div class="search-container">
+		<div class="search-content">
+			aaa
+		</div>
+	</div>
+
+	<div class="m-auto">
+		<%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
+			<%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2', placeholder: '#search' %>
+		<% end %>
+	</div>
+	<div class="search-page">
+		<% if @posts.exists? %>
+			<h1>Top Posts</h1>
+			<%= render 'posts/grid', posts: @posts %>
+		<% end %>
+		<% if @users %>
+			<% @users.each do |user| %>
+				<%= user.user_name %>
+			<% end %>
+		<% end %>
+		<% if @tags %>
+			<% @tags.each do |tag| %>
+				<%= tag.name %>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>
+
+<%# ------------------------------SEARCH------------------------------ %>
 <div class="search-container">
 	<div class="search-content">
-		aaa
-	</div>
-</div>
+		<div style="height: 137px;">
+			<div style="position: absolute;">
+				<%= render 'svgs/frames/search' %>
+			</div>
+			<div style="position: absolute; top: -3px; right: 0px;">
+				<%= render 'svgs/circles/search_circle' %>
+			</div>
+			<%# ------------------------------INPUT------------------------------ %>
+			<div style="position: absolute; top: 33px; right: 337px; z-index: 1;">
+				<%= render 'svgs/accents/magnifying' %>
+			</div>
+			<div style="position: absolute; top: 33px; right: 113px;">
+				<%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
+					<%= form.text_field :query, value: params[:query], class: 'form-control', placeholder: 'Search...', style: 'padding: 0.375rem 1.75rem; font-size: 12px; color: white;' %>
+				<% end %>
+			</div>
+			<%# ------------------------------POSTS COUNTER CIRCLE------------------------------ %>
+			<div style="width: 48px; position: absolute; top: 32px; right: 25px;">
+				<div class="form-label" style="text-align: center;"><%= Post.all.count %></div>
+				<div class="form-label" style="text-align: center; font-size: 4px;">TOTAL</div>
+				<div class="form-label" style="text-align: center; font-size: 4px;">PHOTOS</div>
+			</div>
+			<%# ------------------------------RESULTS------------------------------ %>
+			<div class="white-circle" style="position: absolute; top: 98px; right: 363px;"></div>
+			<div style="position: absolute; top: 89px; right: 160px; width: 200px;">
+				<span class="form-label">#</span><span class="form-label"> RESULTS:</span>
+			</div>
+		</div>
+		<%# ------------------------------GRID OF POSTS------------------------------ %>
+		<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+			<li class="nav-item">
+				<a class="nav-link active" id="pills-accounts-tab" data-toggle="pill" href="#pills-accounts" role="tab" aria-controls="pills-accounts" aria-selected="true">ACCOUNTS</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="pills-posts-tab" data-toggle="pill" href="#pills-posts" role="tab" aria-controls="pills-posts" aria-selected="false">POSTS</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" id="pills-tags-tab" data-toggle="pill" href="#pills-tags" role="tab" aria-controls="pills-tags" aria-selected="false">TAGS</a>
+			</li>
+		</ul>
+		<div class="tab-content" id="pills-tabContent">
+			<div class="tab-pane fade show active" id="pills-accounts" role="tabpanel" aria-labelledby="pills-home-tab">
+				<% if @users %>
+					<% @users.each do |user| %>
+						<%= user.user_name %>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="tab-pane fade" id="pills-posts" role="tabpanel" aria-labelledby="pills-posts-tab">
+				<% if @posts.exists? %>
+					<%= render 'posts/grid', posts: @posts %>
+				<% end %>
+			</div>
+			<div class="tab-pane fade" id="pills-tags" role="tabpanel" aria-labelledby="pills-tags-tab">
+				<% if @tags %>
+					<% @tags.each do |tag| %>
+						<%= tag.name %>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
 
-<div class="m-auto">
-	<%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
-		<%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2', placeholder: '#search' %>
-	<% end %>
-</div>
-<div class="search-page">
-	<% if @posts.exists? %>
-		<h1>Top Posts</h1>
-		<%= render 'posts/grid', posts: @posts %>
-	<% end %>
-	<% if @users %>
-		<% @users.each do |user| %>
-			<%= user.user_name %>
-		<% end %>
-	<% end %>
-	<% if @tags %>
-		<% @tags.each do |tag| %>
-			<%= tag.name %>
-		<% end %>
-	<% end %>
+	</div>
 </div>

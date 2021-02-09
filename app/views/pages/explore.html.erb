@@ -17,7 +17,7 @@
 					<%= form.text_field :query, value: params[:query], class: 'form-control', placeholder: 'Search...', style: 'padding: 0.375rem 1.75rem; font-size: 12px; color: white;' %>
 				<% end %>
 			</div>
-			<%# ------------------------------POSTS COUNTER------------------------------ %>
+			<%# ------------------------------POSTS COUNTER CIRCLE------------------------------ %>
 			<div style="width: 48px; position: absolute; top: 32px; right: 25px;">
 				<div class="form-label" style="text-align: center;"><%= Post.all.count %></div>
 				<div class="form-label" style="text-align: center; font-size: 4px;">TOTAL</div>
@@ -32,6 +32,7 @@
 				</div>
 			</div>
 		</div>
+		<%# ------------------------------GRID OF POSTS------------------------------ %>
 		<%= render 'posts/grid', posts: Post.all %>
 
 		<%# ------------------------------REMOVE THIS LATER!!------------------------------ %>
@@ -43,21 +44,3 @@
 
 	</div>
 </div>
-
-<% if false %>
-	<div>
-		<h1>Explore</h1>
-		<div class="m-auto">
-			<%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
-				<%= form.text_field :query, value: params[:query], class: 'form-control mr-sm-2', placeholder: '#search' %>
-			<% end %>
-		</div>
-		<% @users = User.all %>
-		<% @users.each do |user| %>
-			<p><%= link_to user.name, user_path(user.user_name) %></p>
-		<% end %>
-		<%= render 'posts/grid', posts: @posts %>
-
-	</div>
-
-<% end %>
