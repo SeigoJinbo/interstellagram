@@ -32,7 +32,7 @@
 				<%= render 'svgs/frames/tabbox' %>
 			</div>
 		</div>
-		<%# ------------------------------GRID OF POSTS------------------------------ %>
+		<%# ------------------------------TAB LINKS------------------------------ %>
 		<ul class="nav nav-pills" id="pills-tab" role="tablist">
 
 			<li class="nav-item">
@@ -55,30 +55,10 @@
 
 		</ul>
 
-		<div class="tab-content" id="pills-tabContent">
-			<div class="tab-pane fade show active" id="pills-accounts" role="tabpanel" aria-labelledby="pills-home-tab">
-				<% if @users %>
-					<% @users.each do |user| %>
-						<%= link_to user_path(user.user_name) do %>
-							<%= cl_image_tag user.image.key, width: 45, height: 45, style: "border: 1px #00FEFC solid;border-radius: 50%;" %>
-							<%= user.user_name %>
-						<% end %>
-					<% end %>
-				<% end %>
-			</div>
-			<div class="tab-pane fade" id="pills-posts" role="tabpanel" aria-labelledby="pills-posts-tab">
-				<% if @posts.exists? %>
-					<%= render 'posts/grid', posts: @posts %>
-				<% end %>
-			</div>
-			<div class="tab-pane fade" id="pills-tags" role="tabpanel" aria-labelledby="pills-tags-tab">
-				<% if @tags %>
-					<% @tags.each do |tag| %>
-						<%= tag.name %>
-					<% end %>
-				<% end %>
-			</div>
-		</div>
-
+		<%= render 'tab_user' %>
+		<%= render 'tab_posts' %>
+		<%= render 'tab_tags' %>
 	</div>
+
+</div>
 </div>
