@@ -10,7 +10,7 @@
 		<% @notifications.each do |notification| %>
 			<% unless notification.sender.user_name == current_user.user_name %>
 				<%# ------------------------NOTIIFICATION CARD------------------------ %>
-				<div class="inbox-notification" style="position: relative; width: 314px; height: 82px; margin: 16px 0 0 0; z-index: -1;">
+				<div class="inbox-notification" style="position: relative; width: 314px; height: 82px; margin: 16px 0 0 0;">
 					<div class="notification">
 
 						<%# ------------------------ACCENTS------------------------ %>
@@ -40,7 +40,9 @@
 
 						<div class="notification-content">
 							<div style="margin-left: 8px;">
-								<div style="font-family: 'Exo'; font-size: 14px; color: white;"><%= notification.sender.user_name %></div>
+								<%= link_to user_path(notification.sender.user_name) do %>
+									<div style="font-family: 'Exo'; font-size: 14px; color: white;"><%= notification.sender.user_name %></div>
+								<% end %>
 								<div style="font-size: 9px;"><%= notification.message %></div>
 							</div>
 
