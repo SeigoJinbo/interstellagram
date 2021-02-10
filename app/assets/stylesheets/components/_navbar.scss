@@ -11,6 +11,10 @@
 //   width: 40px;
 
 // }
+@font-face {
+  font-family: "logo";
+  src: asset_url("Michelangelo.otf");
+}
 .navbar-top {
   z-index: -1;
   height: 52px;
@@ -28,12 +32,12 @@
       left: 46%;
     }
     .home {
-      font-family: "Orbitron";
-      font-size: 12px;
+      font-family: "logo";
+      font-size: 14px;
       color: white;
       position: absolute;
-      right: 20px;
-      top: 13px;
+      right: 26px;
+      top: 16px;
     }
   }
 }
@@ -47,7 +51,9 @@
   background-color: #00354d;
   align-items: center;
   ul {
-    margin-top: 4px;
+    width: 375px;
+
+    margin: 4px auto 0 auto;
     display: flex;
     list-style-type: none;
     justify-content: space-around;
