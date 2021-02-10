@@ -1,0 +1,35 @@
+<div class="navbar-bottom">
+  <ul>
+    <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to bookmarks_path do %>
+          <%= render "svgs/navbar/bookmarks" %>
+        <% end %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to explore_path do %>
+          <%= render "svgs/navbar/explore" %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to new_post_path do %>
+          <%= render "svgs/navbar/post" %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to notifications_path do %>
+          <%= render "svgs/navbar/notifications" %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to inbox_path do %>
+          <%= render "svgs/navbar/messages" %>
+        <% end %>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+      </li>
+    <% end %>
+  </ul>
+</div>
