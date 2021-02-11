@@ -37,19 +37,19 @@
 
 			<li class="nav-item">
 				<a class="form-label" id="pills-accounts-tab" data-toggle="pill" href="#pills-accounts" role="tab" aria-controls="pills-accounts" aria-selected="true">
-					<div class="search-tab-sides" style="left: 8px;"><span><%= "#{@users.count} ACCOUNTS"%></span></div>
+					<div class="search-tab-sides" style="left: 8px;"><span><%= "#{@users.count} "%><%= (@users.count) == 1 ? 'ACCOUNT' : 'ACCOUNTS'%></span></div>
 				</a>
 			</li>
 
 			<li class="nav-item">
 				<a class="form-label search-tab active" id="pills-posts-tab" data-toggle="pill" href="#pills-posts" role="tab" aria-controls="pills-posts" aria-selected="false">
-					<div class="search-tab-mid" style=""><%= "#{@posts.count} POSTS"%></div>
+					<div class="search-tab-mid" style=""><%= "#{@posts.count} "%><%= (@posts.count) == 1 ? 'POST' : 'POSTS'%></div>
 				</a>
 			</li>
 
 			<li class="nav-item">
 				<a class="form-label search-tab" id="pills-tags-tab" data-toggle="pill" href="#pills-tags" role="tab" aria-controls="pills-tags" aria-selected="false">
-					<div class="search-tab-sides" style="	left: 250px;"><%= "#{@tags.count} TAGS"%></div>
+					<div class="search-tab-sides" style="	left: 250px;"><%= "#{@tags.count} "%><%= (@tags.count) == 1 ? 'TAG' : 'TAGS'%></div>
 				</a>
 			</li>
 

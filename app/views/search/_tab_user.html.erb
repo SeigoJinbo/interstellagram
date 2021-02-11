@@ -1,8 +1,10 @@
 <div class="tab-content" id="pills-tabContent">
 	<div class="tab-pane fade" id="pills-accounts" role="tabpanel" aria-labelledby="pills-home-tab" style="margin-top: 41px;">
-		<% if @users %>
+		<% if @users && @users.count != 0 %>
+			<div class="search-user-line" style="top: 159px; left: 57px;"></div>
+			<div class="white-circle" style="position: absolute; top: 139px; right: 310px;"></div>
+			<div class="white-circle" style="position: absolute; top: 173px; right: 246px;"></div>
 			<% @users.each do |user| %>
-				<div class="search-user-line" style="top: 159px; left: 57px;"></div>
 				<%= link_to user_path(user.user_name) do %>
 					<div style="display: flex; align-items: center;">
 
