@@ -37,6 +37,12 @@
 					</div>
 				</div>
 			</div>
+
+			<div style="position:absolute; top: 40px; right: 30px;">
+				<%= link_to edit_post_path(post) do %>
+					<%= render 'svgs/buttons/edit_btn' %>
+				<% end %>
+			</div>
 		</div>
 		<%# ------------------------------IMAGE PART------------------------------ %>
 		<%= render 'image' %>
