@@ -39,36 +39,7 @@
 			</div>
 		</div>
 		<%# ------------------------------IMAGE PART------------------------------ %>
-		<% if post.images.count == 1 %>
-			<%= cl_image_tag post.images.first.key, width: 312, height: 312, :crop=>"fill" %>
-		<% else %>
-			<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-				<ol class="carousel-indicators">
-					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-					<% post.images[1..-1].each do |image| %>
-						<li data-target="#carouselExampleIndicators" data-slide-to='<% "${post.images.index(image)}" %>'></li>
-					<% end %>
-				</ol>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<%= cl_image_tag post.images.first.key, width: 312, height: 312, :crop=>"fill" %>
-					</div>
-					<% post.images[1..-1].each do |image| %>
-						<div class="carousel-item">
-							<%= cl_image_tag image.key, width: 312, height: 312, :crop=>"fill" %>
-						</div>
-					<% end %>
-				</div>
-				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="sr-only">Next</span>
-				</a>
-			</div>
-		<% end %>
+		<%= render 'image' %>
 		<%# ------------------------------LIKES COUNTER------------------------------ %>
 		<div class="post-actions">
 			<div class="post-energycell">
@@ -83,33 +54,7 @@
 				</div>
 			</div>
 			<%# ------------------------------ACTION BUTTONS------------------------------ %>
-			<div class="post-buttons" style="position: relative; right: 22px;">
-				<div style="margin: 0 2px 0 2px;">
-					<%= render 'svgs/buttons/bookmark' %>
-				</div>
-				<div style="margin: 0 2px 0 2px;">
-					<%= render 'svgs/buttons/share' %>
-				</div>
-				<% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
-				<% if pre_like %>
-					<%= link_to post_like_path(post, pre_like), method: :delete do %>
-						<div style="margin: 0 2px 0 2px;">
-							<%= render 'svgs/buttons/unlike' %>
-						</div>
-					<% end %>
-				<% else %>
-					<%= link_to post_likes_path(post), method: :post do %>
-						<div style="margin: 0 2px 0 2px;">
-							<%= render 'svgs/buttons/like' %>
-						</div>
-					<% end %>
-				<% end %>
-				<%= link_to post_comments_path(post) do %>
-					<div style="margin: 0 2px 0 2px;">
-						<%= render 'svgs/buttons/comment' %>
-					</div>
-				<% end %>
-			</div>
+			<%= render 'buttons' %>
 		</div>
 		<%# ------------------------COMMENTS COUNTER & DESCRIPTION PART------------------------ %>
 		<div class="post-middle">
