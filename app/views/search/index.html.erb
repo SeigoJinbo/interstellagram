@@ -26,7 +26,7 @@
 			<%# ------------------------------RESULTS------------------------------ %>
 			<div class="white-circle" style="position: absolute; top: 98px; right: 363px;"></div>
 			<div style="position: absolute; top: 89px; right: 160px; width: 200px;">
-				<span class="form-label">#</span><span class="form-label"> RESULTS:</span>
+				<span class="form-label"><%= (@users.count + @posts.count + @tags.count) %></span><span class="form-label"> RESULTS:</span>
 			</div>
 			<div style="position: absolute; top: 110px; left: 8px;">
 				<%= render 'svgs/frames/tabbox' %>
