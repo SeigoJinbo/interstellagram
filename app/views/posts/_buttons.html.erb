@@ -1,0 +1,46 @@
+<div class="post-buttons" style="position: relative; right: 22px;">
+
+	<%# ------------------------------BOOKMARKS------------------------------ %>
+	<% pre_bookmark = @post.bookmarks.find { |bookmark| bookmark.user_id == current_user.id} %>
+	<% if pre_bookmark %>
+		<%= link_to post_bookmark_path(@post, pre_bookmark), method: :delete do %>
+			<div style="margin: 0 2px 0 2px;">
+				<%= render 'svgs/buttons/unbookmark' %>
+			</div>
+		<% end %>
+	<% else %>
+		<%= link_to post_bookmarks_path(@post), method: :post do %>
+			<div style="margin: 0 2px 0 2px;">
+				<%= render 'svgs/buttons/bookmark' %>
+			</div>
+		<% end %>
+	<% end %>
+
+	<%# ------------------------------SHARE------------------------------ %>
+	<div style="margin: 0 2px 0 2px;">
+		<%= render 'svgs/buttons/share' %>
+	</div>
+
+	<%# ------------------------------LIKE------------------------------ %>
+	<% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+	<% if pre_like %>
+		<%= link_to post_like_path(@post, pre_like), method: :delete do %>
+			<div style="margin: 0 2px 0 2px;">
+				<%= render 'svgs/buttons/unlike' %>
+			</div>
+		<% end %>
+	<% else %>
+		<%= link_to post_likes_path(@post), method: :post do %>
+			<div style="margin: 0 2px 0 2px;">
+				<%= render 'svgs/buttons/like' %>
+			</div>
+		<% end %>
+	<% end %>
+
+	<%# ------------------------------COMMENT------------------------------ %>
+	<%= link_to post_comments_path(@post) do %>
+		<div style="margin: 0 2px 0 2px;">
+			<%= render 'svgs/buttons/comment' %>
+		</div>
+	<% end %>
+</div>

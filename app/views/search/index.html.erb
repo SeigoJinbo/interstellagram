@@ -26,7 +26,7 @@
 			<%# ------------------------------RESULTS------------------------------ %>
 			<div class="white-circle" style="position: absolute; top: 98px; right: 363px;"></div>
 			<div style="position: absolute; top: 89px; right: 160px; width: 200px;">
-				<span class="form-label">#</span><span class="form-label"> RESULTS:</span>
+				<span class="form-label"><%= (@users.count + @posts.count + @tags.count) %></span><span class="form-label"> RESULTS:</span>
 			</div>
 			<div style="position: absolute; top: 110px; left: 8px;">
 				<%= render 'svgs/frames/tabbox' %>
@@ -36,20 +36,20 @@
 		<ul class="nav nav-pills" id="pills-tab" role="tablist">
 
 			<li class="nav-item">
-				<a class="form-label active" id="pills-accounts-tab" data-toggle="pill" href="#pills-accounts" role="tab" aria-controls="pills-accounts" aria-selected="true">
-					<div class="search-tab-sides" style="left: 8px;"><span>ACCOUNTS</span></div>
+				<a class="form-label" id="pills-accounts-tab" data-toggle="pill" href="#pills-accounts" role="tab" aria-controls="pills-accounts" aria-selected="true">
+					<div class="search-tab-sides" style="left: 8px;"><span><%= "#{@users.count} "%><%= (@users.count) == 1 ? 'ACCOUNT' : 'ACCOUNTS'%></span></div>
 				</a>
 			</li>
 
 			<li class="nav-item">
-				<a class="form-label search-tab" id="pills-posts-tab" data-toggle="pill" href="#pills-posts" role="tab" aria-controls="pills-posts" aria-selected="false">
-					<div class="search-tab-mid" style="">POSTS</div>
+				<a class="form-label search-tab active" id="pills-posts-tab" data-toggle="pill" href="#pills-posts" role="tab" aria-controls="pills-posts" aria-selected="false">
+					<div class="search-tab-mid" style=""><%= "#{@posts.count} "%><%= (@posts.count) == 1 ? 'POST' : 'POSTS'%></div>
 				</a>
 			</li>
 
 			<li class="nav-item">
 				<a class="form-label search-tab" id="pills-tags-tab" data-toggle="pill" href="#pills-tags" role="tab" aria-controls="pills-tags" aria-selected="false">
-					<div class="search-tab-sides" style="	left: 250px;">TAGS</div>
+					<div class="search-tab-sides" style="	left: 250px;"><%= "#{@tags.count} "%><%= (@tags.count) == 1 ? 'TAG' : 'TAGS'%></div>
 				</a>
 			</li>
 

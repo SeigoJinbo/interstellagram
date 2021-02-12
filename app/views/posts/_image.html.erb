@@ -1,0 +1,30 @@
+<% if @post.images.count == 1 %>
+	<%= cl_image_tag @post.images.first.key, width: 312, height: 312, :crop=>"fill" %>
+<% else %>
+	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+			<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+			<% @post.images[1..-1].each do |image| %>
+				<li data-target="#carouselExampleIndicators" data-slide-to='<% "${post.images.index(image)}" %>'></li>
+			<% end %>
+		</ol>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<%= cl_image_tag @post.images.first.key, width: 312, height: 312, :crop=>"fill" %>
+			</div>
+			<% @post.images[1..-1].each do |image| %>
+				<div class="carousel-item">
+					<%= cl_image_tag image.key, width: 312, height: 312, :crop=>"fill" %>
+				</div>
+			<% end %>
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+<% end %>

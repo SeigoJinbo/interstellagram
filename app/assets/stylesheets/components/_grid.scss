@@ -8,3 +8,14 @@
 		border: 1px solid $teal;
 	}
 }
+
+.bookmarks-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	img {
+		width: 103px;
+		height: 103px;
+		object-fit: cover;
+		border: 1px solid $teal;
+	}
+}
