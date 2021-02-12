@@ -67,3 +67,39 @@
 	height: 48px;
 	margin: 0 auto;
 }
+
+.inbox-notification {
+	width: 228px;
+	height: 82px;
+	position: relative;
+	margin: 12px 0 0 0;
+
+	background: linear-gradient(
+		180deg,
+		rgba(60, 199, 204, 0.3) 0%,
+		rgba(180, 150, 152, 0.3) 100%
+	);
+	border: 1px solid #3cc7cc;
+	box-sizing: border-box;
+	border-radius: 0 20px 20px 0;
+}
+
+.inbox-notifications-container {
+	height: 590px;
+	// width: 313px;
+	margin: 0 auto;
+
+	// position: relative;
+	// top: -30px;
+	// right: 0px;
+	overflow-y: scroll;
+}
+
+.inbox-content {
+	width: 242px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	top: -65px;
+	right: -110px;
+}

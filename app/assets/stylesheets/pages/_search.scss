@@ -1,0 +1,31 @@
+.search-container {
+	width: 375px;
+	margin: 0 auto;
+	position: relative;
+	// top: 10px;
+}
+.search-content {
+	position: absolute;
+	width: 375px;
+}
+
+.search-tab-sides {
+	position: absolute;
+	top: 110px;
+	width: 117px;
+	height: 25px;
+	color: white;
+	text-align: center;
+	padding-top: 5px;
+}
+
+.search-tab-mid {
+	position: absolute;
+	top: 110px;
+	left: 125px;
+	width: 124px;
+	height: 25px;
+	color: white;
+	text-align: center;
+	padding-top: 5px;
+}

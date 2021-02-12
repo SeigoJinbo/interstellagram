@@ -30,34 +30,6 @@
 			margin-left: 8px;
 			width: 120px;
 		}
-		.small-meter {
-			height: 5px;
-			position: relative;
-			background: #215168;
-			overflow: hidden;
-		}
-		.small-meter span {
-			display: block;
-			height: 100%;
-		}
-		.hp-progress {
-			background-color: $blue;
-			animation: progressBar 3s ease-in-out;
-			animation-fill-mode: both;
-		}
-		.mp-progress {
-			background-color: $yellow;
-			animation: progressBar 3s ease-in-out;
-			animation-fill-mode: both;
-		}
-		@keyframes progressBar {
-			0% {
-				width: 0;
-			}
-			100% {
-				width: 100%;
-			}
-		}
 		.post-user-stats-box {
 			border: 1px solid $teal;
 			border-radius: 4px;

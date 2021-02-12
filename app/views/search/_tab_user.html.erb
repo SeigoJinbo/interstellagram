@@ -1,0 +1,16 @@
+<div class="tab-content" id="pills-tabContent">
+	<div class="tab-pane fade show active" id="pills-accounts" role="tabpanel" aria-labelledby="pills-home-tab">
+		<% if @users %>
+			<% @users.each do |user| %>
+				<%= link_to user_path(user.user_name) do %>
+					<% if user.image.attached? %>
+						<%= cl_image_tag user.image.key, width: 45, height: 45, style: "border: 1px #00FEFC solid;border-radius: 50%;" %>
+					<% else %>
+						<div style="width: 45px; height: 45px; border: 1px #00FEFC solid; border-radius: 50%; background: rgba(0, 254, 252, 0.3);"></div>
+					<% end %>
+					<%= user.user_name %>
+					<span><%= user.bio %></span>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>

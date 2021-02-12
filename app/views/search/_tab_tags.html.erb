@@ -1,0 +1,7 @@
+<div class="tab-pane fade" id="pills-tags" role="tabpanel" aria-labelledby="pills-tags-tab">
+	<% if @tags %>
+		<% @tags.each do |tag| %>
+			<%= tag.name %>
+		<% end %>
+	<% end %>
+</div>
