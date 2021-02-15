@@ -27,10 +27,16 @@
 			<div class="white-circle" style="position: absolute; top: 98px; right: 363px;"></div>
 			<div style="position: absolute; top: 89px; right: 311px;">
 				<span class="form-label">#</span><span class="form-label"> TAGS:</span>
-				<div style="position: absolute; top: 19px; right: -54px;">
-					<%= render 'svgs/buttons/angled_tag' %>
+			</div>
+
+			<div class="explore-tags-container">
+				<div style="display: flex;">
+					<div style="margin-right: 4px;">
+						<%= render 'svgs/buttons/angled_tag' %>
+					</div>
 				</div>
 			</div>
+
 		</div>
 		<%# ------------------------------GRID OF POSTS------------------------------ %>
 		<%= render 'posts/grid', posts: Post.all %>
