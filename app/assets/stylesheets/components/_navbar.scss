@@ -16,7 +16,8 @@
   src: asset_url("Michelangelo.otf");
 }
 .navbar-top {
-  z-index: -1;
+  z-index: 1;
+  position: relative;
   height: 52px;
   background: $dark-blue;
   width: 100vw;
