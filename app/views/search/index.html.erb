@@ -1,64 +1,60 @@
 <%# ------------------------------SEARCH------------------------------ %>
 <div class="search-container">
-	<div class="search-content">
-		<div style="height: 137px;">
-			<div style="position: absolute;">
-				<%= render 'svgs/frames/search' %>
-			</div>
-			<div style="position: absolute; top: -3px; right: 0px;">
-				<%= render 'svgs/circles/search_circle' %>
-			</div>
-			<%# ------------------------------INPUT------------------------------ %>
-			<div style="position: absolute; top: 33px; right: 337px; z-index: 1;">
-				<%= render 'svgs/accents/magnifying' %>
-			</div>
-			<div style="position: absolute; top: 33px; right: 113px;">
-				<%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
-					<%= form.text_field :query, value: params[:query], class: 'form-control', placeholder: 'Search...', style: 'padding: 0.375rem 1.75rem; font-size: 12px; color: white;' %>
-				<% end %>
-			</div>
-			<%# ------------------------------POSTS COUNTER CIRCLE------------------------------ %>
-			<div style="width: 48px; position: absolute; top: 32px; right: 25px;">
-				<div class="form-label" style="text-align: center;"><%= Post.all.count %></div>
-				<div class="form-label" style="text-align: center; font-size: 4px;">TOTAL</div>
-				<div class="form-label" style="text-align: center; font-size: 4px;">PHOTOS</div>
-			</div>
-			<%# ------------------------------RESULTS------------------------------ %>
-			<div class="white-circle" style="position: absolute; top: 98px; right: 363px;"></div>
-			<div style="position: absolute; top: 89px; right: 160px; width: 200px;">
-				<span class="form-label"><%= (@users.count + @posts.count + @tags.count) %></span><span class="form-label"> RESULTS:</span>
-			</div>
-			<div style="position: absolute; top: 110px; left: 8px;">
-				<%= render 'svgs/frames/tabbox' %>
-			</div>
-		</div>
-		<%# ------------------------------TAB LINKS------------------------------ %>
-		<ul class="nav nav-pills" id="pills-tab" role="tablist">
-
-			<li class="nav-item">
-				<a class="form-label" id="pills-accounts-tab" data-toggle="pill" href="#pills-accounts" role="tab" aria-controls="pills-accounts" aria-selected="true">
-					<div class="search-tab-sides" style="left: 8px;"><span><%= "#{@users.count} "%><%= (@users.count) == 1 ? 'ACCOUNT' : 'ACCOUNTS'%></span></div>
-				</a>
-			</li>
-
-			<li class="nav-item">
-				<a class="form-label search-tab active" id="pills-posts-tab" data-toggle="pill" href="#pills-posts" role="tab" aria-controls="pills-posts" aria-selected="false">
-					<div class="search-tab-mid" style=""><%= "#{@posts.count} "%><%= (@posts.count) == 1 ? 'POST' : 'POSTS'%></div>
-				</a>
-			</li>
-
-			<li class="nav-item">
-				<a class="form-label search-tab" id="pills-tags-tab" data-toggle="pill" href="#pills-tags" role="tab" aria-controls="pills-tags" aria-selected="false">
-					<div class="search-tab-sides" style="	left: 250px;"><%= "#{@tags.count} "%><%= (@tags.count) == 1 ? 'TAG' : 'TAGS'%></div>
-				</a>
-			</li>
-
-		</ul>
-
-		<%= render 'tab_user' %>
-		<%= render 'tab_posts' %>
-		<%= render 'tab_tags' %>
-	</div>
-
+  <div class="search-content">
+    <div style="height: 137px;">
+      <div style="position: absolute;">
+        <%= render 'svgs/frames/search' %>
+      </div>
+      <div style="position: absolute; top: -3px; right: 0px;">
+        <%= render 'svgs/circles/search_circle' %>
+      </div>
+      <%# ------------------------------INPUT------------------------------ %>
+      <div style="position: absolute; top: 33px; right: 337px; z-index: 1;">
+        <%= render 'svgs/accents/magnifying' %>
+      </div>
+      <div style="position: absolute; top: 33px; right: 113px;">
+        <%= form_with url: search_path, method: :get, local: true, class: 'form-inline search-form' do |form| %>
+          <%= form.text_field :query, value: params[:query], class: 'form-control', placeholder: 'Search...', style: 'padding: 0.375rem 1.75rem; font-size: 12px; color: white;' %>
+        <% end %>
+      </div>
+      <%# ------------------------------POSTS COUNTER CIRCLE------------------------------ %>
+      <div style="width: 48px; position: absolute; top: 32px; right: 25px;">
+        <div class="form-label" style="text-align: center;"><%= Post.all.count %></div>
+        <div class="form-label" style="text-align: center; font-size: 4px;">TOTAL</div>
+        <div class="form-label" style="text-align: center; font-size: 4px;">PHOTOS</div>
+      </div>
+      <%# ------------------------------RESULTS------------------------------ %>
+      <div class="white-circle" style="position: absolute; top: 98px; right: 363px;"></div>
+      <div style="position: absolute; top: 89px; right: 160px; width: 200px;">
+        <% if true %>
+          <span class="form-label"><%= (@users.count + @posts.count + @tags.count) %></span><span class="form-label"> RESULTS:</span>
+        <% end %>
+      </div>
+      <div style="position: absolute; top: 110px; left: 8px;">
+        <%= render 'svgs/frames/tabbox' %>
+      </div>
+    </div>
+    <%# ------------------------------TAB LINKS------------------------------ %>
+    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="form-label" id="pills-accounts-tab" data-toggle="pill" href="#pills-accounts" role="tab" aria-controls="pills-accounts" aria-selected="true">
+          <div class="search-tab-sides" style="left: 8px;"><span><%= "#{@users.count} "%><%= (@users.count) == 1 ? 'ACCOUNT' : 'ACCOUNTS'%></span></div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="form-label search-tab active" id="pills-posts-tab" data-toggle="pill" href="#pills-posts" role="tab" aria-controls="pills-posts" aria-selected="false">
+          <div class="search-tab-mid" style=""><%= "#{@posts.count} "%><%= (@posts.count) == 1 ? 'POST' : 'POSTS'%></div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="form-label search-tab" id="pills-tags-tab" data-toggle="pill" href="#pills-tags" role="tab" aria-controls="pills-tags" aria-selected="false">
+          <div class="search-tab-sides" style="	left: 250px;"><%= "#{@tags.count} "%><%= (@tags.count) == 1 ? 'TAG' : 'TAGS'%></div>
+        </a>
+      </li>
+    </ul>
+    <%= render 'tab_user' %>
+    <%= render 'tab_posts' %>
+    <%= render 'tab_tags' %>
+  </div>
 </div>
 </div>
