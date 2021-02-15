@@ -1,16 +1,15 @@
 <div class="inbox-container">
-	<div>
-		<%= render 'svgs/frames/notif_t' %>
-	</div>
-
-	<h6 class="form-label" style="position: relative; top: -41px; left: 31px; color: #00354d; width: 336px;">BOOKMARKS</h6>
-
-	<div class="bookmarks-container">
-		<div class="bookmarks-grid">
-			<% @bookmarks.each do |bookmark| %>
-				<%= link_to post_path(bookmark.post) do  %>
-					<%= cl_image_tag bookmark.post.images.first.key %>
-				<% end %>
-			<% end %>
-		</div>
-	</div>
+  <div>
+    <%= render 'svgs/frames/notif_t' %>
+  </div>
+  <h6 class="form-label" style="position: relative; top: -41px; left: 31px; color: #00354d; width: 336px;">BOOKMARKS</h6>
+  <div class="bookmarks-container">
+    <div class="bookmarks-grid">
+      <% @bookmarks.each do |bookmark| %>
+        <%= link_to post_path(bookmark.post) do  %>
+          <%= cl_image_tag bookmark.post.images.first.key %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
