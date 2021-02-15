@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    users = params[:post][:tagged_users]
     generate_tags(users, @post)
     if @post.save
       redirect_to post_path(@post)
@@ -30,6 +31,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    destroy_hash_tags(@post)
     users = params[:post][:tagged_users]
     generate_tags(users, @post)
     if @post.update(post_params)
@@ -41,8 +43,8 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
+    destroy_hash_tags(@post)
     @post.destroy
-
     redirect_to user_path(current_user.user_name)
   end
 
@@ -52,7 +54,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:description, :user, images: [])
   end
 
-  def generate_tags(tagged_users, post)
+  def generate_tags(tagged_users = [], post)
     new_tagged_users = []
     names = tagged_users.to_s.split(', ')
     names.each do |name|
@@ -66,5 +68,9 @@ class PostsController < ApplicationController
       )
     end
     @post.tagged_users = new_tagged_users
+  end
+
+  def destroy_hash_tags(post)
+    post.hash_tags.each { |hashtag| HashTag.destroy_by(id: hashtag.id) }
   end
 end

@@ -41,7 +41,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
 
-    redirect_to user_path(current_user.user_name)
+    redirect_to request.referrer
   end
 
   private

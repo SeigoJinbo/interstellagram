@@ -1,9 +1,9 @@
 class BookmarksController < ApplicationController
-	before_action :find_post, only: %i[new create destroy]
-	before_action :find_bookmark, only: %i[destroy]
-	def index
-		@bookmarks = current_user.bookmarks
-	end
+  before_action :find_post, only: %i[new create destroy]
+  before_action :find_bookmark, only: %i[destroy]
+  def index
+    @bookmarks = current_user.bookmarks
+  end
 
 	def create
 		if already_bookmarked?
