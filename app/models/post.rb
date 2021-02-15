@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_many :post_hash_tags, dependent: :destroy
-  has_many :hash_tags, through: :post_hash_tags
+  has_many :hash_tags, through: :post_hash_tags, dependent: :destroy
   has_many_attached :images, dependent: :destroy
   validates :images, presence: true
   after_commit :create_hash_tags, on: %i[create update]
