@@ -16,11 +16,11 @@
 		<div style="position: absolute; top: 4px; right: 208px;">
 			<%= render 'svgs/accents/yellow_bar' %>
 		</div>
-		<div style="position: absolute; top: 257px; right: 258px;">
-			<%= render 'svgs/buttons/grid_icon' %>
-		</div>
 		<div style="position: absolute; top: 253px; right: 84px;">
 			<%= render 'svgs/buttons/user_tagged' %>
+		</div>
+		<div style="position: absolute; top: 257px; right: 258px; width: 31px; height: 31px;">
+			<%= render 'svgs/buttons/grid_icon' %>
 		</div>
 		<div class="sm-white-circle" style="position: absolute; top: 39px; right: 349px;"></div>
 		<div class="sm-white-circle" style="position: absolute; top: 57px; right: 208px;"></div>
@@ -30,78 +30,29 @@
 		<div class="sm-white-circle" style="position: absolute; top: 168px; right: 116px;"></div>
 		<div class="sm-white-circle" style="position: absolute; top: 228px; right: 19px;"></div>
 		<%# ------------------------------USER STATS & DETAILS------------------------------ %>
-		<%# <%= link_to 'New Post', new_post_path, class: 'btn btn-primary', style: "position: absolute; top: 241px; right: 142px;"%>
-		<h6 style="position: absolute; top: 4px; right: 162px; width: 52px; text-align: center;"><%= rand(1..2000) %></h6>
-		<h6 style="position: absolute; top: 20px; right: 178px; font-size: 8px;">Rank</h6>
-		<div>
-			<% if @user.image.attached? %>
-				<%= cl_image_tag @user.image.key, width: 80, height: 80, style: "border-radius:50%; position: absolute; top: 98px; right: 148px;"%>
-			<% end %>
-		</div>
-		<p class="user-stat-details" style="position: absolute; top: 45px; right: 23px;">FOLLOWING</p>
-		<p class="user-stat-numbers" style="position: absolute; top: 46px; right: 90px;"><%= @user.followings.count %></p>
-		<p class="user-stat-details" style="position: absolute; top: 89px; right: 278px;">POSTS</p>
-		<p class="user-stat-numbers" style="position: absolute; top: 77px; right: 320px;"><%= @user.posts.count %></p>
-		<p class="user-stat-details" style="position: absolute; top: 89px; right: 59px;">FOLLOWERS</p>
-		<p class="user-stat-numbers" style="position: absolute; top: 75px; right: 30px;"><%= @user.followers.count %></p>
-		<p class="user-stat-details" style="position: absolute; top: 171px; right: 289px;">BIO</p>
-		<p class="user-bio" style="position: absolute; top: 186px; right: 63px;"><%= truncate(@user.bio, length: 165) %></p>
-		<p class="user-stat-details" style="position: absolute; top: 171px; right: 86px;">AGE</p>
-		<p class="user-stat-numbers" style="position: absolute; top: 178px; right: 22px; width: 40px;"><%= rand(18..99) %></p>
+		<%= render 'stats' %>
 		<%# ------------------------------BUTTONS------------------------------ %>
-		<% pre_follow = @user.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
-		<% if @user == current_user %>
-			<%= link_to edit_user_path(@user.user_name) do %>
-				<div style="position: absolute; top: 121px; right: 18px;">
-					<%= render 'svgs/buttons/angled_ye_btn' %>
-				</div>
-				<p style="position: absolute; top: 126px; right: 58px; color: #DBFFFF; font-size: 15px;">Edit</p>
-			<% end %>
-		<% elsif pre_follow %>
-			<%= link_to user_connection_path(@user.id, pre_follow), method: :delete do %>
-				<div style="position: absolute; top: 122px; right: 18px;">
-					<%= render 'svgs/buttons/angled_btn_off' %>
-					<p style="position: absolute; top: 3px; right: 17px; color: #DBFFFF; font-size: 15px;">Following</p>
-				</div>
-			<% end %>
-		<% else %>
-			<%= link_to user_connections_path(@user.id), method: :post do %>
-				<div style="position: absolute; top: 121px; right: 16px;">
-					<%= render 'svgs/buttons/angled_btn' %>
-					<p style="position: absolute; top: 5px; right: 28px; color: #DBFFFF; font-size: 15px;">Follow</p>
-				</div>
-			<% end %>
-		<% end %>
+		<%= render 'actions' %>
+		<%# ------------------------------TAB LINKS------------------------------ %>
+		<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+			<li class="nav-item">
+				<a class="active" id="pills-user-posts-tab" data-toggle="pill" href="#pills-user-posts" role="tab" aria-controls="pills-user-posts" aria-selected="true">
+					<div style="position: absolute; top: 257px; right: 258px; width: 31px; height: 31px;"></div>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="" id="pills-user-tagged-tab" data-toggle="pill" href="#pills-user-tagged" role="tab" aria-controls="pills-user-tagged" aria-selected="false">
+					<div style="position: absolute; top: 253px; right: 84px; width: 31px; height: 31px;"></div>
+				</a>
+			</li>
+		</ul>
 
-		<% if @user == current_user %>
-			<%= link_to edit_user_registration_path, style: "position: absolute; top: 121px; right: 253px;" do %>
-				<div>
-					<%= render 'svgs/buttons/angled_ye_btn' %>
-				</div>
-				<p style="position: absolute; top: 5px; right: 25px; color: #DBFFFF; font-size: 15px;">Settings</p>
-			<% end %>
-		<% end %>
-		<% pre_conversation = @user.conversations.find { |conversation| conversation.users.include?(current_user)} %>
-		<% unless @user == current_user %>
-			<% if pre_conversation %>
-				<%= link_to conversation_path(pre_conversation), method: :get do %>
-					<div style="position: absolute; top: 121px; right: 253px;">
-						<%= render 'svgs/buttons/angled_btn' %>
-						<p style="position: absolute; top: 4px; right: 21px; color: #DBFFFF; font-size: 15px;">Message</p>
-					</div>
-				<% end %>
-			<% else %>
-				<%= link_to user_conversations_path(@user.id), method: :post do %>
-					<div style="position: absolute; top: 121px; right: 253px;">
-						<%= render 'svgs/buttons/angled_btn' %>
-						<p style="position: absolute; top: 4px; right: 21px; color: #DBFFFF; font-size: 15px;">Message</p>
-					</div>
-				<% end %>
-			<% end %>
-		<% end %>
 		<hr>
 		<%# ------------------------------POSTS------------------------------ %>
-		<%# <%= render @user_posts %>
-		<%= render 'posts/grid', posts: @user.posts %>
+		<div class="tab-content" id="pills-tabContent">
+			<div class="tab-pane fade show active" id="pills-user-posts" role="tabpanel" aria-labelledby="pills-user-posts-tab"><%= render 'posts/grid', posts: @user.posts %></div>
+			<div class="tab-pane fade" id="pills-user-tagged" role="tabpanel" aria-labelledby="pills-user-tagged-tab">Posts where the user is tagged</div>
+		</div>
+
 	</div>
 </div>
