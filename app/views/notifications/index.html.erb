@@ -20,7 +20,7 @@
 						<div style="position: absolute; top: -15px; left: 48px;">
 							<%= render 'svgs/accents/chat_you_t' %>
 						</div>
-						<h6 class="form-label" style="position: absolute; top: 68px; right: 133px; font-size: 6px;"><%= notification.created_at.to_time.strftime('%a %b %e %Y, %H:%M').upcase %></h6>
+						<h6 class="form-label" style="position: absolute; top: 68px; left: 90px; font-size: 6px;"><%= notification.created_at.to_time.strftime('%a %b %e %Y, %H:%M').upcase %></h6>
 						<div class="dotted-line" style="position: absolute; top: 76px; right: 19px; width: 276px;"></div>
 						<div style="transform: rotate(-90deg);">
 							<div class="small-meter" style="width: 45px; height: 5px;">
@@ -71,7 +71,7 @@
 										<%= link_to user_connections_path(notification.sender.id), method: :post do %>
 											<div style="height: 26px;">
 												<%= render 'svgs/buttons/short_btn' %>
-												<div style="position: relative; top: -18px; right: -9px; font-family: 'Revalia'; font-size: 6px;">FOLLOW</div>
+												<div style="position: relative; top: -18px; right: -15px; font-family: 'Revalia'; font-size: 6px; width: 35px; text-align: center;">FOLLOW</div>
 											</div>
 										<% end %>
 									<% end %>
