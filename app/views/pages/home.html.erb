@@ -1,9 +1,8 @@
 <%# feed %>
 <% if current_user %>
-  <% if @posts %>
-    <%= render @posts %>
-  <% end %>
+	<% if @posts %>
+		<%= render @posts %>
+	<% end %>
 <% else %>
-  Sign in to continue
+	<p><%= link_to "Login", new_user_session_path %> to continue</p>
 <% end %>
-<%= link_to 'edit', edit_user_registration_path %>
