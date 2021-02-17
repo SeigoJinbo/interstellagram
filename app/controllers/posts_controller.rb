@@ -35,7 +35,7 @@ class PostsController < ApplicationController
     users = params[:post][:tagged_users]
     generate_tags(users, @post)
     if @post.update(post_params)
-      redirect_to user_path(@post.user.user_name)
+      redirect_to post_path(@post)
     else
       render 'posts/edit'
     end
