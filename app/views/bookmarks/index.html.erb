@@ -1,5 +1,5 @@
 <div class="inbox-container">
-  
+
 	<div>
 		<%= render 'svgs/frames/notif_t' %>
 	</div>
@@ -8,7 +8,7 @@
 
 	<div class="bookmarks-container">
 		<div class="bookmarks-grid">
-			<% @bookmarks.each do |bookmark| %>
+			<% @bookmarks.reverse.each do |bookmark| %>
 				<%= link_to post_path(bookmark.post) do  %>
 					<%= cl_image_tag bookmark.post.images.first.key %>
 				<% end %>

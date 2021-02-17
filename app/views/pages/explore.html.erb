@@ -39,7 +39,7 @@
 
 		</div>
 		<%# ------------------------------GRID OF POSTS------------------------------ %>
-		<%= render 'posts/grid', posts: Post.all %>
+		<%= render 'posts/grid', posts: Post.all.reverse %>
 
 		<%# ------------------------------REMOVE THIS LATER!!------------------------------ %>
 		<% @users = User.all %>
