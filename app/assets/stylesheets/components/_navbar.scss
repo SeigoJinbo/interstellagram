@@ -1,10 +1,10 @@
 .navbar-lewagon {
-  justify-content: space-between;
-  background: $dark-blue;
+	justify-content: space-between;
+	background: $dark-blue;
 }
 
 .navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+	flex-grow: 0;
 }
 
 // .navbar-lewagon .navbar-brand img {
@@ -12,51 +12,53 @@
 
 // }
 @font-face {
-  font-family: "logo";
-  src: asset_url("Michelangelo.otf");
+	font-family: "logo";
+	src: asset_url("Michelangelo.otf");
 }
 .navbar-top {
-  z-index: 1;
-  position: relative;
-  height: 52px;
-  background: $dark-blue;
-  width: 100vw;
-  .frame {
-    width: 365.28px;
-    margin: 0 auto;
-    position: relative;
-    .navatar {
-      width: 31px;
-      border-radius: 50%;
-      position: absolute;
-      top: 14px;
-      left: 46%;
-    }
-    .home {
-      font-family: "logo";
-      font-size: 14px;
-      color: white;
-      position: absolute;
-      right: 26px;
-      top: 16px;
-    }
-  }
+	z-index: 1;
+	position: relative;
+	height: 52px;
+	background: $dark-blue;
+	width: 375px;
+	margin: 0 auto;
+	.frame {
+		width: 365.28px;
+		margin: 0 auto;
+		position: relative;
+		.navatar {
+			width: 31px;
+			border-radius: 50%;
+			position: absolute;
+			top: 14px;
+			left: 46%;
+		}
+		.home {
+			font-family: "logo";
+			font-size: 14px;
+			color: white;
+			position: absolute;
+			right: 26px;
+			top: 16px;
+		}
+	}
 }
 .navbar-bottom {
-  position: absolute;
-  bottom: 0px;
-  height: 52px;
-  width: 100vw;
-  //   margin: 0 auto;
-  text-decoration: none;
-  background-color: #00354d;
-  align-items: center;
-  ul {
-    width: 375px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	height: 52px;
+	width: 100vw;
+	//   margin: 0 auto;
+	text-decoration: none;
+	background-color: #00354d;
+	align-items: center;
+	ul {
+		width: 375px;
 
-    margin: 4px auto 0 auto;
-    display: flex;
-    list-style-type: none;
-    justify-content: space-around;
-  }
+		margin: 4px auto 0 auto;
+		display: flex;
+		list-style-type: none;
+		justify-content: space-around;
+	}
 }

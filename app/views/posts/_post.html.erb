@@ -1,5 +1,5 @@
 <%# ------------------------------TOP ACCENTS------------------------------ %>
-<div class="post-card-container">
+<div class="post-card-container" style="margin: 16px auto;">
 	<div class="post-card">
 		<div style="position: relative; width: 40px; top: -15px; right: -94px;">
 			<%= render 'svgs/accents/post_accent_t' %>
@@ -49,7 +49,8 @@
 
 		</div>
 		<%# ------------------------------IMAGE PART------------------------------ %>
-		<%= render 'image' %>
+		<% @post = post %>
+		<%= render 'posts/carousel', post: @post %>
 		<%# ------------------------------LIKES COUNTER------------------------------ %>
 		<div class="post-actions">
 			<div class="post-energycell">
@@ -64,7 +65,7 @@
 				</div>
 			</div>
 			<%# ------------------------------ACTION BUTTONS------------------------------ %>
-			<%= render 'buttons' %>
+			<%= render 'posts/buttons' %>
 		</div>
 		<%# ------------------------COMMENTS COUNTER & DESCRIPTION PART------------------------ %>
 		<div class="post-middle">
