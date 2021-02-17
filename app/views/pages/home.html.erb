@@ -2,6 +2,7 @@
 <% if current_user %>
 	<% if @posts %>
 		<%= render @posts %>
+		<div style="height: 60px;"></div>
 	<% end %>
 <% else %>
 	<p><%= link_to "Login", new_user_session_path %> to continue</p>
