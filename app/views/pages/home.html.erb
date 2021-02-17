@@ -1,7 +1,7 @@
 <%# feed %>
 <% if current_user %>
 	<% if @posts %>
-		<%= render @posts %>
+		<%= render @posts.reverse %>
 		<div style="height: 60px;"></div>
 	<% end %>
 <% else %>

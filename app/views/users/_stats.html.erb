@@ -5,12 +5,30 @@
 		<%= cl_image_tag @user.image.key, width: 80, height: 80, style: "border-radius:50%; position: absolute; top: 98px; right: 148px;"%>
 	<% end %>
 </div>
-<p class="user-stat-details" style="position: absolute; top: 45px; right: 23px;">FOLLOWING</p>
-<p class="user-stat-numbers" style="position: absolute; top: 46px; right: 90px;"><%= @user.followings.count %></p>
+
+<% if false %>
+	<%= link_to user_following_path(@user.user_name) do %>
+		<p class="user-stat-details" style="position: absolute; top: 45px; right: 23px;">FOLLOWING</p>
+	<% end %>
+
+	<%= link_to user_followers_path(@user.user_name) do %>
+		<p class="user-stat-details" style="position: absolute; top: 89px; right: 59px;">FOLLOWERS</p>
+	<% end %>
+<% end %>
+
+<div data-toggle="modal" data-target="#userFollowing">
+	<p class="user-stat-details" style="position: absolute; top: 45px; right: 23px;">FOLLOWING</p>
+	<p class="user-stat-numbers" style="position: absolute; top: 46px; right: 90px;"><%= @user.followings.count %></p>
+</div>
+
 <p class="user-stat-details" style="position: absolute; top: 89px; right: 278px;">POSTS</p>
 <p class="user-stat-numbers" style="position: absolute; top: 77px; right: 320px;"><%= @user.posts.count %></p>
-<p class="user-stat-details" style="position: absolute; top: 89px; right: 59px;">FOLLOWERS</p>
-<p class="user-stat-numbers" style="position: absolute; top: 75px; right: 30px;"><%= @user.followers.count %></p>
+
+<div data-toggle="modal" data-target="#userFollowers">
+	<p class="user-stat-details" style="position: absolute; top: 89px; right: 59px;">FOLLOWERS</p>
+	<p class="user-stat-numbers" style="position: absolute; top: 75px; right: 30px;"><%= @user.followers.count %></p>
+</div>
+
 <p class="user-stat-details" style="position: absolute; top: 171px; right: 289px;">BIO</p>
 <p class="user-bio" style="position: absolute; top: 186px; right: 63px;"><%= truncate(@user.bio, length: 165) %></p>
 <p class="user-stat-details" style="position: absolute; top: 171px; right: 86px;">AGE</p>
