@@ -24,6 +24,17 @@ class UsersController < ApplicationController
     @user_posts = @user.posts.sort_by { |created_at| created_at }.reverse
   end
 
+  def followers
+    @user =
+      User.find_by('LOWER(user_name)= ?', params[:user_user_name].downcase)
+    @followers = @user.followers
+  end
+  def following
+    @user =
+      User.find_by('LOWER(user_name)= ?', params[:user_user_name].downcase)
+    @followings = @user.followings
+  end
+
   def to_param
     user_name
   end
