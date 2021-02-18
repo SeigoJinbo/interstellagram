@@ -2,8 +2,9 @@
 	<div class="modal-dialog" role="document">
 		<div class="modal-content" style="width: 90vw; margin: 0 auto; background-color: rgba(0, 53, 77, 0.9); border: 1px solid #3CC7CC; border-radius: 4px;">
 			<div class="modal-header" style="align-items: center; border-bottom: 1px solid #00FEFC;">
-				<div>
-					<h5 class="modal-title form-label" id="userFollowingTitle">FOLLOWING</h5>
+				<div style="width: 110px; display: flex; align-items: center; justify-content: space-between;">
+					<div class="white-circle"></div>
+					<h5 class="modal-title form-label" id="userFollowingTitle">FOLLOWING (<%= @user.followings.count %>)</h5>
 				</div>
 				<div>
 					<div data-dismiss="modal"><%= render 'svgs/buttons/cancel_btn' %></div>
