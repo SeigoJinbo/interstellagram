@@ -1,11 +1,11 @@
 <div class="navbar-top">
 	<div class="frame">
-		<div style="position: absolute; top: 12px; left: 8px;">
-			<%= link_to :back do %>
-				<%= render 'svgs/buttons/back' %>
-			<% end %>
-		</div>
 		<% if current_user %>
+			<div style="position: absolute; top: 12px; left: 8px;">
+				<%= link_to :back do %>
+					<%= render 'svgs/buttons/back' %>
+				<% end %>
+			</div>
 			<%= link_to user_path(current_user.user_name) do  %>
 				<%= render 'svgs/navbar/avatar'%>
 				<% if current_user.image.attached? %>
