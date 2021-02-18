@@ -1,5 +1,10 @@
 <div class="navbar-top">
 	<div class="frame">
+		<div style="position: absolute; top: 12px; left: 8px;">
+			<%= link_to :back do %>
+				<%= render 'svgs/buttons/back' %>
+			<% end %>
+		</div>
 		<% if current_user %>
 			<%= link_to user_path(current_user.user_name) do  %>
 				<%= render 'svgs/navbar/avatar'%>
@@ -10,6 +15,7 @@
 			<%= link_to "Interstellagram", root_path, class: "home" %>
 		<% end %>
 	</div>
+
 	<% if false %>
 		<%= link_to "Interstellagram", root_path %>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,4 +55,5 @@
 			</ul>
 		</div>
 	<% end %>
+
 </div>

@@ -4,6 +4,9 @@
 		<div style="position: relative; z-index: -2;">
 			<%= render 'svgs/accents/user_bg' %>
 		</div>
+		<div style="position: absolute; z-index: 2; top: -51px; left: 39px; text-align: center; width: 110px;">
+			<span style="font-size: 12px; font-family: 'Exo';"><%= @user.user_name %></span>
+		</div>
 		<div style="position: absolute; top: 16px; right: 1px;">
 			<%= render 'svgs/accents/user_lines' %>
 		</div>
