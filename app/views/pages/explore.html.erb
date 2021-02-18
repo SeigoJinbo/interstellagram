@@ -31,7 +31,7 @@
 
 			<div class="explore-tags-container">
 				<div style="display: flex;">
-					<% HashTag.all.each do |tag| %>
+					<% HashTag.all.shuffle.each do |tag| %>
 						<div style="margin-right: 4px;">
 							<%= render 'svgs/buttons/angled_tag' %>
 						</div>

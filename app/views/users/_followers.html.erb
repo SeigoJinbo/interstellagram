@@ -1,6 +1,6 @@
 <div class="modal fade" id="userFollowers" tabindex="-1" role="dialog" aria-labelledby="userFollowersTitle" aria-hidden="true">
 	<div class="modal-dialog" role="document">
-		<div class="modal-content" style="width: 90vw; margin: 0 auto; background-color: rgba(0, 53, 77, 0.9); border: 1px solid #3CC7CC; border-radius: 4px;">
+		<div class="modal-content" style="max-width: 336px; margin: 0 auto; background-color: rgba(0, 53, 77, 0.9); border: 1px solid #3CC7CC; border-radius: 4px;">
 			<div class="modal-header" style="align-items: center; border-bottom: 1px solid #00FEFC;">
 				<div style="width: 110px; display: flex; align-items: center; justify-content: space-between;">
 					<div class="white-circle"></div>
@@ -32,19 +32,19 @@
 								</div>
 
 								<%# ------------------------------FOLLOW/ING BUTTON------------------------------ %>
-								<% pre_follow = current_user.connections_as_following.find { |connection| connection.follower_id == user.id} %>
+								<% pre_follow = user.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
 								<% if pre_follow %>
-									<%= link_to user_connections_path(@user.id), method: :post do %>
+									<div style="height: 26px;">
+										<%= render 'svgs/buttons/short_btn_empty' %>
+										<div style="position: relative; top: -18px; right: -9px; font-family: 'Revalia'; font-size: 6px;">FOLLOWING</div>
+									</div>
+								<% else %>
+									<%= link_to user_connections_path(user.id), method: :post do %>
 										<div style="height: 26px;">
 											<%= render 'svgs/buttons/short_btn' %>
 											<div style="position: relative; top: -18px; right: -15px; font-family: 'Revalia'; font-size: 6px; width: 35px; text-align: center;">FOLLOW</div>
 										</div>
 									<% end %>
-								<% else %>
-									<div style="height: 26px;">
-										<%= render 'svgs/buttons/short_btn_empty' %>
-										<div style="position: relative; top: -18px; right: -9px; font-family: 'Revalia'; font-size: 6px;">FOLLOWING</div>
-									</div>
 								<% end %>
 
 							</div>
