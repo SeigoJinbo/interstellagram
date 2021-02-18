@@ -39,3 +39,6 @@
 	left: 0px;
 	overflow-x: scroll;
 }
+.explore-tags-container::-webkit-scrollbar {
+	display: none;
+}
