@@ -32,11 +32,11 @@
 			<div class="explore-tags-container">
 				<div style="display: flex;">
 					<% HashTag.all.shuffle.each do |tag| %>
-						<div style="margin-right: 4px;">
+						<div style="position: relative; margin-right: 4px;">
 							<%= render 'svgs/buttons/angled_tag' %>
-						</div>
-						<div style="position: relative; top: 7px; left: -75px; width: 91px; height: 10px; font-size: 9px; text-align: center;">
-							<span>#<%= link_to tag.name, :controller => "search", :query => tag.name  %></span>
+							<div style="position: absolute; top: 7px; left: 12px; width: 91px; height: 10px; font-size: 9px; text-align: center;">
+								<span>#<%= link_to truncate(tag.name, length: 20), :controller => "search", :query => tag.name  %></span>
+							</div>
 						</div>
 					<% end %>
 
