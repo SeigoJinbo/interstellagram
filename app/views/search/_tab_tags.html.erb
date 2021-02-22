@@ -17,7 +17,7 @@
 		<div style=" margin-top: 42px;">
 			<% @tags.each do |tag| %>
 				<%= link_to tag.name, :controller => "search", :query => tag.name  %>
-				<%= tag.posts.count %>
+				<%# tag.post_hash_tag_ids[0] %>
 			<% end %>
 		</div>
 	<% end %>

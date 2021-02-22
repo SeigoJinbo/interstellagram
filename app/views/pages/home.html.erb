@@ -1,11 +1,11 @@
 <%# feed %>
 <% if current_user %>
-  <% if @posts %>
-    <%= render @posts.reverse %>
-    <div style="height: 60px;"></div>
-  <% end %>
+	<% if @posts %>
+		<%= render @posts %>
+		<div style="height: 60px;"></div>
+	<% end %>
 <% else %>
-  <p><%= link_to "Login", new_user_session_path %> to continue</p>
+	<p><%= link_to "Login", new_user_session_path %> to continue</p>
 <% end %>
 <%= ago(Post.first.created_at) %>
 <%= ago(Post.last.created_at) %>
