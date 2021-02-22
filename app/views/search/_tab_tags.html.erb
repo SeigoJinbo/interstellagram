@@ -21,14 +21,14 @@
 						<svg width="153" height="32" viewBox="0 0 153 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<defs>
 								<pattern id="tag-img-<%= tag.id %>" patternUnits="userSpaceOnUse" width="153" height="153">
-									<image href="<%= cl_image_path tag.posts[-1].images.first.key, width: 153, height: 153, :crop=>'fill' %>" x="0" y="-25" width="153" height="153" />
+									<image href="<%= cl_image_path tag.posts.sample.images.first.key, width: 153, height: 153, :crop=>'fill' %>" x="0" y="<%= rand(-50..-25) %>" width="153" height="153" />
 							</pattern>
 						</defs>
 						<path d="M1 31V15.25L15.203 1H152V16.75L137.797 31H1Z" fill="url(#tag-img-<%= tag.id %>)" fill-opacity="0.4" stroke="#3CC7CC" stroke-width="0.5"/>
 						<path d="M1 31V15.25L15.203 1H152V16.75L137.797 31H1Z" stroke="#3CC7CC" stroke-width="0.5"/>
 					</svg>
 
-					<div style="position: absolute; top: 8px; left: 15px; width: 123px; height: 16px; text-align: center; color: white; font-size: 12px; overflow-x: scroll;">
+					<div style="position: absolute; top: 8px; left: 15px; width: 123px; height: 18px; text-align: center; color: white; font-size: 12px; overflow-x: scroll;">
 						#<%= tag.name %>
 					</div>
 				<% end %>
