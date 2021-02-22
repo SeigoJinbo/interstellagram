@@ -6,16 +6,6 @@
 	<% end %>
 </div>
 
-<% if false %>
-	<%= link_to user_following_path(@user.user_name) do %>
-		<p class="user-stat-details" style="position: absolute; top: 45px; right: 23px;">FOLLOWING</p>
-	<% end %>
-
-	<%= link_to user_followers_path(@user.user_name) do %>
-		<p class="user-stat-details" style="position: absolute; top: 89px; right: 59px;">FOLLOWERS</p>
-	<% end %>
-<% end %>
-
 <div data-toggle="modal" data-target="#userFollowing">
 	<p class="user-stat-details" style="position: absolute; top: 45px; right: 23px;">FOLLOWING</p>
 	<p class="user-stat-numbers" style="position: absolute; top: 46px; right: 90px;"><%= @user.followings.count %></p>
@@ -30,6 +20,8 @@
 </div>
 
 <p class="user-stat-details" style="position: absolute; top: 171px; right: 289px;">BIO</p>
-<p class="user-bio" style="position: absolute; top: 186px; right: 63px;"><%= truncate(@user.bio, length: 165) %></p>
+<p class="user-bio" style="position: absolute; top: 186px; right: 63px; width: 247px; height: 33px;"><%= truncate(@user.bio, length: 50) %></p>
 <p class="user-stat-details" style="position: absolute; top: 171px; right: 86px;">AGE</p>
-<p class="user-stat-numbers" style="position: absolute; top: 178px; right: 22px; width: 40px;"><%= rand(18..99) %></p>
+<% if @user.birthday? %>
+	<p class="user-stat-numbers" style="position: absolute; top: 178px; right: 22px; width: 40px;"><%= ((Time.zone.now - @user.birthday.to_time) / 1.year.seconds).floor %></p>
+<% end %>
