@@ -1,7 +1,10 @@
 <%# feed %>
 <% if current_user %>
 	<% if @posts %>
-		<%= render @posts %>
+		<div style="height: 52px;"></div>
+		<div>
+			<%= render @posts %>
+		</div>
 		<div style="height: 60px;"></div>
 	<% end %>
 <% else %>
