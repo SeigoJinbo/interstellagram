@@ -1,7 +1,12 @@
 .bookmarks-container {
 	margin: 0 auto;
 	width: 309px;
+	height: 679px;
 	position: relative;
 	top: -35px;
 	left: 1px;
+	overflow-y: scroll;
+}
+.bookmarks-container::-webkit-scrollbar {
+	display: none;
 }
