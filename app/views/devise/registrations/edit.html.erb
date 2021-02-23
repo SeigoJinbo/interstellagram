@@ -40,7 +40,7 @@
 
 			<div style="position: absolute; top: 245px; right: 256px;">
 				<%# if false %>
-				<%= link_to :back do %>
+				<%= link_to user_path(current_user.user_name) do %>
 					<%= render 'svgs/buttons/cancel_btn' %>
 				<% end %>
 				<%# end %>
