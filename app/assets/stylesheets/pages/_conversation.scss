@@ -13,6 +13,9 @@
 	top: -18px;
 	overflow-y: scroll;
 }
+.chatlog-container::-webkit-scrollbar {
+	display: none;
+}
 
 .me {
 	position: relative;
@@ -93,6 +96,9 @@
 	// top: -30px;
 	// right: 0px;
 	overflow-y: scroll;
+}
+.inbox-notifications-container::-webkit-scrollbar {
+	display: none;
 }
 
 .inbox-content {

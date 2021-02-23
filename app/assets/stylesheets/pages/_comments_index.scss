@@ -5,6 +5,9 @@
 	padding-top: 4px;
 	overflow-y: scroll;
 }
+.comments-index-container::-webkit-scrollbar {
+	display: none;
+}
 
 .comment-index-card {
 	width: 300px;
