@@ -1,13 +1,14 @@
 <%# feed %>
 <% if current_user %>
 	<% if @posts %>
-		<div style="height: 52px;"></div>
+		<div class="navbar-top-space"></div>
 		<div>
 			<%= render @posts %>
 		</div>
-		<div style="height: 60px;"></div>
+		<div class="navbar-top-space"></div>
 	<% end %>
 <% else %>
+	<div class="navbar-top-space"></div>
 	<p><%= link_to "Login", new_user_session_path %> to continue</p>
 <% end %>
 <%= ago(Post.first.created_at) %>
