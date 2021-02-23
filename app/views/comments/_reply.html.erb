@@ -15,6 +15,10 @@
 				<%= reply.content %>
 			</span>
 
+			<div class="form-label" style="font-size: 8px;">
+				<%= reply.created_at.to_time.strftime('%a %b %e %Y, %H:%M').upcase %>
+			</div>
+
 			<%# ------------------------REPLY BUTTONS------------------------ %>
 			<div class="reply-buttons">
 				<% pre_like = reply.likes.find { |reply| reply.user_id == current_user.id} %>
