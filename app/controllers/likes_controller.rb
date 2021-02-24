@@ -14,6 +14,14 @@ class LikesController < ApplicationController
           message: 'liked your post'
         )
       end
+      if params[:comment_id]
+        Notification.create(
+          receiver: @target.user,
+          sender: current_user,
+          post: @target.post,
+          message: 'liked your comment'
+        )
+      end
     end
     redirect_to request.referrer
   end
