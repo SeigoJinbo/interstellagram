@@ -42,3 +42,18 @@
 .explore-tags-container::-webkit-scrollbar {
 	display: none;
 }
+
+.search-tag-name {
+	position: absolute;
+	top: 8px;
+	left: 15px;
+	width: 123px;
+	height: 18px;
+	text-align: center;
+	color: white;
+	font-size: 12px;
+	overflow-x: scroll;
+}
+.search-tag-name::-webkit-scrollbar {
+	display: none;
+}

@@ -1,23 +1,40 @@
 <div class="tab-pane fade" id="pills-tags" role="tabpanel" aria-labelledby="pills-tags-tab">
-  <% if @tags.count != 0 %>
-    <%# ------------------------------COOL LINES------------------------------ %>
-    <div class="white-circle" style="position: absolute; top: 139px; right: 63px;"></div>
-    <div style="position: absolute; top: 139px; right: 66px; z-index: -1;">
-      <%= render 'svgs/accents/small_line' %>
-    </div>
-    <div style="position: absolute; top: 148px; right: 83px; z-index: -1;">
-      <%= render 'svgs/accents/teal_line' %>
-    </div>
-    <div style="position: absolute; top: 157px; right: 235px; z-index: -1;">
-      <%= render 'svgs/accents/small_line' %>
-    </div>
-    <div class="white-circle" style="position: absolute; top: 157px; right: 231px;"></div>
-    <div class="teal-line"></div>
-    <%# ------------------------------TAG CARD------------------------------ %>
-    <div style=" margin-top: 42px;">
-      <% @tags.each do |tag| %>
-        <%= link_to tag.name, :controller => "search", :query => tag.name  %>
-      <% end %>
-    </div>
-  <% end %>
+	<% if @tags.count != 0 %>
+		<%# ------------------------------COOL LINES------------------------------ %>
+		<div class="white-circle" style="position: absolute; top: 139px; right: 63px;"></div>
+		<div style="position: absolute; top: 139px; right: 66px; z-index: -1;">
+			<%= render 'svgs/accents/small_line' %>
+		</div>
+		<div style="position: absolute; top: 148px; right: 83px; z-index: -1;">
+			<%= render 'svgs/accents/teal_line' %>
+		</div>
+		<div style="position: absolute; top: 157px; right: 235px; z-index: -1;">
+			<%= render 'svgs/accents/small_line' %>
+		</div>
+		<div class="white-circle" style="position: absolute; top: 157px; right: 231px;"></div>
+		<div class="teal-line"></div>
+		<%# ------------------------------TAG CARD------------------------------ %>
+		<div style=" margin-top: 42px;">
+			<% @tags.each do |tag| %>
+				<div style="position: relative; margin-left: 40px; margin-bottom: 4px;">
+					<%= link_to :controller => "search", :query => tag.name do %>
+						<svg width="153" height="32" viewBox="0 0 153 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<defs>
+								<pattern id="tag-img-<%= tag.id %>" patternUnits="userSpaceOnUse" width="153" height="153">
+									<image href="<%= cl_image_path tag.posts.sample.images.first.key, width: 153, height: 153, :crop=>'fill' %>" x="0" y="<%= rand(-50..-25) %>" width="153" height="153" />
+							</pattern>
+						</defs>
+						<path d="M1 31V15.25L15.203 1H152V16.75L137.797 31H1Z" fill="url(#tag-img-<%= tag.id %>)" fill-opacity="0.4" stroke="#3CC7CC" stroke-width="0.5"/>
+						<path d="M1 31V15.25L15.203 1H152V16.75L137.797 31H1Z" stroke="#3CC7CC" stroke-width="0.5"/>
+					</svg>
+
+					<div class="search-tag-name">
+						#<%= tag.name %>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+		<div style="height: 60px;"></div>
+	</div>
+<% end %>
 </div>

@@ -3,7 +3,7 @@
 	<div class="reply-index-card">
 		<div class="white-circle" style="right: 5px; top: -4px;"></div>
 		<div class="reply-card-content">
-			<span>
+			<span class="comment-username">
 				<%= link_to reply.user.user_name, user_path(reply.user.user_name) %>
 			</span>
 			<span style="margin-left: 4px; color: #d987ba;">
@@ -14,6 +14,10 @@
 			<span style="margin-left: 8px;">
 				<%= reply.content %>
 			</span>
+
+			<div class="form-label" style="font-size: 8px;">
+				<%= reply.created_at.to_time.strftime('%a %b %e %Y, %H:%M').upcase %>
+			</div>
 
 			<%# ------------------------REPLY BUTTONS------------------------ %>
 			<div class="reply-buttons">

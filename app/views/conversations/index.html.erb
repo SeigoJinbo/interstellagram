@@ -1,3 +1,4 @@
+<div class="navbar-top-space"></div>
 <div class="inbox-container">
 	<div>
 		<%= render 'svgs/frames/inbox_frame_t' %>
@@ -26,29 +27,30 @@
 						<div style="position: relative; top: 10px; right: 119px;">
 							<%= render 'svgs/frames/user_b' %>
 						</div>
-					</div>
 
-					<%# ------------------------NOTIFICATION CONTENT------------------------ %>
-					<div class="inbox-content">
-						<div>
-							<% conversation.users.each do |user| %>
-								<% if user.user_name != current_user.user_name && user.image.attached? %>
-									<%= cl_image_tag user.image.key, width: 45, height: 45, style: "border: 1px #00FEFC solid;border-radius: 50%;" %>
-								<% elsif user.user_name != current_user.user_name && !user.image.attached? %>
-									<div style="width: 45px; height: 45px; border: 1px #00FEFC solid; border-radius: 50%; background: rgba(0, 254, 252, 0.3);"></div>
+						<%# ------------------------NOTIFICATION CONTENT------------------------ %>
+						<div class="inbox-content">
+							<div>
+								<% conversation.users.each do |user| %>
+									<% if user.user_name != current_user.user_name && user.image.attached? %>
+										<%= cl_image_tag user.image.key, width: 45, height: 45, style: "border: 1px #00FEFC solid;border-radius: 50%;" %>
+									<% elsif user.user_name != current_user.user_name && !user.image.attached? %>
+										<div style="width: 45px; height: 45px; border: 1px #00FEFC solid; border-radius: 50%; background: rgba(0, 254, 252, 0.3);"></div>
+									<% end %>
 								<% end %>
-							<% end %>
+							</div>
+
+							<div style="margin-left: 8px;">
+								<div style="font-family: 'Exo'; font-size: 14px; color: white;"><%= conversation.users.find { |user| user != current_user}.user_name %></div>
+								<% if conversation.messages.last.user.user_name == current_user.user_name %>
+									<div style="font-size: 12px; color: white;">You: <%= truncate(conversation.messages.last.content, length: 28) %></div>
+								<% else %>
+									<div style="font-size: 12px; color: white;"><%= truncate(conversation.messages.last.content, length: 28) %></div>
+								<% end %>
+
+							</div>
 						</div>
 
-						<div style="margin-left: 8px;">
-							<div style="font-family: 'Exo'; font-size: 14px; color: white;"><%= conversation.users.find { |user| user != current_user}.user_name %></div>
-							<% if conversation.messages.last.user.user_name == current_user.user_name %>
-								<div style="font-size: 12px; color: white;">You: <%= truncate(conversation.messages.last.content, length: 28) %></div>
-							<% else %>
-								<div style="font-size: 12px;"><%= truncate(conversation.messages.last.content, length: 28) %></div>
-							<% end %>
-
-						</div>
 					</div>
 
 				<% end %>
@@ -57,7 +59,7 @@
 		<% end %>
 	</div>
 
-	<div style="position: absolute; top: 721px;">
+	<div style="position: absolute; top: 708px;">
 		<%= render 'svgs/frames/inbox_frame_b' %>
 	</div>
 

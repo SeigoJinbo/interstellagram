@@ -3,7 +3,7 @@
 	<div class="comment-index-card">
 		<div class="white-circle" style="right: 5px; top: -4px;"></div>
 		<div class="comment-card-content">
-			<span>
+			<span class="comment-username">
 				<%= link_to comment.user.user_name, user_path(comment.user.user_name) %>
 			</span>
 			<span style="margin-left: 4px; color: #d987ba;">
@@ -14,6 +14,10 @@
 			<span style="margin-left: 4px;">
 				<%= comment.content %>
 			</span>
+
+			<div class="form-label" style="font-size: 8px;">
+				<%= comment.created_at.to_time.strftime('%a %b %e %Y, %H:%M').upcase %>
+			</div>
 
 			<%# ------------------------COMMENT BUTTONS------------------------ %>
 			<div class="comment-buttons">
