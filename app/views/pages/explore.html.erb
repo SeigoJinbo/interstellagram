@@ -25,14 +25,15 @@
 				<div class="form-label" style="text-align: center; font-size: 4px;">PHOTOS</div>
 			</div>
 			<%# ------------------------------TAGS SECTION------------------------------ %>
+			<% @tags = HashTag.all.shuffle.uniq{ |tag| tag.name } %>
 			<div class="white-circle" style="position: absolute; top: 98px; right: 363px;"></div>
 			<div style="position: absolute; top: 89px; right: 311px;">
-				<span class="form-label"><%= HashTag.count %></span><span class="form-label"> TAGS:</span>
+				<span class="form-label"><%= @tags.count %></span><span class="form-label"> TAGS:</span>
 			</div>
 
 			<div class="explore-tags-container">
 				<div style="display: flex;">
-					<% HashTag.all.shuffle.each do |tag| %>
+					<% @tags.each do |tag| %>
 						<div style="position: relative; margin-right: 4px;">
 							<%= render 'svgs/buttons/angled_tag' %>
 							<div style="position: absolute; top: 7px; left: 12px; width: 91px; height: 10px; font-size: 9px; text-align: center;">
