@@ -1,65 +1,67 @@
 <%# ------------------------------USER SHOW------------------------------ %>
 <div class="navbar-top-space"></div>
 <div class="user-container">
-	<div class="user-content">
-		<div style="position: relative; z-index: -2;">
-			<%= render 'svgs/accents/user_bg' %>
-		</div>
-		<div style="position: absolute; z-index: 2; top: -51px; left: 39px; text-align: center; width: 110px;">
-			<span style="font-size: 12px; font-family: 'Exo';"><%= @user.user_name %></span>
-		</div>
-		<div style="position: absolute; top: 16px; right: 1px;">
-			<%= render 'svgs/accents/user_lines' %>
-		</div>
-		<div style="position: absolute; top: -7px; right: 138px;">
-			<%= render 'svgs/frames/rank_frame' %>
-		</div>
-		<div style="position: absolute; top: 3px; right: 56px;">
-			<%= render 'svgs/accents/purple_bar' %>
-		</div>
-		<div style="position: absolute; top: 4px; right: 208px;">
-			<%= render 'svgs/accents/yellow_bar' %>
-		</div>
-		<div style="position: absolute; top: 253px; right: 84px;">
-			<%= render 'svgs/buttons/user_tagged' %>
-		</div>
-		<div style="position: absolute; top: 257px; right: 258px; width: 31px; height: 31px;">
-			<%= render 'svgs/buttons/grid_icon' %>
-		</div>
-		<div class="sm-white-circle" style="position: absolute; top: 39px; right: 349px;"></div>
-		<div class="sm-white-circle" style="position: absolute; top: 57px; right: 208px;"></div>
-		<div class="sm-white-circle" style="position: absolute; top: 57px; right: 161px;"></div>
-		<div class="sm-white-circle" style="position: absolute; top: 109px; right: 246px;"></div>
-		<div class="sm-white-circle" style="position: absolute; top: 180px; right: 327px;"></div>
-		<div class="sm-white-circle" style="position: absolute; top: 168px; right: 116px;"></div>
-		<div class="sm-white-circle" style="position: absolute; top: 228px; right: 19px;"></div>
-		<%# ------------------------------USER STATS & DETAILS------------------------------ %>
-		<%= render 'stats' %>
-		<%= render 'following' %>
-		<%= render 'followers' %>
-		<%# ------------------------------BUTTONS------------------------------ %>
-		<%= render 'actions' %>
-		<%# ------------------------------TAB LINKS------------------------------ %>
-		<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-			<li class="nav-item">
-				<a class="active" id="pills-user-posts-tab" data-toggle="pill" href="#pills-user-posts" role="tab" aria-controls="pills-user-posts" aria-selected="true">
-					<div style="position: absolute; top: 257px; right: 258px; width: 31px; height: 31px;"></div>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="" id="pills-user-tagged-tab" data-toggle="pill" href="#pills-user-tagged" role="tab" aria-controls="pills-user-tagged" aria-selected="false">
-					<div style="position: absolute; top: 253px; right: 84px; width: 31px; height: 31px;"></div>
-				</a>
-			</li>
-		</ul>
-		<hr>
-		<%# ------------------------------POSTS------------------------------ %>
-		<div class="tab-content" id="pills-tabContent">
-			<div class="tab-pane fade show active" id="pills-user-posts" role="tabpanel" aria-labelledby="pills-user-posts-tab">
-				<%= render 'posts/grid', posts: @user.posts.reverse %>
-				<div style="height: 60px;"></div>
-			</div>
-			<div class="tab-pane fade" id="pills-user-tagged" role="tabpanel" aria-labelledby="pills-user-tagged-tab">Posts where the user is tagged</div>
-		</div>
-	</div>
+  <div class="user-content">
+    <div style="position: relative; z-index: -2;">
+      <%= render 'svgs/accents/user_bg' %>
+    </div>
+    <div style="position: absolute; z-index: 2; top: -51px; left: 39px; text-align: center; width: 110px;">
+      <span style="font-size: 12px; font-family: 'Exo';"><%= @user.user_name %></span>
+    </div>
+    <div style="position: absolute; top: 16px; right: 1px;">
+      <%= render 'svgs/accents/user_lines' %>
+    </div>
+    <div style="position: absolute; top: -7px; right: 138px;">
+      <%= render 'svgs/frames/rank_frame' %>
+    </div>
+    <div style="position: absolute; top: 3px; right: 56px;">
+      <%= render 'svgs/accents/purple_bar' %>
+    </div>
+    <div style="position: absolute; top: 4px; right: 208px;">
+      <%= render 'svgs/accents/yellow_bar' %>
+    </div>
+    <div style="position: absolute; top: 253px; right: 84px;">
+      <%= render 'svgs/buttons/user_tagged' %>
+    </div>
+    <div style="position: absolute; top: 257px; right: 258px; width: 31px; height: 31px;">
+      <%= render 'svgs/buttons/grid_icon' %>
+    </div>
+    <div class="sm-white-circle" style="position: absolute; top: 39px; right: 349px;"></div>
+    <div class="sm-white-circle" style="position: absolute; top: 57px; right: 208px;"></div>
+    <div class="sm-white-circle" style="position: absolute; top: 57px; right: 161px;"></div>
+    <div class="sm-white-circle" style="position: absolute; top: 109px; right: 246px;"></div>
+    <div class="sm-white-circle" style="position: absolute; top: 180px; right: 327px;"></div>
+    <div class="sm-white-circle" style="position: absolute; top: 168px; right: 116px;"></div>
+    <div class="sm-white-circle" style="position: absolute; top: 228px; right: 19px;"></div>
+    <%# ------------------------------USER STATS & DETAILS------------------------------ %>
+    <%= render 'stats' %>
+    <%= render 'following' %>
+    <%= render 'followers' %>
+    <%# ------------------------------BUTTONS------------------------------ %>
+    <%= render 'actions' %>
+    <%# ------------------------------TAB LINKS------------------------------ %>
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="active" id="pills-user-posts-tab" data-toggle="pill" href="#pills-user-posts" role="tab" aria-controls="pills-user-posts" aria-selected="true">
+          <div style="position: absolute; top: 257px; right: 258px; width: 31px; height: 31px;"></div>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="" id="pills-user-tagged-tab" data-toggle="pill" href="#pills-user-tagged" role="tab" aria-controls="pills-user-tagged" aria-selected="false">
+          <div style="position: absolute; top: 253px; right: 84px; width: 31px; height: 31px;"></div>
+        </a>
+      </li>
+    </ul>
+    <hr>
+    <%# ------------------------------POSTS------------------------------ %>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-user-posts" role="tabpanel" aria-labelledby="pills-user-posts-tab">
+        <%= render 'posts/grid', posts: @user.posts.reverse %>
+        <div style="height: 60px;"></div>
+      </div>
+      <div class="tab-pane fade" id="pills-user-tagged" role="tabpanel" aria-labelledby="pills-user-tagged-tab">
+        <%= render 'posts/grid', posts: @user.tagged_posts.reverse %>
+      </div>
+    </div>
+  </div>
 </div>
