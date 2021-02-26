@@ -13,7 +13,9 @@
 		</div>
 		<div class="post-user-info">
 			<%= link_to user_path(post.user.user_name) do %>
-				<%= cl_image_tag post.user.image.key, width: 40, style: "border:1px #00FEFC solid;border-radius:50%;" %>
+				<div class="avatar-40" style="border: 1px solid #00FEFC; border-radius: 50%;">
+					<%= avatar(post.user) %>
+				</div>
 			<% end %>
 			<div class="post-username-container">
 				<h6><%= link_to post.user.user_name, user_path(post.user.user_name) %></h6>

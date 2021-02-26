@@ -37,11 +37,14 @@
 		margin: 0 auto;
 		position: relative;
 		.navatar {
-			width: 31px;
-			border-radius: 50%;
 			position: absolute;
 			top: 14px;
 			left: 46%;
+			img {
+				width: 31px;
+				height: 31px;
+				border-radius: 50%;
+			}
 		}
 		.home {
 			font-family: "logo";

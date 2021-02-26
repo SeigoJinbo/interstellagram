@@ -30,12 +30,10 @@
 
 						<%# ------------------------NOTIFICATION CONTENT------------------------ %>
 						<div class="inbox-content">
-							<div>
+							<div class="avatar-45">
 								<% conversation.users.each do |user| %>
-									<% if user.user_name != current_user.user_name && user.image.attached? %>
-										<%= cl_image_tag user.image.key, width: 45, height: 45, style: "border: 1px #00FEFC solid;border-radius: 50%;" %>
-									<% elsif user.user_name != current_user.user_name && !user.image.attached? %>
-										<div style="width: 45px; height: 45px; border: 1px #00FEFC solid; border-radius: 50%; background: rgba(0, 254, 252, 0.3);"></div>
+									<% if user.user_name != current_user.user_name %>
+										<%= avatar(user) %>
 									<% end %>
 								<% end %>
 							</div>
