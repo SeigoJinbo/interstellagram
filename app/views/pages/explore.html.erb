@@ -2,7 +2,7 @@
 <div class="navbar-top-space"></div>
 <div class="search-container">
 	<div class="search-content">
-		<div style="height: 137px;">
+		<div style="height: 137px; position: sticky; top: 52px;">
 			<div style="position: absolute;">
 				<%= render 'svgs/frames/search' %>
 			</div>
@@ -47,7 +47,9 @@
 
 		</div>
 		<%# ------------------------------GRID OF POSTS------------------------------ %>
-		<%= render 'posts/grid', posts: Post.all.reverse %>
+		<div style="position: absolute; top: 144px; height: 564px; overflow-y: scroll;">
+			<%= render 'posts/grid', posts: Post.all.reverse %>
+		</div>
 		<div style="height: 60px;"></div>
 		<%# ------------------------------REMOVE THIS LATER!!------------------------------ %>
 		<% @users = User.all %>
