@@ -1,11 +1,11 @@
 <div class="navbar-top-space"></div>
 <div class="inbox-container">
 
-	<div>
+	<div style="position: fixed; top: 52px; z-index: 3;">
 		<%= render 'svgs/frames/notif_t' %>
 	</div>
 
-	<h6 class="form-label" style="position: relative; top: -41px; left: 31px; color: #00354d; width: 336px;">BOOKMARKS</h6>
+	<h6 class="form-label" style="position: fixed; top: 64px; left: 31px; color: #00354d; width: 336px; z-index: 3;">BOOKMARKS</h6>
 
 	<div class="bookmarks-container">
 		<div class="bookmarks-grid">
@@ -15,6 +15,6 @@
 				<% end %>
 			<% end %>
 		</div>
+		<div style="height: 64px;"></div>
 	</div>
-	<div style="height: 60px;"></div>
 </div>
