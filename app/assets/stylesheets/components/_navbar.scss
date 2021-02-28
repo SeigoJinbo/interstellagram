@@ -52,6 +52,10 @@
 			position: absolute;
 			right: 64px;
 			top: 13px;
+
+			background: -webkit-linear-gradient(#ffd088, #b4d187, #34b7c5, #589ecc);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
 		}
 	}
 }

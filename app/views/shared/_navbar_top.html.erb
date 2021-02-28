@@ -15,7 +15,9 @@
 						<%= avatar(current_user) %>
 					</div>
 				<% end %>
-				<%= link_to "Interstellagram", root_path, class: "home" %>
+				<%= link_to root_path, class: "home" do %>
+					<span>Interstellagram</span>
+				<% end %>
 			<% end %>
 		</div>
 		<% if false %>
