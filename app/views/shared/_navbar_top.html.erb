@@ -12,7 +12,7 @@
 						<%= render 'svgs/navbar/avatar'%>
 					</div>
 					<div class="navatar">
-						<%= avatar(@user) %>
+						<%= avatar(current_user) %>
 					</div>
 				<% end %>
 				<%= link_to "Interstellagram", root_path, class: "home" %>
