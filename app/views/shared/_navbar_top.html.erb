@@ -2,13 +2,15 @@
 	<div class="navbar-top">
 		<div class="frame">
 			<% if current_user %>
-				<div style="position: absolute; top: 12px; left: 8px;">
+				<div style="position: absolute; top: 15px; left: 8px;">
 					<%= link_to 'javascript:history.back()' do %>
 						<%= render 'svgs/buttons/back' %>
 					<% end %>
 				</div>
 				<%= link_to user_path(current_user.user_name) do  %>
-					<%= render 'svgs/navbar/avatar'%>
+					<div>
+						<%= render 'svgs/navbar/avatar'%>
+					</div>
 					<div class="navatar">
 						<%= avatar(@user) %>
 					</div>

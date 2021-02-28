@@ -18,7 +18,6 @@
 .navbar-top-container {
 	position: fixed;
 	width: 100vw;
-	left: 0;
 	top: 0;
 	z-index: 5;
 }
@@ -33,13 +32,13 @@
 	width: 375px;
 	margin: 0 auto;
 	.frame {
-		width: 365.28px;
+		width: 375px;
 		margin: 0 auto;
 		position: relative;
 		.navatar {
 			position: absolute;
-			top: 14px;
-			left: 46%;
+			top: 18px;
+			left: 55px;
 			img {
 				width: 31px;
 				height: 31px;
@@ -48,11 +47,11 @@
 		}
 		.home {
 			font-family: "logo";
-			font-size: 14px;
+			font-size: 18px;
 			color: white;
 			position: absolute;
-			right: 32px;
-			top: 14px;
+			right: 64px;
+			top: 13px;
 		}
 	}
 }
