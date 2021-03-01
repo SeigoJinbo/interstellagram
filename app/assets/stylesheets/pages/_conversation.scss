@@ -59,9 +59,14 @@
 
 .me-chatlog-content {
 	min-height: 26px;
-	margin: 0 12px 0 35px;
+	margin-left: 35px;
+	width: 240px;
 	p {
 		font-size: 14px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		width: 100%;
 	}
 }
 
