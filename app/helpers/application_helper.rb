@@ -10,9 +10,8 @@ module ApplicationHelper
   # end
 
   def avatar(user)
-    @user = user
-    if @user.image.attached?
-      @avatar = cl_image_tag @user.image.key
+    if user.image.attached?
+      @avatar = cl_image_tag user.image.key
     else
       @avatar = cl_image_tag('1tbzym9jzdasao247crk9bbpdtpj.png')
     end
