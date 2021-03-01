@@ -57,3 +57,19 @@
 .search-tag-name::-webkit-scrollbar {
 	display: none;
 }
+
+.explore-container {
+	height: 137px;
+	position: sticky;
+	top: 52px;
+}
+
+.explore-posts {
+	position: absolute;
+	top: 144px;
+	height: 564px;
+	overflow-y: scroll;
+}
+.explore-posts::-webkit-scrollbar {
+	display: none;
+}
