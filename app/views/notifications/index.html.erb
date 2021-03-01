@@ -1,86 +1,84 @@
 <div class="navbar-top-space"></div>
 <div class="inbox-container">
-	<div>
+	<div class="notification-top-frame">
 		<%= render 'svgs/frames/notif_t' %>
-	</div>
+		<h6 class="form-label" style="position: relative; top: -41px; left: 31px; color: #00354d; width: 336px;">NOTIFICATIONS</h6>
+		<%# ------------------------NOTIIFICATION LOG------------------------ %>
+		<div class="notifications-container">
+			<% @notifications.reverse.each do |notification| %>
+				<% unless notification.sender.user_name == current_user.user_name %>
+					<%# ------------------------NOTIIFICATION CARD------------------------ %>
+					<div class="inbox-notification" style="position: relative; width: 314px; height: 82px; margin: 16px 0 0 0;">
+						<div class="notification">
 
-	<h6 class="form-label" style="position: relative; top: -41px; left: 31px; color: #00354d; width: 336px;">NOTIFICATIONS</h6>
-
-	<%# ------------------------NOTIIFICATION LOG------------------------ %>
-	<div class="notifications-container">
-		<% @notifications.reverse.each do |notification| %>
-			<% unless notification.sender.user_name == current_user.user_name %>
-				<%# ------------------------NOTIIFICATION CARD------------------------ %>
-				<div class="inbox-notification" style="position: relative; width: 314px; height: 82px; margin: 16px 0 0 0;">
-					<div class="notification">
-
-						<%# ------------------------ACCENTS------------------------ %>
-						<div style="position: absolute; top: 69px; left: -1px;">
-							<%= render 'svgs/accents/notif_accent_b' %>
-						</div>
-						<div style="position: absolute; top: -15px; left: 48px;">
-							<%= render 'svgs/accents/chat_you_t' %>
-						</div>
-						<h6 class="form-label" style="position: absolute; top: 68px; left: 90px; font-size: 6px; text-transform: uppercase;"><%= ago(notification.created_at.in_time_zone("Tokyo")) %></h6>
-						<div class="dotted-line" style="position: absolute; top: 76px; right: 19px; width: 276px;"></div>
-						<div style="transform: rotate(-90deg);">
-							<div class="small-meter" style="width: 45px; height: 5px;">
-								<span style="width:<%= rand(10..90) %>%;"><span class="hp-progress"></span></span>
+							<%# ------------------------ACCENTS------------------------ %>
+							<div style="position: absolute; top: 69px; left: -1px;">
+								<%= render 'svgs/accents/notif_accent_b' %>
 							</div>
-							<div class="small-meter" style="width: 45px; height: 5px;">
-								<span style="width:<%= rand(10..90) %>%;"><span class="mp-progress"></span></span>
+							<div style="position: absolute; top: -15px; left: 48px;">
+								<%= render 'svgs/accents/chat_you_t' %>
 							</div>
-						</div>
+							<h6 class="form-label" style="position: absolute; top: 68px; left: 90px; font-size: 6px; text-transform: uppercase;"><%= ago(notification.created_at.in_time_zone("Tokyo")) %></h6>
+							<div class="dotted-line" style="position: absolute; top: 76px; right: 19px; width: 276px;"></div>
+							<div style="transform: rotate(-90deg);">
+								<div class="small-meter" style="width: 45px; height: 5px;">
+									<span style="width:<%= rand(10..90) %>%;"><span class="hp-progress"></span></span>
+								</div>
+								<div class="small-meter" style="width: 45px; height: 5px;">
+									<span style="width:<%= rand(10..90) %>%;"><span class="mp-progress"></span></span>
+								</div>
+							</div>
 
-						<%# ------------------------USER DETAILS------------------------ %>
-						<div class="avatar-45" style="margin-left: -8px;">
-							<%= link_to user_path(notification.sender.user_name) do %>
-								<%= avatar(notification.sender) %>
-							<% end %>
-						</div>
-
-						<div class="notification-content">
-							<div style="margin-left: 8px;">
+							<%# ------------------------USER DETAILS------------------------ %>
+							<div class="avatar-45" style="margin-left: -8px;">
 								<%= link_to user_path(notification.sender.user_name) do %>
-									<div style="font-family: 'Exo'; font-size: 14px; color: white;"><%= notification.sender.user_name %></div>
+									<%= avatar(notification.sender) %>
 								<% end %>
-								<div style="font-size: 9px;"><%= notification.message %></div>
 							</div>
 
-							<%# ------------------------MESSAGE DETAILS------------------------ %>
-							<div>
-								<% if notification.post %>
-									<div style="margin-right: 8px;">
-										<%= link_to post_path(notification.post) do %>
-											<%= cl_image_tag notification.post.images.first.key, width: 45, height: 45, :crop=>"fill" %>
-										<% end %>
-									</div>
-								<% else %>
-									<% pre_follow = notification.sender.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
-									<% if pre_follow %>
-										<div style="height: 26px;">
-											<%= render 'svgs/buttons/short_btn_empty' %>
-											<div style="position: relative; top: -18px; right: -9px; font-family: 'Revalia'; font-size: 6px;">FOLLOWING</div>
+							<div class="notification-content">
+								<div style="margin-left: 8px;">
+									<%= link_to user_path(notification.sender.user_name) do %>
+										<div style="font-family: 'Exo'; font-size: 14px; color: white;"><%= notification.sender.user_name %></div>
+									<% end %>
+									<div style="font-size: 9px;"><%= notification.message %></div>
+								</div>
+
+								<%# ------------------------MESSAGE DETAILS------------------------ %>
+								<div>
+									<% if notification.post %>
+										<div style="margin-right: 8px;">
+											<%= link_to post_path(notification.post) do %>
+												<%= cl_image_tag notification.post.images.first.key, width: 45, height: 45, :crop=>"fill" %>
+											<% end %>
 										</div>
 									<% else %>
-										<%= link_to user_connections_path(notification.sender.id), method: :post do %>
+										<% pre_follow = notification.sender.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
+										<% if pre_follow %>
 											<div style="height: 26px;">
-												<%= render 'svgs/buttons/short_btn' %>
-												<div style="position: relative; top: -18px; right: -15px; font-family: 'Revalia'; font-size: 6px; width: 35px; text-align: center;">FOLLOW</div>
+												<%= render 'svgs/buttons/short_btn_empty' %>
+												<div style="position: relative; top: -18px; right: -9px; font-family: 'Revalia'; font-size: 6px;">FOLLOWING</div>
 											</div>
+										<% else %>
+											<%= link_to user_connections_path(notification.sender.id), method: :post do %>
+												<div style="height: 26px;">
+													<%= render 'svgs/buttons/short_btn' %>
+													<div style="position: relative; top: -18px; right: -15px; font-family: 'Revalia'; font-size: 6px; width: 35px; text-align: center;">FOLLOW</div>
+												</div>
+											<% end %>
 										<% end %>
 									<% end %>
-								<% end %>
-							</div>
+								</div>
 
+							</div>
 						</div>
 					</div>
-				</div>
+				<% end %>
 			<% end %>
-		<% end %>
+		</div>
 	</div>
 
-	<div style="position: absolute; top: 707px;">
+	<div class="notification-bottom-frame">
 		<%= render 'svgs/frames/notif_b' %>
 	</div>
 </div>
