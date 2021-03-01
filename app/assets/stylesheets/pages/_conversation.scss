@@ -8,13 +8,22 @@
 .chatlog-container {
 	position: relative;
 	width: 344px;
-	height: 542px;
+	height: calc(100vh - 260px);
 	margin-left: 31px;
-	top: -18px;
+	top: -30px;
 	overflow-y: scroll;
 }
 .chatlog-container::-webkit-scrollbar {
 	display: none;
+}
+
+.chatlog-frame-bottom {
+	position: fixed;
+	bottom: 52px;
+}
+.chatlog-frame-top {
+	position: fixed;
+	top: 52px;
 }
 
 .me {
@@ -50,9 +59,14 @@
 
 .me-chatlog-content {
 	min-height: 26px;
-	margin: 0 12px 0 35px;
+	margin-left: 35px;
+	width: 240px;
 	p {
 		font-size: 14px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		width: 100%;
 	}
 }
 
@@ -88,13 +102,14 @@
 }
 
 .inbox-notifications-container {
-	height: 590px;
+	height: calc(100vh - 168px);
 	// width: 313px;
-	margin: 0 auto;
+	// margin: 0 auto;
 
-	// position: relative;
-	// top: -30px;
+	position: relative;
+	top: -12px;
 	// right: 0px;
+	padding-top: 8px;
 	overflow-y: scroll;
 }
 .inbox-notifications-container::-webkit-scrollbar {
@@ -108,4 +123,13 @@
 	position: absolute;
 	top: 15px;
 	left: -23px;
+}
+
+.inbox-frame-top {
+	position: fixed;
+	top: 52px;
+}
+.inbox-frame-bottom {
+	position: fixed;
+	bottom: 52px;
 }

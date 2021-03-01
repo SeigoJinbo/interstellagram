@@ -1,11 +1,11 @@
 .notifications-container {
 	margin: 0 auto;
 	width: 335px;
-	height: 649px;
+	height: calc(100vh - 160px);
 	overflow-y: scroll;
 	position: relative;
-	top: -35px;
-	left: 11px;
+	top: -36px;
+	left: 10px;
 }
 .notifications-container::-webkit-scrollbar {
 	display: none;
@@ -23,4 +23,13 @@
 	align-items: center;
 	justify-content: space-between;
 	width: 245px;
+}
+
+.notification-bottom-frame {
+	position: fixed;
+	bottom: 52px;
+}
+.notification-top-frame {
+	position: fixed;
+	top: 52px;
 }

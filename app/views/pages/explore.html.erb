@@ -34,7 +34,7 @@
 			</div>
 
 			<div class="explore-tags-container">
-				<div style="display: flex;">
+				<div style="display: flex; height: 26px;">
 					<% @tags.each do |tag| %>
 						<%= link_to :controller => "search", :query => tag.name do %>
 							<div style="position: relative; margin-right: 4px;">

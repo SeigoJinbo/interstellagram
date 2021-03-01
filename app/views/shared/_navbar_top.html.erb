@@ -7,6 +7,7 @@
 						<%= render 'svgs/buttons/back' %>
 					<% end %>
 				</div>
+
 				<%= link_to user_path(current_user.user_name) do  %>
 					<div>
 						<%= render 'svgs/navbar/avatar'%>
@@ -20,6 +21,7 @@
 				<% end %>
 			<% end %>
 		</div>
+
 		<% if false %>
 			<%= link_to "Interstellagram", root_path %>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
