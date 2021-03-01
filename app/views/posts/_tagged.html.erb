@@ -1,10 +1,10 @@
-<div class="modal fade" id="userTaggedList" tabindex="-1" role="dialog" aria-labelledby="userTaggedListTitle" aria-hidden="true">
+<div class="modal fade" id="userTaggedList<%= @post.id %>" tabindex="-1" role="dialog" aria-labelledby="userTaggedList<%= @post.id %>Title" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content" style="max-width: 336px; margin: 0 auto; background-color: rgba(0, 53, 77, 0.9); border: 1px solid #3CC7CC; border-radius: 4px;">
 			<div class="modal-header" style="align-items: center; border-bottom: 1px solid #00FEFC;">
 				<div style="width: 110px; display: flex; align-items: center; justify-content: space-between;">
 					<div class="white-circle"></div>
-					<h5 class="modal-title form-label" id="userTaggedListTitle">TAGGED USERS</h5>
+					<h5 class="modal-title form-label" id="userTaggedList<%= @post.id %>Title">TAGGED USERS</h5>
 				</div>
 				<div>
 					<div data-dismiss="modal"><%= render 'svgs/buttons/cancel_btn' %></div>

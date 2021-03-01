@@ -9,7 +9,6 @@
 			<%= render 'svgs/frames/post_corner_t' %>
 		</div>
 
-		<%= render 'tagged' %>
 		<%# ------------------------------USER DETAILS PART------------------------------ %>
 		<div style="position: absolute; top: 25px; right: 88px; z-index: -1;">
 			<%= render 'svgs/frames/post_stats_line' %>
@@ -23,9 +22,11 @@
 		<%= render 'posts/carousel', post: @post %>
 
 		<% if @post.tagged_users.any? %>
-			<div data-toggle="modal" data-target="#userTaggedList" style="position: absolute; top: 369px; left: 29px; z-index: 2;">
+			<div data-toggle="modal" data-target="#userTaggedList<%= @post.id %>" style="position: absolute; top: 369px; left: 29px; z-index: 2;">
 				<%= render 'svgs/buttons/tagged' %>
 			</div>
+
+			<%= render 'posts/tagged', post: @post %>
 		<% end %>
 
 		<%# ------------------------------LIKES COUNTER------------------------------ %>
