@@ -18,9 +18,9 @@
 .navbar-top-container {
 	position: fixed;
 	width: 100vw;
-	left: 0;
 	top: 0;
 	z-index: 5;
+	background: #00354d;
 }
 .navbar-top-space {
 	height: 52px;
@@ -33,23 +33,30 @@
 	width: 375px;
 	margin: 0 auto;
 	.frame {
-		width: 365.28px;
+		width: 375px;
 		margin: 0 auto;
 		position: relative;
 		.navatar {
-			width: 31px;
-			border-radius: 50%;
 			position: absolute;
-			top: 14px;
-			left: 46%;
+			top: 18px;
+			left: 54px;
+			img {
+				width: 31px;
+				height: 31px;
+				border-radius: 50%;
+			}
 		}
 		.home {
 			font-family: "logo";
-			font-size: 14px;
+			font-size: 18px;
 			color: white;
 			position: absolute;
-			right: 32px;
-			top: 14px;
+			right: 64px;
+			top: 13px;
+
+			background: -webkit-linear-gradient(#ffd088, #b4d187, #34b7c5, #589ecc);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
 		}
 	}
 }
@@ -63,6 +70,7 @@
 	text-decoration: none;
 	background-color: #00354d;
 	align-items: center;
+	z-index: 2;
 	ul {
 		width: 375px;
 

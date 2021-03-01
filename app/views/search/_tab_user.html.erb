@@ -13,12 +13,8 @@
 							<div><%= render 'svgs/frames/user_b' %></div>
 						</div>
 
-						<div>
-							<% if user.image.attached? %>
-								<%= cl_image_tag user.image.key, width: 45, height: 45, style: "border: 1px #00FEFC solid;border-radius: 50%; position: relative; right: 13px;" %>
-							<% else %>
-								<div style="width: 45px; height: 45px; border: 1px #00FEFC solid; border-radius: 50%; background: rgba(0, 254, 252, 0.3);"></div>
-							<% end %>
+						<div class="avatar-45" style="position: relative; right: 13px; border-radius: 50%; background: rgba(0, 254, 252, 0.3);">
+							<%= avatar(user) %>
 						</div>
 
 						<div style="position: relative; right: 36px; z-index: -1; border-left: 1px solid #00FEFC; padding-left: 32px; padding-top: 15px; height: 72px;">

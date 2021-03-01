@@ -15,12 +15,8 @@
 					<%= link_to user_path(user.user_name) do %>
 						<div style="display: flex; align-items: center; margin-left: 16px;">
 							<%# ------------------------------IMAGE------------------------------ %>
-							<div>
-								<% if user.image.attached? %>
-									<%= cl_image_tag user.image.key, width: 45, height: 45, style: "border: 1px #00FEFC solid;border-radius: 50%; position: relative; right: 13px; z-index: 1;" %>
-								<% else %>
-									<div style="width: 45px; height: 45px; border: 1px #00FEFC solid; border-radius: 50%; background: rgba(0, 254, 252, 0.3);"></div>
-								<% end %>
+							<div class="avatar-45" style="position: relative; right: 13px; z-index: 1;">
+								<%= avatar(user) %>
 							</div>
 
 							<%# ------------------------------USER DETAILS------------------------------ %>

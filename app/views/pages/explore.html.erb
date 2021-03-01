@@ -2,7 +2,7 @@
 <div class="navbar-top-space"></div>
 <div class="search-container">
 	<div class="search-content">
-		<div style="height: 137px;">
+		<div class="explore-container">
 			<div style="position: absolute;">
 				<%= render 'svgs/frames/search' %>
 			</div>
@@ -20,13 +20,15 @@
 			</div>
 			<%# ------------------------------POSTS COUNTER CIRCLE------------------------------ %>
 			<div style="width: 48px; position: absolute; top: 32px; right: 25px;">
-				<div class="form-label" style="text-align: center;"><%= Post.all.count %></div>
+				<div class="form-label" style="text-align: center; color: white;"><%= Post.all.count %></div>
 				<div class="form-label" style="text-align: center; font-size: 4px;">TOTAL</div>
 				<div class="form-label" style="text-align: center; font-size: 4px;">PHOTOS</div>
 			</div>
 			<%# ------------------------------TAGS SECTION------------------------------ %>
 			<% @tags = HashTag.all.shuffle.uniq{ |tag| tag.name } %>
-			<div class="white-circle" style="position: absolute; top: 98px; right: 363px;"></div>
+			<div data-toggle="modal" data-target="#userList">
+				<div class="white-circle" style="position: absolute; top: 98px; right: 363px;"></div>
+			</div>
 			<div style="position: absolute; top: 89px; right: 311px;">
 				<span class="form-label"><%= @tags.count %></span><span class="form-label"> TAGS:</span>
 			</div>
@@ -34,12 +36,15 @@
 			<div class="explore-tags-container">
 				<div style="display: flex;">
 					<% @tags.each do |tag| %>
-						<div style="position: relative; margin-right: 4px;">
-							<%= render 'svgs/buttons/angled_tag' %>
-							<div style="position: absolute; top: 7px; left: 12px; width: 91px; height: 10px; font-size: 9px; text-align: center;">
-								<span>#<%= link_to truncate(tag.name, length: 20), :controller => "search", :query => tag.name  %></span>
+						<%= link_to :controller => "search", :query => tag.name do %>
+							<div style="position: relative; margin-right: 4px;">
+								<%= render 'svgs/buttons/angled_tag' %>
+								<div style="position: absolute; top: 7px; left: 12px; width: 91px; height: 10px; font-size: 9px; text-align: center;">
+									<span>#<%= truncate(tag.name, length: 20) %></span>
+								</div>
 							</div>
-						</div>
+						<% end %>
+
 					<% end %>
 
 				</div>
@@ -47,14 +52,12 @@
 
 		</div>
 		<%# ------------------------------GRID OF POSTS------------------------------ %>
-		<%= render 'posts/grid', posts: Post.all.reverse %>
+		<div class="explore-posts">
+			<%= render 'posts/grid', posts: Post.all.reverse %>
+		</div>
 		<div style="height: 60px;"></div>
-		<%# ------------------------------REMOVE THIS LATER!!------------------------------ %>
-		<% @users = User.all %>
-		<% @users.each do |user| %>
-			<p><%= link_to user.name, user_path(user.user_name) %></p>
-		<% end %>
-		<%# ------------------------------REMOVE THIS LATER!!------------------------------ %>
+		<%# ------------------------------SUPER SECRET USER LIST------------------------------ %>
+		<%= render 'userlist' %>
 
 	</div>
 </div>

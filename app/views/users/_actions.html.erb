@@ -21,7 +21,6 @@
 		</div>
 	<% end %>
 <% end %>
-
 <% if @user == current_user %>
 	<%= link_to edit_user_registration_path, style: "position: absolute; top: 121px; right: 253px;" do %>
 		<div>
@@ -29,7 +28,9 @@
 		</div>
 		<p style="position: absolute; top: 5px; right: 25px; color: #DBFFFF; font-size: 15px;">Settings</p>
 	<% end %>
+
 <% end %>
+
 <% pre_conversation = @user.conversations.find { |conversation| conversation.users.include?(current_user)} %>
 <% unless @user == current_user %>
 	<% if pre_conversation %>

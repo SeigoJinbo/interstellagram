@@ -12,7 +12,7 @@
 	<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 		<div class="form-inputs">
 			<div class="form-inputs-login-container" style="right: 62px;">
-				<div class="form-user-inputs">
+				<div class="form-user-inputs" style="margin-top: 8px;">
 					<h6 class="form-label" style="width: 240px;">NEW PASSWORD</h6>
 					<%= f.input :password,
                 placeholder: "Keep blank to leave unchanged",
@@ -20,7 +20,7 @@
                 input_html: { autocomplete: "new-password" } %>
 				</div>
 
-				<div class="form-user-inputs">
+				<div class="form-user-inputs" style="margin-top: 8px;">
 					<h6 class="form-label" style="width: 240px;">NEW PASSWORD CONFIRMATION</h6>
 					<%= f.input :password_confirmation,
                 placeholder: "Re-enter new password",
@@ -28,7 +28,7 @@
                 input_html: { autocomplete: "new-password" } %>
 				</div>
 
-				<div class="form-user-inputs">
+				<div class="form-user-inputs" style="margin-top: 8px;">
 					<h6 class="form-label" style="width: 240px;">CURRENT PASSWORD</h6>
 					<%= f.input :current_password,
                 placeholder: "Enter to confirm changes",
@@ -38,7 +38,7 @@
 
 			</div>
 
-			<div style="position: absolute; top: 245px; right: 256px;">
+			<div style="position: absolute; top: 260px; right: 256px;">
 				<%# if false %>
 				<%= link_to user_path(current_user.user_name) do %>
 					<%= render 'svgs/buttons/cancel_btn' %>
@@ -46,15 +46,15 @@
 				<%# end %>
 			</div>
 
-			<label style="position: absolute; top: 245px; right: 31px; height: 45px; width: 45px;">
+			<label style="position: absolute; top: 260px; right: 31px; height: 45px; width: 45px;">
 				<span style="display: none;">
 					<%= f.button :submit, "Update" %>
 				</span>
 			</label>
-			<div style="position: absolute; top: 245px; right: 31px; z-index: -1;">
+			<div style="position: absolute; top: 260px; right: 31px; z-index: -1;">
 				<%= render 'svgs/buttons/confirm_btn' %>
 			</div>
-			<div style="position: absolute; top: 255px; right: 80px;">
+			<div style="position: absolute; top: 270px; right: 80px;">
 				<%= render 'svgs/accents/button_dashed_line' %>
 			</div>
 		<% end %>

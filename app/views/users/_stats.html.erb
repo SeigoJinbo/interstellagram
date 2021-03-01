@@ -1,22 +1,22 @@
 <h6 style="position: absolute; top: 4px; right: 162px; width: 52px; text-align: center;"><%= rand(1..2000) %></h6>
 <h6 style="position: absolute; top: 20px; right: 178px; font-size: 8px;">Rank</h6>
-<div>
-	<% if @user.image.attached? %>
-		<%= cl_image_tag @user.image.key, width: 80, height: 80, style: "border-radius:50%; position: absolute; top: 98px; right: 148px;"%>
-	<% end %>
+<div class="avatar-80" style="position: absolute; top: 98px; right: 148px;">
+
+	<%= avatar(@user) %>
+
 </div>
 
 <div data-toggle="modal" data-target="#userFollowing">
-	<p class="user-stat-details" style="position: absolute; top: 45px; right: 23px;">FOLLOWING</p>
-	<p class="user-stat-numbers" style="position: absolute; top: 46px; right: 90px;"><%= @user.followings.count %></p>
+	<p class="user-stat-details" style="position: absolute; top: 45px; right: 23px; cursor: pointer;">FOLLOWING</p>
+	<p class="user-stat-numbers" style="position: absolute; top: 46px; right: 90px; cursor: pointer;"><%= @user.followings.count %></p>
 </div>
 
 <p class="user-stat-details" style="position: absolute; top: 89px; right: 278px;">POSTS</p>
 <p class="user-stat-numbers" style="position: absolute; top: 77px; right: 320px;"><%= @user.posts.count %></p>
 
 <div data-toggle="modal" data-target="#userFollowers">
-	<p class="user-stat-details" style="position: absolute; top: 89px; right: 59px;">FOLLOWERS</p>
-	<p class="user-stat-numbers" style="position: absolute; top: 75px; right: 30px;"><%= @user.followers.count %></p>
+	<p class="user-stat-details" style="position: absolute; top: 89px; right: 59px; cursor: pointer;">FOLLOWERS</p>
+	<p class="user-stat-numbers" style="position: absolute; top: 75px; right: 30px; cursor: pointer;"><%= @user.followers.count %></p>
 </div>
 
 <p class="user-stat-details" style="position: absolute; top: 171px; right: 289px;">BIO</p>

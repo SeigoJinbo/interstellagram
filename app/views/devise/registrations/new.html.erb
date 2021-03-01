@@ -22,10 +22,12 @@
 				<div style="position: absolute; z-index: -1;">
 					<%= render 'svgs/inputs/form_username' %>
 				</div>
-				<%= f.input :user_name,
-                    required: true,
-                    autofocus: true,
-                    placeholder: "Your username" %>
+				<div class="signup-username">
+					<%= f.input :user_name,
+                        required: true,
+                        autofocus: true,
+                        placeholder: "2 to 12 characters" %>
+				</div>
 			</div>
 		</div>
 		<%# --------------------------UPPER PART: UPDATE PHOTO BTN-------------------------- %>
