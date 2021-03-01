@@ -4,9 +4,12 @@
 		<div style="position: relative; width: 40px; top: -15px; right: -94px;">
 			<%= render 'svgs/accents/post_accent_t' %>
 		</div>
+
 		<div style="position:absolute; z-index: -1;">
 			<%= render 'svgs/frames/post_corner_t' %>
 		</div>
+
+		<%= render 'tagged' %>
 		<%# ------------------------------USER DETAILS PART------------------------------ %>
 		<div style="position: absolute; top: 25px; right: 88px; z-index: -1;">
 			<%= render 'svgs/frames/post_stats_line' %>
@@ -18,6 +21,13 @@
 		<%# ------------------------------IMAGE PART------------------------------ %>
 		<% @post = post %>
 		<%= render 'posts/carousel', post: @post %>
+
+		<% if @post.tagged_users.any? %>
+			<div data-toggle="modal" data-target="#userTaggedList" style="position: absolute; top: 369px; left: 29px; z-index: 2;">
+				<%= render 'svgs/buttons/tagged' %>
+			</div>
+		<% end %>
+
 		<%# ------------------------------LIKES COUNTER------------------------------ %>
 		<div class="post-actions">
 			<div class="post-energycell">

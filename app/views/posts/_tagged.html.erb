@@ -1,0 +1,38 @@
+<div class="modal fade" id="userTaggedList" tabindex="-1" role="dialog" aria-labelledby="userTaggedListTitle" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content" style="max-width: 336px; margin: 0 auto; background-color: rgba(0, 53, 77, 0.9); border: 1px solid #3CC7CC; border-radius: 4px;">
+			<div class="modal-header" style="align-items: center; border-bottom: 1px solid #00FEFC;">
+				<div style="width: 110px; display: flex; align-items: center; justify-content: space-between;">
+					<div class="white-circle"></div>
+					<h5 class="modal-title form-label" id="userTaggedListTitle">TAGGED USERS</h5>
+				</div>
+				<div>
+					<div data-dismiss="modal"><%= render 'svgs/buttons/cancel_btn' %></div>
+				</div>
+			</div>
+			<div class="modal-body" style="padding: 0 0 0 16px;">
+				<% @post.tagged_users.each do |user| %>
+					<%= link_to user_path(user.user_name) do %>
+						<div style="display: flex; align-items: center; margin-left: 16px;">
+							<%# ------------------------------IMAGE------------------------------ %>
+							<div class="avatar-45" style="position: relative; right: 13px; z-index: 1;">
+								<%= avatar(user) %>
+							</div>
+
+							<%# ------------------------------USER DETAILS------------------------------ %>
+							<div style="display: flex; justify-content: space-between; align-items: center;">
+								<div style="position: relative; right: 36px; border-left: 1px solid #00FEFC; padding-left: 32px; padding-top: 15px; height: 72px;">
+									<div style="color: white; height: 20px; font-family: 'Exo';"><%= user.user_name %></div>
+									<div style="font-size: 9px;"><%= truncate(user.bio, length: 30) %></div>
+									<div class="dotted-line" style="border: 1px dashed rgba(1, 165, 218, 0.4); margin-top: 8px; width: 144px;"></div>
+								</div>
+
+							</div>
+						</div>
+					<% end %>
+				<% end %>
+
+			</div>
+		</div>
+	</div>
+</div>
