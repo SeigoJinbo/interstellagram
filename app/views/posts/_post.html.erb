@@ -45,8 +45,8 @@
 		<div style="position: absolute; top: 657px;">
 			<%= render 'svgs/accents/post_accent_b' %>
 		</div>
-		<div class="form-label" style="position: absolute; top: 637px; left: 20px; font-size: 8px; text-transform: uppercase;">
-			<%= ago(post.created_at) %>
+		<div class="form-label" style="position: absolute; top: 637px; left: 20px; font-size: 8px; text-transform: uppercase; color: #00fefc;">
+			<%= ago(post.created_at.in_time_zone("Tokyo")) %>
 		</div>
 	</div>
 </div>

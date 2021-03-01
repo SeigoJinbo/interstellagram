@@ -31,7 +31,7 @@ module ApplicationHelper
     elsif sec <= 604_800
       return "#{day = (sec / 86_400).floor} #{day == 1 ? 'day' : 'days'} ago"
     else
-      return date.to_time.strftime('%b %e %Y')
+      return date.to_time.strftime('%a %b %e %Y, %H:%M')
     end
   end
   def short_ago(date)

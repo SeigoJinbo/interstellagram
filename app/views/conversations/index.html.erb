@@ -8,7 +8,7 @@
 
 	<%# ------------------------NOTIFICATIONS LIST------------------------ %>
 	<div class="inbox-notifications-container">
-		<% @conversations.each do |conversation| %>
+		<% @conversations.reverse.each do |conversation| %>
 			<% unless conversation.messages.last.nil? %>
 				<%# ------------------------NOTIIFICATION SHAPE------------------------ %>
 				<%= link_to conversation_path(conversation) do %>
@@ -16,7 +16,7 @@
 						<div style="position: absolute; top: -15px; right: 110px;">
 							<%= render 'svgs/accents/inbox_t' %>
 						</div>
-						<h6 class="form-label" style="position: absolute; top: 68px; right: 17px; font-size: 6px;"><%= conversation.messages.last.created_at.to_time.strftime('%a %b %e %Y, %H:%M').upcase %></h6>
+						<h6 class="form-label" style="position: absolute; top: 68px; right: 17px; font-size: 6px; text-transform: uppercase;"><%= ago(conversation.messages.last.created_at.in_time_zone("Tokyo")) %></h6>
 						<div style="position: absolute; top: 71px; right: 17px;">
 							<%= render 'svgs/accents/inbox_b' %>
 						</div>

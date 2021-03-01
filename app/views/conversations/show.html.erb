@@ -37,7 +37,7 @@
 					</div>
 					<div class="you-chatlog-content">
 						<p><%= message.content %></p>
-						<h6 class="form-label" style="position: relative; top: 21px; text-align: right; font-size: 8px;"><%= message.created_at.in_time_zone("Tokyo").to_time.strftime('%a %b %e %Y, %H:%M') %></h6>
+						<h6 class="form-label" style="position: relative; top: 21px; text-align: right; font-size: 8px; text-transform: uppercase;"><%= ago(message.created_at.in_time_zone("Tokyo")) %></h6>
 					</div>
 					<div style="position: relative; top: 13px; right: 1px;">
 						<%= render 'svgs/accents/chat_you_b' %>

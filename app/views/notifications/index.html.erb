@@ -8,7 +8,7 @@
 
 	<%# ------------------------NOTIIFICATION LOG------------------------ %>
 	<div class="notifications-container">
-		<% @notifications.each do |notification| %>
+		<% @notifications.reverse.each do |notification| %>
 			<% unless notification.sender.user_name == current_user.user_name %>
 				<%# ------------------------NOTIIFICATION CARD------------------------ %>
 				<div class="inbox-notification" style="position: relative; width: 314px; height: 82px; margin: 16px 0 0 0;">
@@ -21,7 +21,7 @@
 						<div style="position: absolute; top: -15px; left: 48px;">
 							<%= render 'svgs/accents/chat_you_t' %>
 						</div>
-						<h6 class="form-label" style="position: absolute; top: 68px; left: 90px; font-size: 6px;"><%= notification.created_at.to_time.strftime('%a %b %e %Y, %H:%M').upcase %></h6>
+						<h6 class="form-label" style="position: absolute; top: 68px; left: 90px; font-size: 6px; text-transform: uppercase;"><%= ago(notification.created_at.in_time_zone("Tokyo")) %></h6>
 						<div class="dotted-line" style="position: absolute; top: 76px; right: 19px; width: 276px;"></div>
 						<div style="transform: rotate(-90deg);">
 							<div class="small-meter" style="width: 45px; height: 5px;">
