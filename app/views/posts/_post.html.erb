@@ -11,45 +11,10 @@
 		<div style="position: absolute; top: 25px; right: 88px; z-index: -1;">
 			<%= render 'svgs/frames/post_stats_line' %>
 		</div>
-		<div class="post-user-info">
-			<%= link_to user_path(post.user.user_name) do %>
-				<div class="avatar-40" style="border: 1px solid #00FEFC; border-radius: 50%;">
-					<%= avatar(post.user) %>
-				</div>
-			<% end %>
-			<div class="post-username-container">
-				<h6><%= link_to post.user.user_name, user_path(post.user.user_name) %></h6>
-				<div class="small-meter">
-					<span style="width:<%= rand(10..90) %>%;"><span class="hp-progress"></span></span>
-				</div>
-				<div class="small-meter">
-					<span style="width:<%= rand(10..90) %>%;"><span class="mp-progress"></span></span>
-				</div>
-			</div>
-			<div class="post-user-stats-box">
-				<div class="post-user-stats-numbers">
-					<div>
-						<p style="margin-bottom: 0;"><%= rand(10..90) %></p>
-					</div>
-					<div>
-						<p style="margin-bottom: 0; border-left: 1px solid #3cc7cc; border-right: 1px solid #3cc7cc; padding-left: 2px; padding-right: 2px;"><%= rand(10..90) %></p>
-					</div>
-					<div>
-						<p style="margin-bottom: 0;"><%= rand(10..90) %></p>
-					</div>
-				</div>
-			</div>
 
-			<%# ------------------------------EDIT POST BTN------------------------------ %>
-			<% if post.user.user_name == current_user.user_name %>
-				<div style="position:absolute; top: 40px; right: 30px;">
-					<%= link_to edit_post_path(post) do %>
-						<%= render 'svgs/buttons/edit_btn' %>
-					<% end %>
-				</div>
-			<% end %>
+		<% @post = post %>
+		<%= render 'posts/post_header', post: @post %>
 
-		</div>
 		<%# ------------------------------IMAGE PART------------------------------ %>
 		<% @post = post %>
 		<%= render 'posts/carousel', post: @post %>
@@ -70,55 +35,18 @@
 			<%= render 'posts/buttons' %>
 		</div>
 		<%# ------------------------COMMENTS COUNTER & DESCRIPTION PART------------------------ %>
-		<div class="post-middle">
-			<div class="post-middle-counter">
-				<div class="post-comment-counter">
-					<h6 style="position: relative; top: 18px; right: -21px;"><%= post.comments.count %></h6>
-					<h6 style="font-size: 8px; position: relative; top: 8px; right: -21px;"><%= (post.comments.count) == 1 ? 'comment' : 'comments'%></h6>
-				</div>
-				<div style="position: absolute; z-index: -1; top: 454px; right: 253px;">
-					<%= render 'svgs/circles/purple_yellow_circle' %>
-				</div>
-				<div class="post-comment-line" style="position: absolute; top: 528px; right: 289px;"></div>
-				<div class="white-circle" style="top: 66px; right: -36px"></div>
-			</div>
-			<div class="post-description">
-				<% post.description.split(' ').each do |word| %>
-					<% if word.start_with?('#')%>
-						<%= link_to word, search_path(query: word) %>
-					<% else %>
-						<%= word %>
-					<% end %>
-				<% end %>
-			</div>
-		</div>
+		<%= render 'posts/middle', post: @post %>
 		<%# ------------------------COMMENTS & INPUT------------------------ %>
-		<div>
-			<% if post.comments.any? %>
-				<div class="post-comment-card" style="position: relative; top: 6px; right: -40px;">
-					<div class="white-circle" style="right: 5px; top: -4px;"></div>
-					<div style="margin-left: 8px;">
-						<p><%= link_to post.comments[0].user.user_name, user_path(post.comments[0].user.user_name) %></p>
-					</div>
-					<div style="margin-left: 4px;">
-						<p><%= truncate(post.comments[0].content, length: 28) %></p>
-					</div>
-				</div>
-				<p style="font-size: 12px; position: absolute; top: 588px; right: 188px;"><%= link_to "View all comments", post_comments_path(post) %></p>
-			<% end %>
-		</div>
-		<%= simple_form_for( [post, post.comments.build]) do |f| %>
-			<div>
-				<%= f.text_area :content, placeholder: 'Comment...', style: 'position: absolute; top: 608px; right: 23px;' %>
-			</div>
-			<%= f.submit value: "", class: 'post-input-btn', data: { disable_with: false } %>
-		<% end %>
+		<%= render 'posts/comment_input', post: @post %>
 		<%# ------------------------BOTTOM ACCENTS------------------------ %>
 		<div style="position:absolute; z-index: -1; top: 574px; right: 16px; width: 72px;">
 			<%= render 'svgs/frames/post_corner_b' %>
 		</div>
 		<div style="position: absolute; top: 657px;">
 			<%= render 'svgs/accents/post_accent_b' %>
+		</div>
+		<div class="form-label" style="position: absolute; top: 637px; left: 20px; font-size: 8px; text-transform: uppercase;">
+			<%= ago(post.created_at) %>
 		</div>
 	</div>
 </div>

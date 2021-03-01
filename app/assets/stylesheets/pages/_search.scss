@@ -67,7 +67,7 @@
 .explore-posts {
 	position: absolute;
 	top: 144px;
-	height: 564px;
+	height: calc(100vh - 250px);
 	overflow-y: scroll;
 }
 .explore-posts::-webkit-scrollbar {
