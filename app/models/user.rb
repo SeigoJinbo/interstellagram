@@ -47,6 +47,10 @@ class User < ApplicationRecord
   has_many :conversations, through: :user_conversations, dependent: :destroy
   has_many :messages, dependent: :destroy
   validates :user_name, presence: :true, uniqueness: :true
+  validates :user_name,
+            format: { with: /\A[a-zA-Z0-9]+\Z/, message: 'only allows letters' }
+  validates :user_name, length: { maximum: 12, too_long: 'is too long' }
+  validates :user_name, length: { minimum: 2, too_long: 'is too short' }
   validates :email, presence: :true, uniqueness: :true
   def has_joined?(conversation)
     conversations.where(id: conversation).exist?

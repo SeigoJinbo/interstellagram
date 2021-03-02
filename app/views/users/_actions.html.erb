@@ -1,51 +1,49 @@
 <% pre_follow = @user.connections_as_following.find { |connection| connection.follower_id == current_user.id} %>
-<% if @user == current_user %>
-	<%= link_to edit_user_path(@user.user_name) do %>
-		<div style="position: absolute; top: 121px; right: 18px;">
-			<%= render 'svgs/buttons/angled_ye_btn' %>
-		</div>
-		<p style="position: absolute; top: 126px; right: 58px; color: #DBFFFF; font-size: 15px;">Edit</p>
-	<% end %>
+<% if @user == current_user || current_user.admin %>
+  <%= link_to edit_user_path(@user.user_name) do %>
+    <div style="position: absolute; top: 121px; right: 18px;">
+      <%= render 'svgs/buttons/angled_ye_btn' %>
+    </div>
+    <p style="position: absolute; top: 126px; right: 58px; color: #DBFFFF; font-size: 15px;">Edit</p>
+  <% end %>
 <% elsif pre_follow %>
-	<%= link_to user_connection_path(@user.id, pre_follow), method: :delete do %>
-		<div style="position: absolute; top: 122px; right: 18px;">
-			<%= render 'svgs/buttons/angled_btn_off' %>
-			<p style="position: absolute; top: 3px; right: 17px; color: #DBFFFF; font-size: 15px;">Following</p>
-		</div>
-	<% end %>
+  <%= link_to user_connection_path(@user.id, pre_follow), method: :delete do %>
+    <div style="position: absolute; top: 122px; right: 18px;">
+      <%= render 'svgs/buttons/angled_btn_off' %>
+      <p style="position: absolute; top: 3px; right: 17px; color: #DBFFFF; font-size: 15px;">Following</p>
+    </div>
+  <% end %>
 <% else %>
-	<%= link_to user_connections_path(@user.id), method: :post do %>
-		<div style="position: absolute; top: 121px; right: 16px;">
-			<%= render 'svgs/buttons/angled_btn' %>
-			<p style="position: absolute; top: 5px; right: 28px; color: #DBFFFF; font-size: 15px;">Follow</p>
-		</div>
-	<% end %>
+  <%= link_to user_connections_path(@user.id), method: :post do %>
+    <div style="position: absolute; top: 121px; right: 16px;">
+      <%= render 'svgs/buttons/angled_btn' %>
+      <p style="position: absolute; top: 5px; right: 28px; color: #DBFFFF; font-size: 15px;">Follow</p>
+    </div>
+  <% end %>
 <% end %>
 <% if @user == current_user %>
-	<%= link_to edit_user_registration_path, style: "position: absolute; top: 121px; right: 253px;" do %>
-		<div>
-			<%= render 'svgs/buttons/angled_ye_btn' %>
-		</div>
-		<p style="position: absolute; top: 5px; right: 25px; color: #DBFFFF; font-size: 15px;">Settings</p>
-	<% end %>
-
+  <%= link_to edit_user_registration_path, style: "position: absolute; top: 121px; right: 253px;" do %>
+    <div>
+      <%= render 'svgs/buttons/angled_ye_btn' %>
+    </div>
+    <p style="position: absolute; top: 5px; right: 25px; color: #DBFFFF; font-size: 15px;">Settings</p>
+  <% end %>
 <% end %>
-
 <% pre_conversation = @user.conversations.find { |conversation| conversation.users.include?(current_user)} %>
 <% unless @user == current_user %>
-	<% if pre_conversation %>
-		<%= link_to conversation_path(pre_conversation), method: :get do %>
-			<div style="position: absolute; top: 121px; right: 253px;">
-				<%= render 'svgs/buttons/angled_btn' %>
-				<p style="position: absolute; top: 4px; right: 21px; color: #DBFFFF; font-size: 15px;">Message</p>
-			</div>
-		<% end %>
-	<% else %>
-		<%= link_to user_conversations_path(@user.id), method: :post do %>
-			<div style="position: absolute; top: 121px; right: 253px;">
-				<%= render 'svgs/buttons/angled_btn' %>
-				<p style="position: absolute; top: 4px; right: 21px; color: #DBFFFF; font-size: 15px;">Message</p>
-			</div>
-		<% end %>
-	<% end %>
+  <% if pre_conversation %>
+    <%= link_to conversation_path(pre_conversation), method: :get do %>
+      <div style="position: absolute; top: 121px; right: 253px;">
+        <%= render 'svgs/buttons/angled_btn' %>
+        <p style="position: absolute; top: 4px; right: 21px; color: #DBFFFF; font-size: 15px;">Message</p>
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to user_conversations_path(@user.id), method: :post do %>
+      <div style="position: absolute; top: 121px; right: 253px;">
+        <%= render 'svgs/buttons/angled_btn' %>
+        <p style="position: absolute; top: 4px; right: 21px; color: #DBFFFF; font-size: 15px;">Message</p>
+      </div>
+    <% end %>
+  <% end %>
 <% end %>

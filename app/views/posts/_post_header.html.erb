@@ -1,38 +1,37 @@
 <div class="post-user-info">
-	<%= link_to user_path(@post.user.user_name) do %>
-		<div class="avatar-40" style="border: 1px solid #00FEFC; border-radius: 50%;">
-			<%= avatar(@post.user) %>
-		</div>
-	<% end %>
-	<div class="post-username-container">
-		<h6><%= link_to @post.user.user_name, user_path(@post.user.user_name) %></h6>
-		<div class="small-meter">
-			<span style="width:<%= rand(10..90) %>%;"><span class="hp-progress"></span></span>
-		</div>
-		<div class="small-meter">
-			<span style="width:<%= rand(10..90) %>%;"><span class="mp-progress"></span></span>
-		</div>
-	</div>
-	<div class="post-user-stats-box">
-		<div class="post-user-stats-numbers">
-			<div>
-				<p style="margin-bottom: 0;"><%= rand(10..90) %></p>
-			</div>
-			<div>
-				<p style="margin-bottom: 0; border-left: 1px solid #3cc7cc; border-right: 1px solid #3cc7cc; padding-left: 2px; padding-right: 2px;"><%= rand(10..90) %></p>
-			</div>
-			<div>
-				<p style="margin-bottom: 0;"><%= rand(10..90) %></p>
-			</div>
-		</div>
-	</div>
-
-	<%# ------------------------------EDIT POST BTN------------------------------ %>
-	<% if @post.user.user_name == current_user.user_name %>
-		<div style="position:absolute; top: 40px; right: 30px;">
-			<%= link_to edit_post_path(@post) do %>
-				<%= render 'svgs/buttons/edit_btn' %>
-			<% end %>
-		</div>
-	<% end %>
+  <%= link_to user_path(@post.user.user_name) do %>
+    <div class="avatar-40" style="border: 1px solid #00FEFC; border-radius: 50%;">
+      <%= avatar(@post.user) %>
+    </div>
+  <% end %>
+  <div class="post-username-container">
+    <h6><%= link_to @post.user.user_name, user_path(@post.user.user_name) %></h6>
+    <div class="small-meter">
+      <span style="width:<%= rand(10..90) %>%;"><span class="hp-progress"></span></span>
+    </div>
+    <div class="small-meter">
+      <span style="width:<%= rand(10..90) %>%;"><span class="mp-progress"></span></span>
+    </div>
+  </div>
+  <div class="post-user-stats-box">
+    <div class="post-user-stats-numbers">
+      <div>
+        <p style="margin-bottom: 0;"><%= rand(10..90) %></p>
+      </div>
+      <div>
+        <p style="margin-bottom: 0; border-left: 1px solid #3cc7cc; border-right: 1px solid #3cc7cc; padding-left: 2px; padding-right: 2px;"><%= rand(10..90) %></p>
+      </div>
+      <div>
+        <p style="margin-bottom: 0;"><%= rand(10..90) %></p>
+      </div>
+    </div>
+  </div>
+  <%# ------------------------------EDIT POST BTN------------------------------ %>
+  <% if @post.user.user_name == current_user.user_name || current_user.admin%>
+    <div style="position:absolute; top: 40px; right: 30px;">
+      <%= link_to edit_post_path(@post) do %>
+        <%= render 'svgs/buttons/edit_btn' %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

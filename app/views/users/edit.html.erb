@@ -1,115 +1,112 @@
 <div class="navbar-top-space"></div>
 <div class="form-container form-user">
-	<div style="position: absolute; top: -16px;">
-		<%= render 'svgs/accents/form_accent_t' %>
-	</div>
-	<div class="form-box" style="height: 575px;"></div>
-	<%= simple_form_for(@user) do |f| %>
-		<%= f.error_notification %>
-		<%# --------------------------UPPER PART: AVATAR AND USERNAME-------------------------- %>
-		<div class="form-user-header" style="position: absolute; top: 18px; left: 18px;">
-			<div>
-				<%= render 'svgs/frames/form_avatar_frame' %>
-				<% if current_user.image.attached? %>
-					<%= cl_image_tag current_user.image.key, width: 71, height: 71, style: "border-radius: 50%; position: absolute; top: 19px; right: 113px;" %>
-				<% end %>
-				<label style="width: 71px; height: 71px; position: absolute; top: 19px; right: 113px;">
-					<span style="display: none;">
-						<%= f.input :image, as: :file%>
-					</span>
-				</label>
-			</div>
-			<div style="height: 64px; margin-left: 4px;">
-				<h6 class="form-label">EDIT PROFILE</h6>
-				<div style="position: absolute; z-index: -1;">
-					<%= render 'svgs/inputs/form_username' %>
-				</div>
-				<%= f.input :user_name,
+  <div style="position: absolute; top: -16px;">
+    <%= render 'svgs/accents/form_accent_t' %>
+  </div>
+  <div class="form-box" style="height: 575px;"></div>
+  <%= simple_form_for(@user) do |f| %>
+    <%= f.error_notification %>
+    <%# --------------------------UPPER PART: AVATAR AND USERNAME-------------------------- %>
+    <div class="form-user-header" style="position: absolute; top: 18px; left: 18px;">
+      <div>
+        <%= render 'svgs/frames/form_avatar_frame' %>
+        <% if current_user.image.attached? %>
+          <%= cl_image_tag current_user.image.key, width: 71, height: 71, style: "border-radius: 50%; position: absolute; top: 19px; right: 113px;" %>
+        <% end %>
+        <label style="width: 71px; height: 71px; position: absolute; top: 19px; right: 113px;">
+          <span style="display: none;">
+            <%= f.input :image, as: :file%>
+          </span>
+        </label>
+      </div>
+      <div style="height: 64px; margin-left: 4px;">
+        <h6 class="form-label">EDIT PROFILE</h6>
+        <div style="position: absolute; z-index: -1;">
+          <%= render 'svgs/inputs/form_username' %>
+        </div>
+        <%= f.input :user_name,
                     required: false,
                     autofocus: true %>
-			</div>
-		</div>
-		<%# --------------------------UPPER PART: UPDATE PHOTO BTN-------------------------- %>
-		<div style="position: absolute; top: 117px; right: 104px; z-index: -1;">
-			<%= render 'svgs/buttons/long_btn' %>
-		</div>
-		<label style="width: 96px; height: 26px; position: absolute; top: 117px; right: 104px;">
-			<span style="display: none;">
-				<%= f.input :image, as: :file%>
-			</span>
-		</label>
-		<h6 class="form-label" style="position: absolute; top: 126px; right: 124px; font-size: 6px; z-index: -1;">UPDATE PHOTO</h6>
-		<%# --------------------------FORM INPUTS-------------------------- %>
-
-		<div class="form-inputs-container">
-			<div class="form-user-inputs">
-				<h6 class="form-label">NAME</h6>
-				<%= f.input :name,
+      </div>
+    </div>
+    <%# --------------------------UPPER PART: UPDATE PHOTO BTN-------------------------- %>
+    <div style="position: absolute; top: 117px; right: 104px; z-index: -1;">
+      <%= render 'svgs/buttons/long_btn' %>
+    </div>
+    <label style="width: 96px; height: 26px; position: absolute; top: 117px; right: 104px;">
+      <span style="display: none;">
+        <%= f.input :image, as: :file%>
+      </span>
+    </label>
+    <h6 class="form-label" style="position: absolute; top: 126px; right: 124px; font-size: 6px; z-index: -1;">UPDATE PHOTO</h6>
+    <%# --------------------------FORM INPUTS-------------------------- %>
+    <div class="form-inputs-container">
+      <div class="form-user-inputs">
+        <h6 class="form-label">NAME</h6>
+        <%= f.input :name,
                   required: false,
                   autofocus: true %>
-			</div>
-			<div class="form-user-inputs">
-				<h6 class="form-label">EMAIL</h6>
-				<%= f.input :email, 
+      </div>
+      <div class="form-user-inputs">
+        <h6 class="form-label">EMAIL</h6>
+        <%= f.input :email, 
                   required: false, 
                   autofocus: true %>
-			</div>
-			<div class="form-user-inputs">
-				<h6 class="form-label">BIRTHDAY</h6>
-				<div>
-					<%= f.input :birthday,
+      </div>
+      <div class="form-user-inputs">
+        <h6 class="form-label">BIRTHDAY</h6>
+        <div>
+          <%= f.input :birthday,
+					start_year: 1900,
                   required: false,
                   autofocus: true %>
-				</div>
-			</div>
-			<div class="form-user-inputs">
-				<h6 class="form-label">GENDER</h6>
-				<%= f.input :gender,
+        </div>
+      </div>
+      <div class="form-user-inputs">
+        <h6 class="form-label">GENDER</h6>
+        <%= f.input :gender,
                 collection: ["Male", "Female", "Other"],
                 required: false,
                 autofocus: true %>
-			</div>
-			<div class="form-user-inputs">
-				<h6 class="form-label">WEBSITE</h6>
-				<%= f.input :website,
+      </div>
+      <div class="form-user-inputs">
+        <h6 class="form-label">WEBSITE</h6>
+        <%= f.input :website,
                 required: false,
                 autofocus: true %>
-			</div>
-			<div>
-				<h6 class="form-label">BIO</h6>
-				<%= f.input :bio,
+      </div>
+      <div>
+        <h6 class="form-label">BIO</h6>
+        <%= f.input :bio,
                 required: false,
                 autofocus: true,
                 id: 'form-bio' %>
-			</div>
-		</div>
-
-		<%# --------------------------FORM BUTTONS & ACTIONS-------------------------- %>
-		<label style="position: absolute; top: 500px; right: 22px; height: 45px; width: 45px;">
-			<span style="display: none;">
-				<%= f.button :submit, "Update" %>
-			</span>
-		</label>
-		<div style="position: absolute; top: 500px; right: 22px; z-index: -1;">
-			<%= render 'svgs/buttons/confirm_btn' %>
-		</div>
-		<div style="position: absolute; top: 509px; right: 71px;">
-			<%= render 'svgs/accents/button_dashed_line' %>
-		</div>
-	<% end %>
-
-	<div style="position: absolute; top: 500px; right: 247px;">
-		<%= link_to user_path(current_user.user_name) do %>
-			<%= render 'svgs/buttons/cancel_btn' %>
-		<% end %>
-	</div>
-
-	<div style="position: absolute; top: 575px; right: 260px;">
-		<%= render 'svgs/accents/form_lines_b' %>
-	</div>
-	<div class="white-circle" style="position: absolute; top: 624px; right: 254px;"></div>
-	<div class="yellow-line" style="position: absolute; top: 634px; right: 76px; width: 169px;"></div>
-	<%= link_to edit_user_registration_path do %>
-		<h6 class="form-label" style="position: absolute; top: 622px; right: 76px;">GO TO ACCOUNT SETTINGS</h6>
-	<% end %>
+      </div>
+    </div>
+    <%# --------------------------FORM BUTTONS & ACTIONS-------------------------- %>
+    <label style="position: absolute; top: 500px; right: 22px; height: 45px; width: 45px;">
+      <span style="display: none;">
+        <%= f.button :submit, "Update" %>
+      </span>
+    </label>
+    <div style="position: absolute; top: 500px; right: 22px; z-index: -1;">
+      <%= render 'svgs/buttons/confirm_btn' %>
+    </div>
+    <div style="position: absolute; top: 509px; right: 71px;">
+      <%= render 'svgs/accents/button_dashed_line' %>
+    </div>
+  <% end %>
+  <div style="position: absolute; top: 500px; right: 247px;">
+    <%= link_to user_path(current_user.user_name) do %>
+      <%= render 'svgs/buttons/cancel_btn' %>
+    <% end %>
+  </div>
+  <div style="position: absolute; top: 575px; right: 260px;">
+    <%= render 'svgs/accents/form_lines_b' %>
+  </div>
+  <div class="white-circle" style="position: absolute; top: 624px; right: 254px;"></div>
+  <div class="yellow-line" style="position: absolute; top: 634px; right: 76px; width: 169px;"></div>
+  <%= link_to edit_user_registration_path do %>
+    <h6 class="form-label" style="position: absolute; top: 622px; right: 76px;">GO TO ACCOUNT SETTINGS</h6>
+  <% end %>
 </div>
