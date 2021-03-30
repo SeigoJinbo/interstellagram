@@ -1,10 +1,10 @@
 .navbar-lewagon {
-	justify-content: space-between;
-	background: $dark-blue;
+  justify-content: space-between;
+  background: $dark-blue;
 }
 
 .navbar-lewagon .navbar-collapse {
-	flex-grow: 0;
+  flex-grow: 0;
 }
 
 // .navbar-lewagon .navbar-brand img {
@@ -12,71 +12,80 @@
 
 // }
 @font-face {
-	font-family: "logo";
-	src: asset_url("Michelangelo.otf");
+  font-family: "logo";
+  src: asset_url("Michelangelo.otf");
 }
 .navbar-top-container {
-	position: fixed;
-	width: 100vw;
-	top: 0;
-	z-index: 5;
-	background: #00354d;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 5;
+  background: #00354d;
 }
 .navbar-top-space {
-	height: 52px;
+  height: 52px;
 }
 .navbar-top {
-	z-index: 5;
-	position: relative;
-	height: 52px;
-	background: $dark-blue;
-	width: 375px;
-	margin: 0 auto;
-	.frame {
-		width: 375px;
-		margin: 0 auto;
-		position: relative;
-		.navatar {
-			position: absolute;
-			top: 18px;
-			left: 54px;
-			img {
-				width: 31px;
-				height: 31px;
-				border-radius: 50%;
-			}
-		}
-		.home {
-			font-family: "logo";
-			font-size: 18px;
-			color: white;
-			position: absolute;
-			right: 64px;
-			top: 13px;
+  z-index: 5;
+  position: relative;
+  height: 52px;
+  background: $dark-blue;
+  width: 375px;
+  margin: 0 auto;
+  .frame {
+    width: 375px;
+    margin: 0 auto;
+    position: relative;
+    .navatar {
+      position: absolute;
+      top: 18px;
+      left: 54px;
+      img {
+        width: 31px;
+        height: 31px;
+        border-radius: 50%;
+      }
+    }
+    .home {
+      font-family: "logo";
+      font-size: 18px;
+      color: white;
+      position: absolute;
+      right: 64px;
+      top: 13px;
 
-			background: -webkit-linear-gradient(#ffd088, #b4d187, #34b7c5, #589ecc);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-		}
-	}
+      background: -webkit-linear-gradient(#ffd088, #b4d187, #34b7c5, #589ecc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+.login {
+  font-family: "logo";
+  font-size: 36px;
+  background: -webkit-linear-gradient(#ffd088, #b4d187, #34b7c5, #589ecc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-top: 12px;
 }
 .navbar-bottom {
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	height: 52px;
-	width: 100vw;
-	//   margin: 0 auto;
-	text-decoration: none;
-	background-color: #00354d;
-	align-items: center;
-	z-index: 2;
-	ul {
-		width: 375px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 52px;
+  width: 100vw;
+  //   margin: 0 auto;
+  text-decoration: none;
+  background-color: #00354d;
+  align-items: center;
+  z-index: 2;
+  ul {
+    width: 375px;
 
-		margin: 4px auto 0 auto;
-		display: flex;
-		list-style-type: none;
-		justify-content: space-around;
-	}
+    margin: 4px auto 0 auto;
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+  }
 }

@@ -1,15 +1,14 @@
 <%# feed %>
 <% if current_user %>
-	<% if @posts %>
-		<div class="navbar-top-space"></div>
-		<div style="width: 375px; margin: 0 auto;">
-			<%= render @posts %>
-		</div>
-		<div class="navbar-top-space"></div>
-	<% end %>
+  <% if @posts %>
+    <div class="navbar-top-space"></div>
+    <div style="width: 375px; margin: 0 auto;">
+      <%= render @posts %>
+    </div>
+    <div class="navbar-top-space"></div>
+  <% end %>
 <% else %>
-	<div class="navbar-top-space"></div>
-	<p><%= link_to "Login", new_user_session_path %> to continue</p>
+  <% controller.redirect_to user_session_path %>
 <% end %>
 <%= ago(Post.first.created_at) %>
 <%= ago(Post.last.created_at) %>
